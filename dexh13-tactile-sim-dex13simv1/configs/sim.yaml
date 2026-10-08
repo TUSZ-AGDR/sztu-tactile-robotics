@@ -1,0 +1,11 @@
+sim:
+  mjcf_path: assets/dexh13_mjcf/hand.xml
+  episode_seconds: 10.0
+  random_seed: 0
+
+control:
+  policy: hold_open
+
+dataset:
+  out_dir: data/episodes
+  filename_pattern: ep_{idx:05d}.h5

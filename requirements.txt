@@ -1,0 +1,3 @@
+# Install the dependencies for all course labs.
+-r lab1/requirements.txt
+-r lab2/requirements.txt

@@ -1,0 +1,25 @@
+# Local Python environments and caches
+.venv/
+.venv-*/
+venv/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.py[cod]
+*.egg-info/
+
+# Experiment results and temporary working files
+outputs/
+output/
+tmp/
+*.h5
+*.log
+
+# Local configuration and OS files
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+.idea/

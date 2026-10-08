@@ -1,0 +1,111 @@
+instances:
+  - sensor_id: 0
+    sdk_name: sensor1
+    name: index_proximal
+    template: IP_M3025
+    start: 0
+    end: 120
+    parent_body: right_index_tactile_link_1
+    parent_geom: index_proximal_tactile_geom
+    site_name: site_index_proximal_sensor_frame
+    M_sdk_sensor: [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+  - sensor_id: 1
+    sdk_name: sensor2
+    name: index_middle
+    template: MP_M2324
+    start: 120
+    end: 180
+    parent_body: right_index_tactile_link_0
+    parent_geom: index_middle_tactile_geom
+    site_name: site_index_middle_sensor_frame
+    M_sdk_sensor: [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+  - sensor_id: 2
+    sdk_name: sensor3
+    name: index_tip
+    template: DP_M2826
+    start: 180
+    end: 300
+    parent_body: right_index_tactile_link_2
+    parent_geom: index_tip_tactile_geom
+    site_name: site_index_tip_sensor_frame
+    M_sdk_sensor: [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+  - sensor_id: 3
+    sdk_name: sensor4
+    name: middle_proximal
+    template: IP_M3025
+    start: 300
+    end: 420
+    parent_body: right_middle_tactile_link_1
+    parent_geom: middle_proximal_tactile_geom
+    site_name: site_middle_proximal_sensor_frame
+    M_sdk_sensor: [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+  - sensor_id: 4
+    sdk_name: sensor5
+    name: middle_middle
+    template: MP_M2324
+    start: 420
+    end: 480
+    parent_body: right_middle_tactile_link_0
+    parent_geom: middle_middle_tactile_geom
+    site_name: site_middle_middle_sensor_frame
+    M_sdk_sensor: [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+  - sensor_id: 5
+    sdk_name: sensor6
+    name: middle_tip
+    template: DP_M2826
+    start: 480
+    end: 600
+    parent_body: right_middle_tactile_link_2
+    parent_geom: middle_tip_tactile_geom
+    site_name: site_middle_tip_sensor_frame
+    M_sdk_sensor: [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+  - sensor_id: 6
+    sdk_name: sensor7
+    name: ring_proximal
+    template: IP_M3025
+    start: 600
+    end: 720
+    parent_body: right_ring_tactile_link_1
+    parent_geom: ring_proximal_tactile_geom
+    site_name: site_ring_proximal_sensor_frame
+    M_sdk_sensor: [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+  - sensor_id: 7
+    sdk_name: sensor8
+    name: ring_middle
+    template: MP_M2324
+    start: 720
+    end: 780
+    parent_body: right_ring_tactile_link_0
+    parent_geom: ring_middle_tactile_geom
+    site_name: site_ring_middle_sensor_frame
+    M_sdk_sensor: [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+  - sensor_id: 8
+    sdk_name: sensor9
+    name: ring_tip
+    template: DP_M2826
+    start: 780
+    end: 900
+    parent_body: right_ring_tactile_link_2
+    parent_geom: ring_tip_tactile_geom
+    site_name: site_ring_tip_sensor_frame
+    M_sdk_sensor: [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+  - sensor_id: 9
+    sdk_name: sensor10
+    name: thumb_proximal
+    template: IP_L5325
+    start: 900
+    end: 1020
+    parent_body: right_thumb_tactile_link_0
+    parent_geom: thumb_proximal_tactile_geom
+    site_name: site_thumb_proximal_sensor_frame
+    M_sdk_sensor: [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+  - sensor_id: 10
+    sdk_name: sensor11
+    name: thumb_tip
+    template: DP_L3530
+    start: 1020
+    end: 1140
+    parent_body: right_thumb_tactile_link_1
+    parent_geom: thumb_tip_tactile_geom
+    site_name: site_thumb_tip_sensor_frame
+    M_sdk_sensor: [[1, 0, 0], [0, 1, 0], [0, 0, 1]]

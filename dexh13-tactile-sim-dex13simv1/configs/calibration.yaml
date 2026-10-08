@@ -1,0 +1,65 @@
+global:
+  sim_dt: 0.0005
+  sensor_native_hz: 80
+  tactile_hz: 10
+  tactile_hz_source: sdk_observed_1140_taxels
+  lsb_per_N: 10.0
+  force_on_geom1: true
+  random_seed: 0
+
+templates:
+  IP_M3025:
+    sigma_t0: 0.0030
+    sigma_n0: 0.0015
+    outside_reject_dist: 0.010
+    max_abs_normal_offset: 0.006
+    min_raw_weight: 1.0e-4
+    A_matrix: [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+    bias_N: [0, 0, 0]
+    noise_std_N: [0.02, 0.02, 0.03]
+    tau_s: 0.0
+    clip_N: {x: [-10, 10], y: [-10, 10], z: [0, 25]}
+  MP_M2324:
+    sigma_t0: 0.0025
+    sigma_n0: 0.0015
+    outside_reject_dist: 0.008
+    max_abs_normal_offset: 0.006
+    min_raw_weight: 1.0e-4
+    A_matrix: [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+    bias_N: [0, 0, 0]
+    noise_std_N: [0.02, 0.02, 0.03]
+    tau_s: 0.0
+    clip_N: {x: [-10, 10], y: [-10, 10], z: [0, 25]}
+  DP_M2826:
+    sigma_t0: 0.0030
+    sigma_n0: 0.0015
+    outside_reject_dist: 0.010
+    max_abs_normal_offset: 0.006
+    min_raw_weight: 1.0e-4
+    A_matrix: [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+    bias_N: [0, 0, 0]
+    noise_std_N: [0.02, 0.02, 0.03]
+    tau_s: 0.0
+    clip_N: {x: [-10, 10], y: [-10, 10], z: [0, 25]}
+  IP_L5325:
+    sigma_t0: 0.0035
+    sigma_n0: 0.0015
+    outside_reject_dist: 0.012
+    max_abs_normal_offset: 0.006
+    min_raw_weight: 1.0e-4
+    A_matrix: [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+    bias_N: [0, 0, 0]
+    noise_std_N: [0.02, 0.02, 0.03]
+    tau_s: 0.0
+    clip_N: {x: [-10, 10], y: [-10, 10], z: [0, 25]}
+  DP_L3530:
+    sigma_t0: 0.0035
+    sigma_n0: 0.0015
+    outside_reject_dist: 0.012
+    max_abs_normal_offset: 0.006
+    min_raw_weight: 1.0e-4
+    A_matrix: [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+    bias_N: [0, 0, 0]
+    noise_std_N: [0.02, 0.02, 0.03]
+    tau_s: 0.0
+    clip_N: {x: [-10, 10], y: [-10, 10], z: [0, 25]}
