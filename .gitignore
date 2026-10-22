@@ -12,8 +12,13 @@ __pycache__/
 # Experiment results and temporary working files
 outputs/
 output/
+analysis_out/
+analyse_out/
+analysis_outputs/
+analyse_outputs/
 tmp/
 *.h5
+*.hdf5
 *.log
 
 # Local configuration and OS files

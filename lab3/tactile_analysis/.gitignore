@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+analysis_out/
+analyse_out/
+reports/
+inputs/
+recordings/
+calibration_results/
+.venv/
+*.zip
+*.npz
+*.npy
+*.mat
+*.h5
+*.hdf5

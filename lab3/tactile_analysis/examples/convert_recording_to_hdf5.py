@@ -1,0 +1,12 @@
+"""Run directly from the checkout, without installing tactile_analysis."""
+
+from pathlib import Path
+import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from tactile_analysis.convert_recording import main
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

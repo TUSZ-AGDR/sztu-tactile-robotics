@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tactile-hdf5-analysis"
+version = "0.1.0"
+description = "Command-line DexH13 ZIP/HDF5 diagnostics and calibrated contact-area/pressure analysis"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24"]
+
+[project.optional-dependencies]
+hdf5 = ["h5py>=3.8"]
+plot = ["matplotlib>=3.7"]
+matlab = ["scipy>=1.10"]
+cli = ["h5py>=3.8", "matplotlib>=3.7"]
+all = ["h5py>=3.8", "matplotlib>=3.7", "scipy>=1.10"]
+
+[project.scripts]
+tactile-analyze = "tactile_analysis.cli:main"
+tactile-convert-recording = "tactile_analysis.convert_recording:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
