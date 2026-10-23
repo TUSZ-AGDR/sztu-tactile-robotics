@@ -32,69 +32,69 @@ class PhysicalResult:
 def _scalar(data, key):
     value = data[key]
     if value.shape != ():
-        raise ValueError(f"Calibration {key} must be scalar")
+        raise ValueError(f"标定字段 {key} 必须为标量")
     return value.item()
 
 
 def _finite_array(data, key, shapes):
     raw = data[key]
     if raw.dtype.kind not in "fiu":
-        raise ValueError(f"Calibration {key} must contain real numeric values")
+        raise ValueError(f"标定字段 {key} 必须包含实数数值")
     value = np.asarray(raw, dtype=float)
     if value.shape not in shapes or not np.isfinite(value).all():
-        raise ValueError(f"Calibration {key} must be finite with shape in {shapes}")
+        raise ValueError(f"标定字段 {key} 必须为有限数值，形状应为 {shapes} 之一")
     return value
 
 
 def analyze_physical(trial, calibration_path, *, normal_threshold_n=0.1):
     """Intersect source validity with calibration validity; never promote raw masks."""
     if not np.isfinite(normal_threshold_n) or normal_threshold_n <= 0:
-        raise ValueError("normal_threshold_n must be finite and positive")
+        raise ValueError("normal_threshold_n 必须为有限正数")
     if trial.timestamps_ns is None or trial.n_frames == 0:
-        raise ValueError("Physical analysis requires nonempty data and timestamps_ns")
+        raise ValueError("物理分析要求数据非空，且包含 timestamps_ns 时间戳")
     if trial.metadata.get("force_unit", "raw") != "raw":
-        raise ValueError("Calibration requires raw-count input, not already converted force values")
+        raise ValueError("标定要求输入原始计数，不能使用已转换的力值")
     if any(v is None for v in (trial.taxel_valid_mask, trial.packet_valid, trial.sample_valid, trial.hand_side)):
-        raise ValueError("Physical analysis requires source taxel_valid_mask, packet_valid, sample_valid and hand_side")
+        raise ValueError("物理分析要求源数据包含 taxel_valid_mask、packet_valid、sample_valid 和 hand_side")
     path = Path(calibration_path).resolve()
     calibration_bytes = path.read_bytes()
     n = trial.n_taxels
     with np.load(BytesIO(calibration_bytes), allow_pickle=False) as data:
         version = _scalar(data, "schema_version")
         if type(version) is not int or version != 1:
-            raise ValueError("Unsupported calibration schema_version")
+            raise ValueError("不支持此标定格式的 schema_version")
         side = str(_scalar(data, "hand_side"))
         if side not in ("left", "right") or not np.all(trial.hand_side == side):
-            raise ValueError("Calibration hand_side does not match the selected trial")
+            raise ValueError("标定文件的 hand_side 与所选数据组的手别不一致")
         source_kind = str(_scalar(data, "source_kind"))
         if source_kind not in ("measured", "synthetic_demo"):
-            raise ValueError("Calibration source_kind must be measured or synthetic_demo")
+            raise ValueError("标定字段 source_kind 必须为 measured 或 synthetic_demo")
         if source_kind == "synthetic_demo" and not trial.metadata.get("synthetic_demo", False):
-            raise ValueError("Synthetic demo calibration cannot be used on real recordings")
+            raise ValueError("合成示例标定不能用于真实采集记录")
         calibration_id = str(_scalar(data, "calibration_id"))
         if not calibration_id.strip():
-            raise ValueError("Calibration calibration_id must not be empty")
+            raise ValueError("标定字段 calibration_id 不能为空")
         matrix = _finite_array(data, "force_matrix_n_per_count", ((3, 3), (n, 3, 3)))
         bias = _finite_array(data, "bias_counts", ((3,), (n, 3)))
         normals = _finite_array(data, "normal_vectors", ((3,), (n, 3)))
         if not np.allclose(np.linalg.norm(normals, axis=-1), 1.0, atol=1e-6, rtol=0):
-            raise ValueError("Calibration normal_vectors must have unit length")
+            raise ValueError("标定字段 normal_vectors 中的法向量必须为单位向量")
         area = _finite_array(data, "taxel_area_mm2", ((), (n,)))
         if np.any(area <= 0):
-            raise ValueError("Calibration taxel_area_mm2 must be positive")
+            raise ValueError("标定字段 taxel_area_mm2 必须为正数")
         calibration_valid = data["verified_taxel_mask"]
         if calibration_valid.shape != (n,) or calibration_valid.dtype != np.dtype(bool):
-            raise ValueError(f"Calibration verified_taxel_mask must be bool [{n}]")
+            raise ValueError(f"标定字段 verified_taxel_mask 必须为长度为 {n} 的布尔数组")
     valid = (trial.taxel_valid_mask & calibration_valid[None, :]
              & trial.packet_valid[:, None] & trial.sample_valid[:, None])
     frame_valid = valid.any(axis=1)
     if not frame_valid.any():
-        raise ValueError("No verified taxels remain. Calibration does not override source validity masks; "
-                         "verify acquisition masks and calibration before physical analysis.")
+        raise ValueError("没有可用的已验证触觉点。标定不会覆盖源有效性标记；"
+                         "请先核验采集有效性标记和标定结果，再进行物理分析。")
     centered = trial.detail_xyz - bias
     force = np.einsum("ij,tnj->tni", matrix, centered) if matrix.ndim == 2 else np.einsum("nij,tnj->tni", matrix, centered)
     if not np.isfinite(force).all():
-        raise ValueError("Calibration produced nonfinite force values")
+        raise ValueError("标定产生了非有限力值")
     signed_normal = np.sum(force * normals, axis=2)
     normal = np.maximum(signed_normal, 0)
     contact = valid & (normal >= normal_threshold_n)
@@ -157,7 +157,7 @@ def analyze_physical(trial, calibration_path, *, normal_threshold_n=0.1):
 def export_physical(result, output_dir, *, export_mat=False):
     destination = Path(output_dir).resolve()
     if destination.exists():
-        raise FileExistsError(f"Analysis output already exists; choose a new --output-dir: {destination}")
+        raise FileExistsError(f"分析输出已存在，请指定新的 --output-dir：{destination}")
     destination.parent.mkdir(parents=True, exist_ok=True)
     stage = Path(tempfile.mkdtemp(prefix=".physical-", dir=destination.parent))
     try:

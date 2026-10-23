@@ -6,13 +6,16 @@ Requires NumPy and matplotlib. Raw files are never modified.
 
 from __future__ import annotations
 
-import argparse
 from collections import Counter
 import hashlib
 import json
 from pathlib import Path
+import sys
 
 import numpy as np
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from tactile_analysis.terminal import ChineseArgumentParser, error_text, hand_name
 
 
 def stats(values):
@@ -28,7 +31,7 @@ def nearest_offsets(source, target):
     if not len(source) or not len(target):
         return np.array([], dtype=np.float64)
     if np.any(np.diff(target) <= 0):
-        raise ValueError("Nearest-time matching requires increasing target timestamps")
+        raise ValueError("最近时间匹配要求目标时间戳严格递增")
     upper = np.searchsorted(target, source).clip(0, len(target) - 1)
     lower = (upper - 1).clip(0, len(target) - 1)
     idx = np.where(np.abs(source - target[lower]) <= np.abs(source - target[upper]), lower, upper)
@@ -42,34 +45,34 @@ def load_streams(root, manifest):
         for chunk in spec["chunks"]:
             file = (root / chunk["file"]).resolve()
             if not file.is_relative_to(root.resolve()):
-                raise ValueError("Manifest path outside recording directory")
+                raise ValueError("manifest 中的路径超出轨迹目录")
             matches = hashlib.sha256(file.read_bytes()).hexdigest() == chunk["sha256"]
             audit["files"].append({"file": file.name, "sha256_matches": matches})
             if not matches:
-                raise ValueError(f"Hash mismatch: {file.name}")
+                raise ValueError(f"哈希校验不一致：{file.name}")
             with np.load(file, allow_pickle=False) as data:
                 arrays = {k: data[k] for k in data.files}
             if set(arrays) != set(spec["fields"]):
-                raise ValueError(f"Field mismatch: {file.name}")
+                raise ValueError(f"字段不一致：{file.name}")
             for key, field in spec["fields"].items():
                 a = arrays[key]
                 if a.shape != (chunk["rows"], *field["shape"]):
-                    raise ValueError(f"Shape mismatch: {file.name}:{key}")
+                    raise ValueError(f"数组形状不一致：{file.name}:{key}")
                 # Unicode storage width may vary by chunk with error message length.
                 declared = np.dtype(field["dtype"])
                 if a.dtype != declared and not (a.dtype.kind == declared.kind == "U"):
-                    raise ValueError(f"Dtype mismatch: {file.name}:{key}")
+                    raise ValueError(f"数组类型不一致：{file.name}:{key}")
                 if a.dtype.kind == "f" and not np.isfinite(a).all():
                     audit["issues"].append(f"Nonfinite values: {file.name}:{key}")
             ts = arrays["timestamp_ns"]
             if int(ts[0]) != chunk["first_timestamp_ns"] or int(ts[-1]) != chunk["last_timestamp_ns"]:
-                raise ValueError(f"Manifest timestamp mismatch: {file.name}")
+                raise ValueError(f"时间戳与 manifest 声明不一致：{file.name}")
             chunks.append(arrays)
         joined = {k: np.concatenate([a[k] for a in chunks]) for k in chunks[0]}
         if len(joined["timestamp_ns"]) != spec["rows"]:
-            raise ValueError(f"Manifest row count mismatch: {name}")
+            raise ValueError(f"行数与 manifest 声明不一致：{name}")
         if np.any(np.diff(joined["timestamp_ns"]) <= 0):
-            raise ValueError(f"Non-increasing timestamps: {name}")
+            raise ValueError(f"时间戳未严格递增：{name}")
         streams[name] = joined
     return streams, audit
 
@@ -77,19 +80,19 @@ def load_streams(root, manifest):
 def tactile_metrics(data, side, origin):
     r = data["taxel_raw"]
     if r.dtype != np.int32 or r.shape[1:] != (1140, 3):
-        raise ValueError("Expected int32 [T,1140,3]")
+        raise ValueError("数据必须为形状为 [T,1140,3] 的 int32 数组")
     if not np.all(data["hand_side"] == side):
-        raise ValueError("Hand identity mismatch")
+        raise ValueError("手别标识不一致")
     ts = data["timestamp_ns"]
     norm = np.linalg.norm(r.astype(np.float64), axis=2)
     nonzero = np.any(r != 0, axis=2)
     counts = nonzero.sum(axis=1)
     latency = (ts - data["query_begin_ns"]) / 1e6
     if np.any(latency < 0):
-        raise ValueError("Negative query duration")
+        raise ValueError("查询耗时不能为负数")
     expected_valid = data["packet_valid"] & data["taxel_valid_mask"].any(axis=1)
     if not np.array_equal(expected_valid, data["sample_valid"]):
-        raise ValueError("Inconsistent sample_valid")
+        raise ValueError("sample_valid 有效性标记不一致")
     peak_frame, peak_taxel = np.unravel_index(norm.argmax(), norm.shape)
     repeat = np.all(r[1:] == r[:-1], axis=(1, 2))
     longest, run = 1, 1
@@ -220,11 +223,7 @@ def plot_report(streams, derived, temperatures, origin, out):
     plt.close(fig)
 
 
-def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("recording_dir", type=Path)
-    parser.add_argument("--output-dir", type=Path, required=True)
-    args = parser.parse_args()
+def audit_recording(args):
     root, out = args.recording_dir.resolve(), args.output_dir.resolve()
     out.mkdir(parents=True, exist_ok=True)
     manifest = json.loads((root / "manifest.json").read_text())
@@ -278,10 +277,33 @@ def main():
     summary["events_before_recording_origin"] = int(sum(e["timestamp_ns"] < origin for e in events))
     (out / "audit_summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2, allow_nan=False) + "\n")
     plot_report(streams, derived, temperatures, origin, out)
-    print(json.dumps({"output_dir": str(out), "hashes_checked": len(audit["files"]),
+    return {"output_dir": str(out), "hashes_checked": len(audit["files"]),
                       "issues": audit["issues"], "tactile": summary["tactile"],
                       "temperature": summary["temperature"],
-                      "nearest_hands_abs_offset_ms": summary["left_to_nearest_right_abs_offset_ms"]}, ensure_ascii=False, indent=2))
+                      "nearest_hands_abs_offset_ms": summary["left_to_nearest_right_abs_offset_ms"]}
+
+
+def main(argv=None):
+    parser = ChineseArgumentParser(description="检查真实采集目录的完整性、原始信号、温度与采样时序，不认定物理接触。")
+    parser.add_argument("recording_dir", type=Path, help="解压后的采集轨迹目录")
+    parser.add_argument("--output-dir", type=Path, required=True, help="诊断报告输出目录")
+    parser.add_argument("--json", action="store_true", help="以原有字段输出机器可读 JSON；默认显示中文诊断摘要")
+    args = parser.parse_args(argv)
+    try:
+        result = audit_recording(args)
+    except (OSError, ValueError, KeyError, ImportError, IndexError) as exc:
+        parser.exit(1, f"诊断失败：{error_text(exc)}\n")
+    except KeyboardInterrupt:
+        parser.exit(130, "诊断已中断，请检查输出目录中已生成的文件。\n")
+    if args.json:
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+    else:
+        print(f"诊断完成，结果目录：{result['output_dir']}")
+        print(f"已校验文件哈希：{result['hashes_checked']} 个")
+        print(f"完整性检查发现的问题：{len(result['issues'])} 项；详情见 audit_summary.json")
+        for side, row in result["tactile"].items():
+            print(f"{hand_name(side)}：{row['frames']} 帧；曾出现非零原值的触觉点 {row['ever_nonzero_taxels']} 个")
+        print("图表仅用于未验证原始信号诊断，不能据此报告物理接触、压力或面积。")
 
 
 if __name__ == "__main__":

@@ -5,11 +5,13 @@ import sys
 
 import numpy as np
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from tactile_analysis.terminal import ChineseArgumentParser, error_text
 
-def main() -> None:
+
+def make_demo(output) -> None:
     import h5py
 
-    output = Path(sys.argv[1] if len(sys.argv) > 1 else "demo_tactile.h5")
     rng = np.random.default_rng(7)
     t, n = 40, 24
     detail = rng.normal(0, 0.01, (t, n, 3))
@@ -22,7 +24,17 @@ def main() -> None:
         h5.create_dataset("tactile_timestamps_ns", data=np.arange(t, dtype=np.int64) * 100_000_000)
         h5.create_dataset("taxel_positions", data=positions)
         h5.attrs["demo"] = True
-    print(output)
+
+
+def main(argv=None) -> None:
+    parser = ChineseArgumentParser(description="生成用于试运行原始触觉分析的合成 HDF5 文件。")
+    parser.add_argument("output", nargs="?", type=Path, default=Path("demo_tactile.h5"), help="输出文件（默认 demo_tactile.h5）")
+    args = parser.parse_args(argv)
+    try:
+        make_demo(args.output)
+    except (OSError, ValueError, ImportError) as exc:
+        parser.exit(1, f"生成示例失败：{error_text(exc)}\n")
+    print(f"合成 HDF5 数据已生成：{args.output}")
 
 
 if __name__ == "__main__":

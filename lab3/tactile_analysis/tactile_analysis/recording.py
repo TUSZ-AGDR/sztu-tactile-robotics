@@ -28,7 +28,7 @@ def load_recording(source, *, progress=None, cancelled=None):
     with _source(source) as (read, members):
         manifest = json.loads(read("manifest.json"))
         if manifest.get("schema_version") != 1:
-            raise ValueError("Unsupported recording schema_version")
+            raise ValueError("不支持此采集格式的 schema_version")
         total = sum(len(s["chunks"]) for s in manifest["streams"].values())
         trials, seen = {}, set()
         for name, spec in manifest["streams"].items():
@@ -38,29 +38,29 @@ def load_recording(source, *, progress=None, cancelled=None):
                 _check_cancel(cancelled)
                 file = _relative_name(chunk["file"])
                 if file in seen:
-                    raise ValueError(f"Duplicate NPZ reference: {file}")
+                    raise ValueError(f"NPZ 被重复引用：{file}")
                 raw = read(file)
                 if hashlib.sha256(raw).hexdigest() != chunk["sha256"]:
-                    raise ValueError(f"SHA-256 mismatch: {file}")
+                    raise ValueError(f"SHA-256 哈希校验不一致：{file}")
                 seen.add(file)
                 if is_tactile:
                     with np.load(BytesIO(raw), allow_pickle=False) as data:
                         arrays = {key: data[key] for key in data.files}
                     if set(arrays) != set(spec["fields"]):
-                        raise ValueError(f"Manifest field mismatch: {file}")
+                        raise ValueError(f"字段与 manifest 声明不一致：{file}")
                     for key, definition in spec["fields"].items():
                         a, declared = arrays[key], np.dtype(definition["dtype"])
                         if a.shape != (chunk["rows"], *definition["shape"]):
-                            raise ValueError(f"Manifest shape mismatch: {file}:{key}")
+                            raise ValueError(f"数组形状与 manifest 声明不一致：{file}:{key}")
                         if a.dtype != declared and not a.dtype.kind == declared.kind == "U":
-                            raise ValueError(f"Manifest dtype mismatch: {file}:{key}")
+                            raise ValueError(f"数组类型与 manifest 声明不一致：{file}:{key}")
                     ts = arrays["timestamp_ns"]
                     if not len(ts) or ts.dtype != np.dtype("int64") or np.any(ts < 0):
-                        raise ValueError(f"Invalid timestamps: {file}")
+                        raise ValueError(f"时间戳无效：{file}")
                     if np.any(np.diff(ts) <= 0) or (previous is not None and ts[0] <= previous):
-                        raise ValueError(f"Non-increasing timestamps: {file}")
+                        raise ValueError(f"时间戳未严格递增：{file}")
                     if int(ts[0]) != chunk["first_timestamp_ns"] or int(ts[-1]) != chunk["last_timestamp_ns"]:
-                        raise ValueError(f"Manifest timestamp mismatch: {file}")
+                        raise ValueError(f"时间戳与 manifest 声明不一致：{file}")
                     previous = ts[-1]
                     parts.append(arrays)
                 if progress:
@@ -68,23 +68,23 @@ def load_recording(source, *, progress=None, cancelled=None):
             if not is_tactile:
                 continue
             if not parts:
-                raise ValueError(f"Empty tactile stream: {name}")
+                raise ValueError(f"触觉数据流为空：{name}")
             data = {key: np.concatenate([a[key] for a in parts]) for key in parts[0]}
             frames = len(data["timestamp_ns"])
             from .convert_recording import _TACTILE_SCHEMA
             for key, (dtype, shape) in _TACTILE_SCHEMA.items():
                 if key not in data or data[key].shape != (frames, *shape) or data[key].dtype != np.dtype(dtype):
-                    raise ValueError(f"Invalid tactile field: {name}:{key}")
+                    raise ValueError(f"触觉字段无效：{name}:{key}")
             sides = set(data["hand_side"].tolist())
             if len(sides) != 1 or not sides <= {"left", "right"}:
-                raise ValueError(f"Invalid hand_side: {name}")
+                raise ValueError(f"hand_side 手别字段无效：{name}")
             side = sides.pop()
             if side in trials or name not in ("tactile", f"{side}_tactile"):
-                raise ValueError(f"Duplicate or inconsistent hand identity: {name}")
+                raise ValueError(f"手别标识重复或不一致：{name}")
             if frames != spec["rows"]:
-                raise ValueError(f"Manifest row mismatch: {name}")
+                raise ValueError(f"行数与 manifest 声明不一致：{name}")
             if np.any(data["taxel_valid_mask"] & ~data["packet_valid"][:, None]):
-                raise ValueError("Verified taxel in invalid packet")
+                raise ValueError("无效数据包中出现了已验证有效的触觉点")
             trials[side] = TactileTrial(
                 detail_xyz=data["taxel_raw"], sensor_forces=data["sensor_summary_raw"],
                 timestamps_ns=data["timestamp_ns"], taxel_valid_mask=data["taxel_valid_mask"],
@@ -94,9 +94,9 @@ def load_recording(source, *, progress=None, cancelled=None):
                           "trajectory_id": manifest["trajectory_id"]})
         extra = {n for n in members if n.endswith(".npz")} - seen
         if extra:
-            raise ValueError(f"Unlisted NPZ files: {sorted(extra)}")
+            raise ValueError(f"存在未列入 manifest 的 NPZ 文件：{sorted(extra)}")
         if not trials:
-            raise ValueError("No tactile streams found")
+            raise ValueError("未找到触觉数据流")
         events = [json.loads(line) for line in read(manifest["events_file"]).decode("utf-8").splitlines() if line.strip()]
         temperatures = []
         for event in events:
@@ -105,7 +105,7 @@ def load_recording(source, *, progress=None, cancelled=None):
             for reading in event["readings"]:
                 value = float(reading["temperature_c"])
                 if not np.isfinite(value):
-                    raise ValueError("Nonfinite temperature")
+                    raise ValueError("温度不是有限数值")
                 temperatures.append({"timestamp_ns": event["timestamp_ns"], "hand_side": event["hand_side"],
                                      **reading, "temperature_c": value})
     _check_cancel(cancelled)
@@ -138,7 +138,7 @@ def describe_recording(recording):
     rows = []
     for side, trial in recording.trials.items():
         if not trial.n_frames:
-            raise ValueError(f"Empty trial: {side}")
+            raise ValueError(f"数据组为空：{side}")
         ts = trial.timestamps_ns
         duration = float((ts[-1] - ts[0]) / 1e9) if ts is not None else None
         quality = (trial.taxel_valid_mask, trial.packet_valid, trial.sample_valid)

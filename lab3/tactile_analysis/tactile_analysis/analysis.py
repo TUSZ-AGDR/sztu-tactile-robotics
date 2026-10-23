@@ -21,11 +21,11 @@ class AnalysisConfig:
 
     def __post_init__(self) -> None:
         if not np.isfinite(self.contact_threshold) or self.contact_threshold < 0:
-            raise ValueError("contact_threshold must be finite and non-negative")
+            raise ValueError("contact_threshold 必须为有限且非负的数值")
         if self.taxel_area_mm2 is not None and (not np.isfinite(self.taxel_area_mm2) or self.taxel_area_mm2 <= 0):
-            raise ValueError("taxel_area_mm2 must be finite and positive")
+            raise ValueError("taxel_area_mm2 必须为有限正数")
         if self.smooth_window < 1 or self.smooth_window % 2 == 0:
-            raise ValueError("smooth_window must be a positive odd integer")
+            raise ValueError("smooth_window 必须为正奇数")
 
 
 @dataclass
@@ -69,11 +69,11 @@ def analyze_trial(trial: TactileTrial, config: AnalysisConfig | None = None) -> 
     quality = (trial.taxel_valid_mask, trial.packet_valid, trial.sample_valid)
     unverified = any(value is not None and not np.all(value) for value in quality)
     if unverified and not config.allow_unverified:
-        raise ValueError("Trial contains invalid/unverified samples or taxels. "
-                         "Use allow_unverified=True (--allow-unverified) only for raw diagnostics; "
-                         "the default analysis requires complete validity.")
+        raise ValueError("数据组包含无效或未验证的样本、触觉点。"
+                         "仅在原始诊断时使用 allow_unverified=True（--allow-unverified）；"
+                         "默认分析要求所有数据均通过有效性校验。")
     if unverified and (config.force_unit != "raw" or config.taxel_area_mm2 is not None or trial.taxel_area_mm2 is not None):
-        raise ValueError("Unverified raw diagnostics require force_unit='raw' and no taxel area")
+        raise ValueError("未验证的原始诊断要求 force_unit='raw'，且不能设置触觉点面积")
     time_s, time_source = _time_seconds(trial)
     taxel_force_norm = np.linalg.norm(trial.detail_xyz, axis=2)
     taxel_force_norm = _moving_average(taxel_force_norm, config.smooth_window)

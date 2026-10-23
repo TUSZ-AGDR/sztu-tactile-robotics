@@ -82,6 +82,8 @@ python -m pip install -e ".[cli]"
 
 后面的 `python examples/...` 命令用法相同；Bash 的 `\` 换行、`for` 循环和 `python - <<'PY'` 代码块不适用于 PowerShell。可把长命令写成一行，把 Python 代码块存成 `.py` 再执行。当前实测平台是 macOS，未实测 Windows。
 
+终端帮助、进度、错误和默认结果摘要均使用中文；图表文字和文件中的 JSON/CSV 字段保持原有格式。若其他程序需要读取旧版终端 JSON，请在主分析、整轨迹转换或诊断命令后添加 `--json`。`--quiet` 只关闭进度提示，不关闭结果摘要，也不改变摘要语言。
+
 ### 2.3 不想安装本模块
 
 也可以只安装依赖，然后运行 `examples/` 下的入口脚本：
@@ -115,7 +117,7 @@ python examples/analyze_recording.py \
   --list-trials --quiet
 ```
 
-输出 JSON，重点看：
+上面的命令默认显示中文质量摘要。需要机器可读 JSON 时，请添加 `--json`；其中重点看：
 
 - `verified_npz_count`：本次核对的 NPZ 哈希数量，当前记录为 55。
 - `trial`：可选对象，当前是 `left`、`right`。
@@ -553,7 +555,8 @@ python examples/analyze_recording.py verified_trial.h5 \
 | `--calibration` | 单手标定 NPZ，启用物理模式 |
 | `--normal-threshold-n` | 物理模式默认 0.1 N，必须为有限正数 |
 | `--export-mat` | 两种模式均可，需 SciPy |
-| `--quiet` | 关闭 stderr 进度，stdout 保留结果 JSON |
+| `--quiet` | 关闭 stderr 进度，stdout 保留中文结果摘要（与 `--json` 同用时保留结果 JSON） |
+| `--json` | 显式使用旧版机器可读 JSON 结果，字段名和结构不变；默认中文摘要 |
 
 旧的 `--taxel-area-mm2` 将超阈值点按相同面积求和，`mean_pressure` 是模长和/面积的代理，可能只有 raw/mm² 单位。即使提供面积，也不能把它当法向压力。当前未验证真实数据会拒绝这一选项。推荐使用第 7–9 节有明确法向、力标定和有效点范围的流程。
 
@@ -581,13 +584,13 @@ print(raw.summary)
 | --- | --- |
 | `No module named ...` | 激活正确 `.venv`，执行 `pip install -e '.[cli]'`；MAT 再装 `[all]` |
 | 找不到 ZIP / manifest | 检查 `pwd`、完整路径和引号；目录必须直接含 manifest，不是其上一级 |
-| `SHA-256 mismatch` | 文件与 manifest 不一致，重新复制并检查采集记录；不要仅改哈希来跳过问题 |
-| `contains invalid/unverified...` | 当前 raw 诊断加 `--allow-unverified`；物理模式不能用此选项绕过 |
-| `No verified taxels remain` | 核验采集 mask 和标定 mask；当前这份全 false 记录不具备物理分析条件 |
-| `already exists` | 为分析选一个新输出目录；HDF5 转换可明确用 `--overwrite` |
-| `Unknown trial` | 先运行 `--list-trials`，使用输出中的名字 |
-| `hand_side does not match` | 使用该手正确的标定文件 |
-| `Synthetic demo calibration cannot...` | 模拟标定不能套在真实数据上；需要实测文件 |
+| `SHA-256 哈希校验不一致` | 文件与 manifest 不一致，重新复制并检查采集记录；不要仅改哈希来跳过问题 |
+| `数据组包含无效或未验证的样本、触觉点` | 当前 raw 诊断加 `--allow-unverified`；物理模式不能用此选项绕过 |
+| `没有可用的已验证触觉点` | 核验采集 mask 和标定 mask；当前这份全 false 记录不具备物理分析条件 |
+| `输出已存在` | 为分析选一个新输出目录；HDF5 转换可明确用 `--overwrite` |
+| `未知数据组` | 先运行 `--list-trials`，使用输出中的名字 |
+| `hand_side 与所选数据组的手别不一致` | 使用该手正确的标定文件 |
+| `合成示例标定不能用于真实采集记录` | 模拟标定不能套在真实数据上；需要实测文件 |
 | 平滑窗口报错 | 使用 1、3、5 等正奇数 |
 | 帧号越界 | 0..T−1 是有效范围；407 帧左手的最后一帧为 406 |
 | 压力是 `nan` / null | 区分无效帧、无接触帧；不能全部替换成 0 |
@@ -610,6 +613,7 @@ tactile_analysis/recording.py            ZIP / 目录 / HDF5 读取
 tactile_analysis/report.py              raw 报告与图表
 tactile_analysis/physical.py            法向力、面积、压力及物理报告
 tactile_analysis/convert_recording.py   无损转换与完整性检查
+tactile_analysis/terminal.py            中文帮助、错误与终端结果摘要
 ```
 
 运行测试：
@@ -618,7 +622,7 @@ tactile_analysis/convert_recording.py   无损转换与完整性检查
 python -m unittest discover -s tests -v
 ```
 
-测试包括分块与字符串无损转换、哈希损坏拒绝、ZIP/目录/HDF5 数值等价、raw 有效性与 CLI 输出、已知面积/压力算术、非 z 法向、逐点标定、不同点面积的加权平均、无效帧和 mask 不提升、模拟标定不能用于真实数据等。
+测试包括分块与字符串无损转换、哈希损坏拒绝、ZIP/目录/HDF5 数值等价、raw 有效性与 CLI 输出、已知面积/压力算术、非 z 法向、逐点标定、不同点面积的加权平均、无效帧和 mask 不提升、模拟标定不能用于真实数据等。另有中文帮助、参数报错、质量/分析/转换摘要和 `--json` 兼容性检查；当前共 39 项。
 
 实际记录的原始诊断见 [REPORT.zh-CN.md](reports/teleop_20261021T090120_798e4203/REPORT.zh-CN.md)，它记录当时的检查结果，当前入口和命令以本 README 为准。压力单位定义参考 [NIST 的 SI 单位表](https://www.nist.gov/pml/special-publication-330/sp-330-appendix-1)：Pa = N/m²，因此 N/mm² 转成 Pa 乘以 10⁶。
 

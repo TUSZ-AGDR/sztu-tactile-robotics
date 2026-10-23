@@ -2,23 +2,20 @@
 
 from __future__ import annotations
 
-import argparse
 import json
 from pathlib import Path
+import sys
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from tactile_analysis.io import load_npz
+from tactile_analysis.terminal import ChineseArgumentParser, error_text
 
 
-def main() -> int:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("npz", type=Path)
-    parser.add_argument("hdf5", type=Path)
-    parser.add_argument("--metadata-json", type=Path)
-    args = parser.parse_args()
+def convert(args):
     try:
         import h5py
     except ImportError as exc:
-        raise SystemExit("Install tactile-hdf5-analysis[hdf5] to convert files") from exc
+        raise ImportError("转换文件前请安装 tactile-hdf5-analysis[hdf5]") from exc
     trial = load_npz(args.npz)
     metadata = {}
     if args.metadata_json:
@@ -42,7 +39,19 @@ def main() -> int:
         for key, value in metadata.get("session_meta", metadata).items():
             if isinstance(value, (str, int, float, bool)):
                 handle.attrs[key] = value
-    print(args.hdf5)
+
+
+def main(argv=None) -> int:
+    parser = ChineseArgumentParser(description="将单个 DexH13 NPZ 数据组转换为分析器使用的 HDF5 格式。")
+    parser.add_argument("npz", type=Path, help="输入 NPZ 文件")
+    parser.add_argument("hdf5", type=Path, help="输出 HDF5 文件")
+    parser.add_argument("--metadata-json", type=Path, help="可选的元数据 JSON 文件")
+    args = parser.parse_args(argv)
+    try:
+        convert(args)
+    except (OSError, ValueError, KeyError, ImportError) as exc:
+        parser.exit(1, f"转换失败：{error_text(exc)}\n")
+    print(f"NPZ 转换完成：{args.hdf5}")
     return 0
 
 

@@ -37,10 +37,10 @@ class RecordingCliTest(unittest.TestCase):
         stdout, stderr = StringIO(), StringIO()
         with redirect_stdout(stdout), redirect_stderr(stderr):
             if expected == 0:
-                self.assertEqual(main(args + ["--quiet"]), 0)
+                self.assertEqual(main(args + ["--quiet", "--json"]), 0)
             else:
                 with self.assertRaises(SystemExit) as caught:
-                    main(args + ["--quiet"])
+                    main(args + ["--quiet", "--json"])
                 self.assertEqual(caught.exception.code, expected)
         return stdout.getvalue(), stderr.getvalue()
 
@@ -77,7 +77,7 @@ class RecordingCliTest(unittest.TestCase):
                          "temperature_events.csv", "trial_01/frame_metrics.csv", "trial_01/heatmap_1.png"):
             self.assertTrue((output / filename).exists())
         _, error = self.run_cli([str(self.archive), "--allow-unverified", "--output-dir", str(output)], 1)
-        self.assertIn("already exists", error)
+        self.assertIn("已存在", error)
 
     def test_strict_raw_rejects_unverified_and_cleans_output(self):
         output = self.base / "strict"
@@ -88,10 +88,10 @@ class RecordingCliTest(unittest.TestCase):
 
     def test_bad_trial_and_nonfinite_threshold(self):
         _, error = self.run_cli([str(self.archive), "--trial", "missing"], 1)
-        self.assertIn("available", error)
+        self.assertIn("可用数据组", error)
         _, error = self.run_cli([str(self.archive), "--allow-unverified", "--contact-threshold", "nan",
                                  "--output-dir", str(self.base / "nan")], 1)
-        self.assertIn("finite", error)
+        self.assertIn("有限", error)
 
     def test_cancelled_conversion_and_raw_report_publish_nothing(self):
         with self.assertRaises(OperationCancelled):
@@ -112,4 +112,4 @@ class RecordingCliTest(unittest.TestCase):
         self.assertEqual(json.loads(text)["summary"]["contact_area_mm2_peak"], 6)
         _, error = self.run_cli([str(trial), "--calibration", str(calibration), "--allow-unverified",
                                  "--output-dir", str(self.base / "bad-physical")], 1)
-        self.assertIn("raw-only", error)
+        self.assertIn("仅用于原始诊断", error)

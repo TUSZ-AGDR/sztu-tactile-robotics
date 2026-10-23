@@ -38,7 +38,7 @@ class AuditRecordingTest(unittest.TestCase):
     def test_inconsistent_sample_valid_rejected(self):
         data = self.data()
         data["sample_valid"][:] = True
-        with self.assertRaisesRegex(ValueError, "Inconsistent sample_valid"):
+        with self.assertRaisesRegex(ValueError, "sample_valid 有效性标记不一致"):
             audit.tactile_metrics(data, "left", 0)
 
     def test_nearest_time_offsets_include_boundaries(self):
@@ -52,5 +52,5 @@ class AuditRecordingTest(unittest.TestCase):
             (root / "bad.npz").write_bytes(b"corrupted")
             manifest = {"streams": {"left_tactile": {
                 "chunks": [{"file": "bad.npz", "sha256": "0" * 64}]}}}
-            with self.assertRaisesRegex(ValueError, "Hash mismatch"):
+            with self.assertRaisesRegex(ValueError, "哈希校验不一致"):
                 audit.load_streams(root, manifest)

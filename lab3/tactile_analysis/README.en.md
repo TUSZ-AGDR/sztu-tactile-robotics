@@ -82,6 +82,8 @@ python -m pip install -e ".[cli]"
 
 The subsequent `python examples/...` invocations have the same arguments. Bash `\` line continuations, `for` loops, and `python - <<'PY'` blocks do not work unchanged in PowerShell: put commands on one line and save Python blocks to `.py` files. The tested platform is macOS; Windows has not been tested.
 
+Terminal help, progress, errors, and default result summaries are in Chinese. Figure text and saved JSON/CSV fields retain their existing format. Add `--json` to analysis, whole-recording conversion, or audit commands when another program needs the previous machine-readable terminal JSON. `--quiet` suppresses progress only; it does not suppress the result summary or change its language.
+
 ### 2.3 Without installing this package
 
 Install the dependencies and run the checkout entry scripts:
@@ -115,7 +117,7 @@ python examples/analyze_recording.py \
   --list-trials --quiet
 ```
 
-The JSON output contains:
+The command above displays a Chinese quality summary by default. Add `--json` for machine-readable output, which contains:
 
 - `verified_npz_count`: number of manifest NPZ hashes checked; 55 for this recording.
 - `trial`: selectable names; `left` and `right` here.
@@ -553,7 +555,8 @@ Physical mode permits partially valid taxels/frames, intersects masks, and prese
 | `--calibration` | Single-hand calibration NPZ; enables physical mode |
 | `--normal-threshold-n` | Physical default 0.1 N; finite and positive |
 | `--export-mat` | Supported in both modes; requires SciPy |
-| `--quiet` | Suppress stderr progress; stdout still contains result JSON |
+| `--quiet` | Suppress stderr progress; keep the Chinese summary, or result JSON when combined with `--json` |
+| `--json` | Use the previous machine-readable JSON output with unchanged fields and structure; default is a Chinese summary |
 
 The legacy `--taxel-area-mm2` option multiplies above-threshold taxels by a common area. Its `mean_pressure` is a vector-magnitude-sum/area proxy, potentially in raw/mm²; it is not normal pressure. The current unverified real recording rejects this option. Prefer the verified-normal, measured-force workflow in sections 7–9.
 
@@ -581,13 +584,13 @@ The existing `load_hdf5(path, trial="left")` and `analyze_hdf5(...)` APIs remain
 | --- | --- |
 | `No module named ...` | Activate the intended `.venv`; install `[cli]`, or `[all]` for MATLAB |
 | ZIP / manifest not found | Check `pwd`, quoting, and full path; directory input must contain manifest directly |
-| `SHA-256 mismatch` | Recopy and investigate the recording; do not edit the checksum to bypass the problem |
-| `contains invalid/unverified...` | Add `--allow-unverified` for raw diagnostics only |
-| `No verified taxels remain` | Verify acquisition and calibration masks; the current all-false recording is ineligible for physical analysis |
-| `already exists` | Choose a new analysis directory; conversion supports explicit `--overwrite` |
-| `Unknown trial` | Run `--list-trials` and use a listed name |
-| `hand_side does not match` | Supply the correct hand's calibration |
-| `Synthetic demo calibration cannot...` | Use measured calibration for real data |
+| `SHA-256 哈希校验不一致` | Recopy and investigate the recording; do not edit the checksum to bypass the problem |
+| `数据组包含无效或未验证的样本、触觉点` | Add `--allow-unverified` for raw diagnostics only |
+| `没有可用的已验证触觉点` | Verify acquisition and calibration masks; the current all-false recording is ineligible for physical analysis |
+| `输出已存在` | Choose a new analysis directory; conversion supports explicit `--overwrite` |
+| `未知数据组` | Run `--list-trials` and use a listed name |
+| `hand_side 与所选数据组的手别不一致` | Supply the correct hand's calibration |
+| `合成示例标定不能用于真实采集记录` | Use measured calibration for real data |
 | Smoothing error | Use positive odd values such as 1, 3, 5 |
 | Frame index out of range | Use 0..T−1; the left recording's final index is 406 |
 | Pressure is `nan` / null | Distinguish invalid frames from no-contact frames; do not replace all missing values with zero |
@@ -610,6 +613,7 @@ tactile_analysis/recording.py            ZIP / directory / HDF5 loader
 tactile_analysis/report.py               Raw reports and plots
 tactile_analysis/physical.py             Normal force, area, pressure and physical reports
 tactile_analysis/convert_recording.py    Lossless conversion and integrity checks
+tactile_analysis/terminal.py             Chinese terminal help, errors, and result summaries
 ```
 
 Run tests:
@@ -618,7 +622,7 @@ Run tests:
 python -m unittest discover -s tests -v
 ```
 
-Coverage includes lossless chunk/string conversion, corruption rejection, ZIP/directory/HDF5 equivalence, raw validity and CLI outputs, known area/pressure arithmetic, non-z normals, per-taxel calibration, unequal-area weighted pressure, invalid frames, no validity promotion, and rejection of synthetic calibration on real input.
+Coverage includes lossless chunk/string conversion, corruption rejection, ZIP/directory/HDF5 equivalence, raw validity and CLI outputs, known area/pressure arithmetic, non-z normals, per-taxel calibration, unequal-area weighted pressure, invalid frames, no validity promotion, and rejection of synthetic calibration on real input. Chinese help, argument errors, quality/analysis/conversion summaries, and `--json` compatibility are also checked; there are currently 39 tests.
 
 The real-recording audit is in [REPORT.zh-CN.md](reports/teleop_20261021T090120_798e4203/REPORT.zh-CN.md). It describes the historical inspection; use this README for current commands and entry points. Pressure units follow the [NIST SI unit table](https://www.nist.gov/pml/special-publication-330/sp-330-appendix-1): Pa = N/m², so converting N/mm² to Pa multiplies by 10⁶.
 

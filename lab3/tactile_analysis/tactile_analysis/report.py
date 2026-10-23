@@ -112,7 +112,7 @@ def analyze_recording(recording, names, output_root, *, threshold=10.0, smooth_w
                             allow_unverified=allow_unverified, taxel_area_mm2=taxel_area_mm2)
     destination = Path(output_root).resolve()
     if destination.exists():
-        raise FileExistsError(f"Analysis output already exists; choose a new --output-dir: {destination}")
+        raise FileExistsError(f"分析输出已存在，请指定新的 --output-dir：{destination}")
     destination.parent.mkdir(parents=True, exist_ok=True)
     stage = Path(tempfile.mkdtemp(prefix=".analysis-", dir=destination.parent))
     try:

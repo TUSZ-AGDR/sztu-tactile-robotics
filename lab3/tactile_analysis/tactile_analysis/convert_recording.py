@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import argparse
 from contextlib import contextmanager
 import hashlib
 from io import BytesIO
@@ -15,6 +14,8 @@ from typing import Callable
 
 import numpy as np
 
+from .terminal import ChineseArgumentParser, error_text, print_conversion
+
 
 class OperationCancelled(Exception):
     """Cooperative cancellation; temporary conversion output is removed."""
@@ -22,13 +23,13 @@ class OperationCancelled(Exception):
 
 def _check_cancel(cancelled):
     if cancelled is not None and cancelled():
-        raise OperationCancelled("Operation cancelled")
+        raise OperationCancelled("操作已取消")
 
 
 def _relative_name(name: str) -> str:
     path = PurePosixPath(name)
     if not name or path.is_absolute() or ".." in path.parts or "\\" in name:
-        raise ValueError(f"Unsafe source path: {name!r}")
+        raise ValueError(f"源文件路径不安全：{name!r}")
     return str(path)
 
 
@@ -41,7 +42,7 @@ def _source(path: Path):
         def read(name):
             file = (root / _relative_name(name)).resolve()
             if not file.is_relative_to(root):
-                raise ValueError("Source symlink escapes recording directory")
+                raise ValueError("源符号链接指向轨迹目录之外")
             return file.read_bytes()
 
         yield read, {str(p.relative_to(root)) for p in root.rglob("*") if p.is_file()}
@@ -51,14 +52,14 @@ def _source(path: Path):
             for info in archive.infolist():
                 name = _relative_name(info.filename)
                 if name in members:
-                    raise ValueError(f"Duplicate ZIP member: {name}")
+                    raise ValueError(f"ZIP 中存在重复文件：{name}")
                 if (info.external_attr >> 16) & 0o170000 == 0o120000:
-                    raise ValueError(f"ZIP symlink is not supported: {name}")
+                    raise ValueError(f"不支持 ZIP 中的符号链接：{name}")
                 if not info.is_dir():
                     members[name] = info
             manifests = [n for n in members if PurePosixPath(n).name == "manifest.json"]
             if len(manifests) != 1:
-                raise ValueError("ZIP must contain exactly one manifest.json")
+                raise ValueError("ZIP 必须且只能包含一个 manifest.json")
             prefix = str(PurePosixPath(manifests[0]).parent)
             prefix = "" if prefix == "." else prefix + "/"
 
@@ -72,13 +73,13 @@ def _h5py():
     try:
         import h5py
     except ImportError as exc:
-        raise ImportError("Install numpy and h5py: python -m pip install numpy h5py") from exc
+        raise ImportError("请安装 numpy 和 h5py：python -m pip install numpy h5py") from exc
     return h5py
 
 
 def _append(group, name, values, start, h5py):
     if values.dtype.kind == "O":
-        raise ValueError(f"Object arrays are not supported: {name}")
+        raise ValueError(f"不支持对象类型数组：{name}")
     if name not in group:
         dtype = h5py.string_dtype("utf-8") if values.dtype.kind == "U" else values.dtype
         group.create_dataset(name, shape=(0, *values.shape[1:]),
@@ -93,7 +94,7 @@ def _append(group, name, values, start, h5py):
     back = dataset.asstr()[start:stop] if values.dtype.kind == "U" else dataset[start:stop]
     equal = np.array_equal(back, values, equal_nan=True) if values.dtype.kind in "fc" else np.array_equal(back, values)
     if not equal or (values.dtype.kind != "U" and dataset.dtype != values.dtype):
-        raise ValueError(f"HDF5 read-back mismatch: {group.name}/{name}")
+        raise ValueError(f"HDF5 回读校验不一致：{group.name}/{name}")
 
 
 _TACTILE_SCHEMA = {
@@ -108,25 +109,25 @@ def _validate_tactile(group):
     frames = len(group["timestamp_ns"])
     for key, (dtype, shape) in _TACTILE_SCHEMA.items():
         if key not in group or group[key].shape != (frames, *shape) or group[key].dtype != np.dtype(dtype):
-            raise ValueError(f"Invalid tactile dataset: {group.name}/{key}")
+            raise ValueError(f"触觉数据集格式无效：{group.name}/{key}")
     if "hand_side" not in group or group["hand_side"].shape != (frames,):
-        raise ValueError("Missing per-frame hand_side")
+        raise ValueError("缺少逐帧的 hand_side 手别字段")
     sides = set(group["hand_side"].asstr()[:].tolist())
     if len(sides) != 1 or not sides <= {"left", "right"}:
-        raise ValueError(f"Tactile stream must contain exactly one hand: {sides}")
+        raise ValueError(f"一个触觉数据流必须且只能包含一只手：{sides}")
     side = sides.pop()
     if group.name.rsplit("/", 1)[-1] not in ("tactile", f"{side}_tactile"):
-        raise ValueError("Stream name disagrees with hand_side")
+        raise ValueError("数据流名称与 hand_side 手别字段不一致")
     for start in range(0, frames, 256):
         sl = slice(start, start + 256)
         ts, begin = group["timestamp_ns"][sl], group["query_begin_ns"][sl]
         if np.any(begin < 0) or np.any(begin > ts):
-            raise ValueError("Invalid tactile query interval")
+            raise ValueError("触觉查询时间区间无效")
         mask, packet = group["taxel_valid_mask"][sl], group["packet_valid"][sl]
         if np.any(mask & ~packet[:, None]):
-            raise ValueError("Verified taxel in invalid packet")
+            raise ValueError("无效数据包中出现了已验证有效的触觉点")
         if not np.array_equal(group["sample_valid"][sl], packet & mask.any(axis=1)):
-            raise ValueError("sample_valid disagrees with packet_valid and taxel_valid_mask")
+            raise ValueError("sample_valid 与 packet_valid、taxel_valid_mask 不一致")
     return side, frames
 
 
@@ -143,13 +144,13 @@ def _write_temperatures(handle, text, h5py):
         event_count += 1
         side, timestamp = event["hand_side"], event["timestamp_ns"]
         if side not in ("left", "right") or type(timestamp) is not int or timestamp < 0:
-            raise ValueError(f"Invalid temperature event on line {line_number}")
+            raise ValueError(f"第 {line_number} 行的温度事件无效")
         for i, reading in enumerate(event["readings"]):
             if type(reading["sensor_id"]) is not int or not isinstance(reading["finger_name"], str):
-                raise ValueError(f"Invalid temperature identity on line {line_number}")
+                raise ValueError(f"第 {line_number} 行的温度传感器标识无效")
             temperature = float(reading["temperature_c"])
             if not np.isfinite(temperature):
-                raise ValueError(f"Nonfinite temperature on line {line_number}")
+                raise ValueError(f"第 {line_number} 行的温度不是有限数值")
             values = (timestamp, side, reading["finger_name"], reading["sensor_id"],
                       temperature, line_number, i)
             for key, value in zip(columns, values):
@@ -174,9 +175,9 @@ def convert_recording(source: str | Path, output: str | Path, *, overwrite: bool
     h5py = _h5py()
     source, output = Path(source).resolve(), Path(output).resolve()
     if source == output:
-        raise ValueError("Output must differ from source")
+        raise ValueError("输出路径不能与源文件路径相同")
     if output.exists() and not overwrite:
-        raise FileExistsError(f"Output exists; use --overwrite to replace it: {output}")
+        raise FileExistsError(f"输出已存在；如需替换，请使用 --overwrite：{output}")
     output.parent.mkdir(parents=True, exist_ok=True)
     descriptor, temporary = tempfile.mkstemp(prefix=".tactile-convert-", suffix=".h5", dir=output.parent)
     os.close(descriptor)
@@ -194,7 +195,7 @@ def convert_recording(source: str | Path, output: str | Path, *, overwrite: bool
             manifest_bytes = read("manifest.json")
             manifest = json.loads(manifest_bytes)
             if manifest.get("schema_version") != 1:
-                raise ValueError("Unsupported recording schema_version (expected 1)")
+                raise ValueError("不支持此采集格式的 schema_version（应为 1）")
             total_chunks = sum(len(s["chunks"]) for s in manifest["streams"].values())
             if progress:
                 progress(0, total_chunks, "读取 manifest，准备逐块校验")
@@ -213,42 +214,42 @@ def convert_recording(source: str | Path, output: str | Path, *, overwrite: bool
             seen = set()
             for name, spec in manifest["streams"].items():
                 if _relative_name(name) != name or "/" in name or name == ".":
-                    raise ValueError(f"Invalid stream name: {name}")
+                    raise ValueError(f"数据流名称无效：{name}")
                 group = handle.require_group(f"streams/{name}")
                 offset, previous = 0, None
                 for chunk in spec["chunks"]:
                     _check_cancel(cancelled)
                     file = _relative_name(chunk["file"])
                     if file in seen:
-                        raise ValueError(f"NPZ referenced more than once: {file}")
+                        raise ValueError(f"NPZ 被重复引用：{file}")
                     seen.add(file)
                     raw = read(file)
                     digest = hashlib.sha256(raw).hexdigest()
                     if digest != chunk["sha256"]:
-                        raise ValueError(f"SHA-256 mismatch: {file}")
+                        raise ValueError(f"SHA-256 哈希校验不一致：{file}")
                     with np.load(BytesIO(raw), allow_pickle=False) as data:
                         if set(data.files) != set(spec["fields"]):
-                            raise ValueError(f"Manifest field mismatch: {file}")
+                            raise ValueError(f"字段与 manifest 声明不一致：{file}")
                         rows = chunk["rows"]
                         if type(rows) is not int or rows <= 0:
-                            raise ValueError(f"Invalid chunk rows: {file}")
+                            raise ValueError(f"分块行数无效：{file}")
                         ts = data["timestamp_ns"]
                         if ts.dtype != np.dtype("int64") or ts.shape != (rows,) or np.any(ts < 0):
-                            raise ValueError(f"Invalid timestamp array: {file}")
+                            raise ValueError(f"时间戳数组无效：{file}")
                         if np.any(np.diff(ts) <= 0) or (previous is not None and ts[0] <= previous):
-                            raise ValueError(f"Non-increasing timestamps (including chunk boundary): {file}")
+                            raise ValueError(f"时间戳未严格递增（包含分块边界）：{file}")
                         if int(ts[0]) != chunk["first_timestamp_ns"] or int(ts[-1]) != chunk["last_timestamp_ns"]:
-                            raise ValueError(f"Manifest timestamp mismatch: {file}")
+                            raise ValueError(f"时间戳与 manifest 声明不一致：{file}")
                         previous = int(ts[-1])
                         for key, definition in spec["fields"].items():
                             if "/" in key or key in ("", ".", ".."):
-                                raise ValueError(f"Invalid field name: {key}")
+                                raise ValueError(f"字段名称无效：{key}")
                             values = data[key]
                             declared = np.dtype(definition["dtype"])
                             if values.shape != (rows, *definition["shape"]):
-                                raise ValueError(f"Manifest shape mismatch: {file}:{key}")
+                                raise ValueError(f"数组形状与 manifest 声明不一致：{file}:{key}")
                             if values.dtype != declared and not values.dtype.kind == declared.kind == "U":
-                                raise ValueError(f"Manifest dtype mismatch: {file}:{key}")
+                                raise ValueError(f"数组类型与 manifest 声明不一致：{file}:{key}")
                             _append(group, key, values, offset, h5py)
                             report["verified_field_arrays"] += 1
                         report["chunks"].append({"file": file, "stream": name, "sha256": digest,
@@ -257,13 +258,13 @@ def convert_recording(source: str | Path, output: str | Path, *, overwrite: bool
                     if progress:
                         progress(len(report["chunks"]), total_chunks, f"已校验并写入 {file}")
                 if offset != spec["rows"]:
-                    raise ValueError(f"Manifest total row mismatch: {name}")
+                    raise ValueError(f"总行数与 manifest 声明不一致：{name}")
                 group.attrs["rows"] = offset
                 if name == "tactile" or name.endswith("_tactile"):
                     side, frames = _validate_tactile(group)
                     trials = handle.require_group("trials")
                     if side in trials:
-                        raise ValueError(f"Multiple tactile streams for {side}")
+                        raise ValueError(f"同一手别存在多个触觉数据流：{side}")
                     trial = trials.create_group(side)
                     for key in group:
                         trial[key] = group[key]
@@ -279,10 +280,10 @@ def convert_recording(source: str | Path, output: str | Path, *, overwrite: bool
                     trial.attrs["alignment"] = "No per-frame temperature or joint alignment performed"
                     report["tactile_frames"][side] = frames
             if not report["tactile_frames"]:
-                raise ValueError("No tactile stream found")
+                raise ValueError("未找到触觉数据流")
             extra = {n for n in members if n.endswith(".npz")} - seen
             if extra:
-                raise ValueError(f"Unlisted NPZ files would be omitted: {sorted(extra)}")
+                raise ValueError(f"存在未列入 manifest 的 NPZ，不能遗漏这些文件：{sorted(extra)}")
             report["source_npz_count"] = len(seen)
             _check_cancel(cancelled)
             report["temperature_events"], report["temperature_readings"] = _write_temperatures(handle, events_text, h5py)
@@ -303,16 +304,22 @@ def convert_recording(source: str | Path, output: str | Path, *, overwrite: bool
 
 
 def main(argv=None) -> int:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("source", type=Path, help="Recording ZIP or directory containing manifest.json")
-    parser.add_argument("output", type=Path, help="Output HDF5 file")
-    parser.add_argument("--overwrite", action="store_true", help="Replace output only after successful conversion")
+    parser = ChineseArgumentParser(description="校验 DexH13 采集 ZIP 或目录，并将全部数据流无损转换为 HDF5。")
+    parser.add_argument("source", type=Path, help="采集 ZIP，或包含 manifest.json 的轨迹目录")
+    parser.add_argument("output", type=Path, help="输出 HDF5 文件")
+    parser.add_argument("--overwrite", action="store_true", help="仅在转换成功后替换已有输出文件")
+    parser.add_argument("--json", action="store_true", help="以原有字段输出机器可读 JSON；默认显示中文转换摘要")
     args = parser.parse_args(argv)
     try:
         result = convert_recording(args.source, args.output, overwrite=args.overwrite)
     except (ValueError, KeyError, OSError, ImportError, zipfile.BadZipFile) as exc:
-        parser.exit(1, f"Conversion failed: {exc}\n")
-    print(json.dumps({key: value for key, value in result.items() if key != "chunks"}, ensure_ascii=False, indent=2))
+        parser.exit(1, f"转换失败：{error_text(exc)}\n")
+    except KeyboardInterrupt:
+        parser.exit(130, "转换已中断，未完成的输出已清理。\n")
+    if args.json:
+        print(json.dumps({key: value for key, value in result.items() if key != "chunks"}, ensure_ascii=False, indent=2))
+    else:
+        print_conversion(result)
     return 0
 
 

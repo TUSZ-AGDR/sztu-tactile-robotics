@@ -83,7 +83,7 @@ class PhysicalTest(unittest.TestCase):
     def test_calibration_never_promotes_all_false_source_masks(self):
         trial = replace(self.trial, taxel_valid_mask=np.zeros((3, 4), dtype=bool),
                         sample_valid=np.zeros(3, dtype=bool))
-        with self.assertRaisesRegex(ValueError, "does not override"):
+        with self.assertRaisesRegex(ValueError, "不会覆盖"):
             analyze_physical(trial, self.calibration)
 
     def test_no_contact_is_distinct_from_no_valid_data(self):
@@ -95,17 +95,17 @@ class PhysicalTest(unittest.TestCase):
 
     def test_synthetic_calibration_cannot_process_real_recording(self):
         trial = replace(self.trial, metadata={"hand_side": "left"})
-        with self.assertRaisesRegex(ValueError, "cannot be used on real"):
+        with self.assertRaisesRegex(ValueError, "不能用于真实"):
             analyze_physical(trial, self.calibration)
 
     def test_bad_calibration_and_threshold_rejected(self):
-        with self.assertRaisesRegex(ValueError, "positive"):
+        with self.assertRaisesRegex(ValueError, "有限正数"):
             analyze_physical(self.trial, self.calibration, normal_threshold_n=0)
         self.change_calibration(normal_vectors=[0., 0., 2.])
-        with self.assertRaisesRegex(ValueError, "unit length"):
+        with self.assertRaisesRegex(ValueError, "单位向量"):
             analyze_physical(self.trial, self.calibration)
         self.change_calibration(normal_vectors=[0., 0., 1.], taxel_area_mm2=float("nan"))
-        with self.assertRaisesRegex(ValueError, "finite"):
+        with self.assertRaisesRegex(ValueError, "有限数值"):
             analyze_physical(self.trial, self.calibration)
 
     def test_export_is_readable_and_never_overwrites(self):

@@ -1,18 +1,22 @@
 """Create a four-taxel SYNTHETIC example; its calibration cannot process real data."""
 
-import argparse
 from pathlib import Path
+import sys
 
-import h5py
 import numpy as np
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from tactile_analysis.terminal import ChineseArgumentParser, error_text
 
 
 def make_demo(directory):
+    import h5py
+
     directory = Path(directory)
     directory.mkdir(parents=True, exist_ok=True)
     trial_path, calibration_path = directory / "synthetic_trial.h5", directory / "synthetic_calibration.npz"
     if trial_path.exists() or calibration_path.exists():
-        raise FileExistsError("Demo files already exist; choose a new output directory")
+        raise FileExistsError("示例文件已存在，请选择新的输出目录")
     raw = np.zeros((3, 4, 3), dtype=np.int32)
     raw[1, 0] = [3, 0, 10]
     raw[1, 1, 2] = 20
@@ -37,12 +41,17 @@ def make_demo(directory):
     return trial_path, calibration_path
 
 
-def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("output_dir", type=Path)
-    args = parser.parse_args()
-    for path in make_demo(args.output_dir):
-        print(path)
+def main(argv=None):
+    parser = ChineseArgumentParser(description="生成四点、三帧的面积与压力合成示例；示例标定不能用于真实数据。")
+    parser.add_argument("output_dir", type=Path, help="示例输入文件的保存目录")
+    args = parser.parse_args(argv)
+    try:
+        trial, calibration = make_demo(args.output_dir)
+    except (OSError, ValueError, ImportError) as exc:
+        parser.exit(1, f"生成示例失败：{error_text(exc)}\n")
+    print(f"合成触觉数据已生成：{trial}")
+    print(f"合成标定文件已生成：{calibration}")
+    print("这组文件仅用于算术练习，不能作为真实硬件的标定结果。")
 
 
 if __name__ == "__main__":

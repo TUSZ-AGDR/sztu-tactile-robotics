@@ -104,7 +104,7 @@ class ConvertRecordingTest(unittest.TestCase):
         self.assertEqual(raw.summary["analysis_mode"], "unverified_raw_diagnostic")
         with self.assertRaisesRegex(ValueError, "raw"):
             analyze_trial(trial, AnalysisConfig(allow_unverified=True, force_unit="N"))
-        with self.assertRaisesRegex(ValueError, "multiple trials"):
+        with self.assertRaisesRegex(ValueError, "多个数据组"):
             load_hdf5(self.output)
 
     def test_single_hand_directory_and_empty_temperature_events(self):
@@ -145,7 +145,7 @@ class ConvertRecordingTest(unittest.TestCase):
         spec["chunks"][1]["sha256"] = hashlib.sha256(file.read_bytes()).hexdigest()
         spec["chunks"][1]["first_timestamp_ns"] = 20
         self.save_manifest()
-        with self.assertRaisesRegex(ValueError, "Non-increasing"):
+        with self.assertRaisesRegex(ValueError, "未严格递增"):
             convert_recording(self.root, self.output)
         self.assertFalse(self.output.exists())
 
@@ -161,10 +161,10 @@ class ConvertRecordingTest(unittest.TestCase):
             convert_recording(self.root, self.output)
 
     def test_path_traversal_and_unlisted_npz_rejected(self):
-        with self.assertRaisesRegex(ValueError, "Unsafe source path"):
+        with self.assertRaisesRegex(ValueError, "源文件路径不安全"):
             convert_recording(self.make_zip("../escape.npz"), self.output)
         np.savez(self.root / "unlisted.npz", x=np.zeros(1))
-        with self.assertRaisesRegex(ValueError, "Unlisted NPZ"):
+        with self.assertRaisesRegex(ValueError, "未列入 manifest"):
             convert_recording(self.root, self.output)
 
     def test_raw_npz_loader_preserves_validity(self):
