@@ -1,0 +1,12 @@
+{
+  "parent": "Joint_03_c28e9178",
+  "model_path": "../../models/Joint_03_c28e9178.xml",
+  "measured_module_id": 3,
+  "coordinate_change": "none; only asset paths rewritten",
+  "source_sha256": {
+    "paired.h5": "35eab8e9225d3c942809560ff772f1557c8b1c8a58e5f9435ee352f5ecdefd41",
+    "simulation/simulation.h5": "f0659d432f34c7e8c574932f29197832f648696d5a84fa60e613e962d54587b1",
+    "model/model.xml": "856b0eae066409825b5fdc6f1e2900cb0407f03b9be35f677ff907e59756abea",
+    "model/model_manifest.json": "1d1b83b38f56035b1450952082f88ca2bf3d5b5d710a65bd37095d32a160a212"
+  }
+}

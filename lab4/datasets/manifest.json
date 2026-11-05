@@ -1,0 +1,5203 @@
+{
+  "schema_version": 2,
+  "seed": 42,
+  "complete": true,
+  "feature_names": [
+    "nearest_point_sensor_x_mm",
+    "nearest_point_sensor_y_mm",
+    "nearest_point_sensor_z_mm",
+    "normal_sensor_x",
+    "normal_sensor_y",
+    "normal_sensor_z",
+    "signed_gap_mm",
+    "gap_velocity_mm_s",
+    "indentation_mm",
+    "geometric_contact",
+    "packet_dt_sec"
+  ],
+  "measured_module_id": 3,
+  "synthetic_is_hardware_measurement": false,
+  "geometry_mode": "kinematic replay of saved q_actual; fixed virtual fixture shift per sequence",
+  "sensor_model": "fixed nonlinear stiffness, cross-axis mixing, 160 ms lag, noise and quantization; see prepare.py",
+  "learned_from_measured_force": false,
+  "source_batch": "lab4/replay_assets/episodes",
+  "variation_ranges": {
+    "requested_depth_mm": [
+      0.05,
+      0.85
+    ],
+    "tangent_shift_mm": [
+      -0.4,
+      0.4
+    ],
+    "replay_speed_factor": [
+      0.65,
+      1.5
+    ]
+  },
+  "split_rule": "parents 1-3 train, 4 validation, 5 test; all descendants inherit parent split",
+  "sources": [
+    {
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "packets": 81,
+      "sha256": {
+        "recording.npz": "ea747f4d6aa98b204d90034e13ec235d66ea1e1a2eafabd8c2390c33bcf5bbe6",
+        "recording.json": "3290afa46c04e45007abb87ffeb4687a741282658d86f3c6c8aa6e5ab5b76581",
+        "model.xml": "669ef03bc6ccfbacbfd10789308545f11a8965b4e8eca85b322c27f0e426173d",
+        "model_manifest.json": "7f7727090db0002ce28be8dccfd9684c04c51706f9ace9f9689a9647ee3b7038"
+      }
+    },
+    {
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "packets": 70,
+      "sha256": {
+        "recording.npz": "5706c52180a6bc1564232bda7249dec08d3b8741743319c0577045025aecc0dd",
+        "recording.json": "e4fb44a9d68685c7a22e35873ac2540941e6ab46cb9cd424d7d1f42d4525f110",
+        "model.xml": "587bb4836f730aae88c049bfdf10531f89392ec9c277ae1d355c5481ebd864ee",
+        "model_manifest.json": "7f7727090db0002ce28be8dccfd9684c04c51706f9ace9f9689a9647ee3b7038"
+      }
+    },
+    {
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "packets": 72,
+      "sha256": {
+        "recording.npz": "098267abbb59a98efeca0ecdcc03815d489a58f93643eb3e6bd6017b648ce430",
+        "recording.json": "0731dd4cbd4d66e0b9ba5bdd3118b9cd32311f7621a191516e8cc8e107afb4c6",
+        "model.xml": "6dce9f1fe127ab7ff2c04cf33b3519b53a7315c374d37d6e919d8ab18d61e619",
+        "model_manifest.json": "7f7727090db0002ce28be8dccfd9684c04c51706f9ace9f9689a9647ee3b7038"
+      }
+    },
+    {
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "packets": 71,
+      "sha256": {
+        "recording.npz": "d20017a45eb270707758b0fb74c9320e2a5646381b4465e647efb0967e76c9a6",
+        "recording.json": "7925aeb800f72c2e2a625621151b826635143ca0e6a72b89c5bf2ae2688a742b",
+        "model.xml": "56c0d435499357d523ae45bb2eaf5cd32ab54f716a018ba2401a776ed5308ce5",
+        "model_manifest.json": "7f7727090db0002ce28be8dccfd9684c04c51706f9ace9f9689a9647ee3b7038"
+      }
+    },
+    {
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "packets": 71,
+      "sha256": {
+        "recording.npz": "ea507b6a05d3160edc73ee264088e1d1613a139ea8f1bba5ae02aab4b771db7f",
+        "recording.json": "0fcdf92309fbacb45ecdc51c1abd3712cf0fa4efd4e427f1cff0b70901316cd0",
+        "model.xml": "56c0d435499357d523ae45bb2eaf5cd32ab54f716a018ba2401a776ed5308ce5",
+        "model_manifest.json": "7f7727090db0002ce28be8dccfd9684c04c51706f9ace9f9689a9647ee3b7038"
+      }
+    }
+  ],
+  "synthetic_sequences": [
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_000",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.0002868783359418835,
+        0.0006634006391401354,
+        4.889724819835817e-05
+      ],
+      "tangent_shift_mm": [
+        -0.04889724819835817,
+        0.28687833592910594
+      ],
+      "replay_speed_factor": 1.2427628247004594,
+      "requested_depth_mm": 0.6691648388447706,
+      "min_gap_mm": -0.6470231199737447
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_001",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.00034675291442242334,
+        0.0006974908110466972,
+        0.0003157775361167001
+      ],
+      "tangent_shift_mm": [
+        -0.31577753611670006,
+        -0.3467529144358575
+      ],
+      "replay_speed_factor": 1.155268614192984,
+      "requested_depth_mm": 0.7032550107391283,
+      "min_gap_mm": -0.7032550107458623
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_002",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00019415405338358614,
+        0.00018263135645042567,
+        0.0001488853041584086
+      ],
+      "tangent_shift_mm": [
+        -0.14888530415840862,
+        0.19415405338006853
+      ],
+      "replay_speed_factor": 0.6624804170260602,
+      "requested_depth_mm": 0.18839555615327502,
+      "min_gap_mm": -0.17786619132957357
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_003",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00027954826648144603,
+        0.0004996054406400474,
+        -7.215630621290092e-05
+      ],
+      "tangent_shift_mm": [
+        0.07215630621290092,
+        0.2795482664718233
+      ],
+      "replay_speed_factor": 0.6540301839750928,
+      "requested_depth_mm": 0.5053696403445415,
+      "min_gap_mm": -0.48477017111740145
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_004",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -2.5131049290197558e-05,
+        0.0006439306954387002,
+        -0.0003934461731981026
+      ],
+      "tangent_shift_mm": [
+        0.3934461731981026,
+        0.025131049277795026
+      ],
+      "replay_speed_factor": 1.2109963609809786,
+      "requested_depth_mm": 0.649694895138294,
+      "min_gap_mm": -0.6496948951377756
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_005",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        9.541411101782517e-05,
+        0.00043917346131924453,
+        -0.00037670778283659025
+      ],
+      "tangent_shift_mm": [
+        0.37670778283659023,
+        -0.09541411102628394
+      ],
+      "replay_speed_factor": 0.987896270871744,
+      "requested_depth_mm": 0.4449376610165166,
+      "min_gap_mm": -0.4449376610183852
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_006",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.000166936437149996,
+        0.00016777427072181946,
+        0.0002418664141962884
+      ],
+      "tangent_shift_mm": [
+        -0.2418664141962884,
+        -0.16693643715322742
+      ],
+      "replay_speed_factor": 1.0999826509223443,
+      "requested_depth_mm": 0.17353847041771395,
+      "min_gap_mm": -0.17353847042089754
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_007",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -6.41921733972488e-05,
+        0.00015026946506078472,
+        -0.00026180367647258917
+      ],
+      "tangent_shift_mm": [
+        0.2618036764725892,
+        0.06419217339435451
+      ],
+      "replay_speed_factor": 1.3082546238839325,
+      "requested_depth_mm": 0.1560336647611309,
+      "min_gap_mm": -0.15603366475991365
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_008",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.00010102559769277319,
+        6.987067180537777e-05,
+        -9.15088852281486e-05
+      ],
+      "tangent_shift_mm": [
+        0.0915088852281486,
+        -0.10102559769411895
+      ],
+      "replay_speed_factor": 1.2036347489290393,
+      "requested_depth_mm": 0.07563487150254175,
+      "min_gap_mm": -0.07563487150452629
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_009",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -8.995146341679282e-05,
+        0.0007397252618019766,
+        -0.00010315841373022172
+      ],
+      "tangent_shift_mm": [
+        0.10315841373022172,
+        0.08995146340254523
+      ],
+      "replay_speed_factor": 1.2913847511236867,
+      "requested_depth_mm": 0.7454894615028189,
+      "min_gap_mm": -0.742563882762482
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_010",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.00010552538319934082,
+        0.00017480114807715238,
+        -5.065299335836981e-05
+      ],
+      "tangent_shift_mm": [
+        0.05065299335836981,
+        -0.1055253832027076
+      ],
+      "replay_speed_factor": 1.1822353929643987,
+      "requested_depth_mm": 0.18056534777422967,
+      "min_gap_mm": -0.18056534777621813
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_011",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -1.1238556837409624e-05,
+        0.000328016057257914,
+        -0.00011887743317634558
+      ],
+      "tangent_shift_mm": [
+        0.11887743317634558,
+        0.011238556831091817
+      ],
+      "replay_speed_factor": 0.8707809142736413,
+      "requested_depth_mm": 0.33378025695724023,
+      "min_gap_mm": -0.3337802569570725
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_012",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.0002319247853986044,
+        0.0005261693700191515,
+        9.760906144221305e-05
+      ],
+      "tangent_shift_mm": [
+        -0.09760906144221304,
+        0.23192478538847006
+      ],
+      "replay_speed_factor": 0.7047888175866724,
+      "requested_depth_mm": 0.5319335697227283,
+      "min_gap_mm": -0.5159409747700515
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_013",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.0002474182741367264,
+        0.00026474384117235026,
+        0.00032461610844311984
+      ],
+      "tangent_shift_mm": [
+        -0.32461610844311983,
+        -0.24741827414182557
+      ],
+      "replay_speed_factor": 1.1929212759627736,
+      "requested_depth_mm": 0.2705080408666946,
+      "min_gap_mm": -0.2705080408714755
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_014",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.0002764442852073215,
+        0.00022687316707189917,
+        -7.374155590542458e-05
+      ],
+      "tangent_shift_mm": [
+        0.07374155590542458,
+        -0.27644428521169123
+      ],
+      "replay_speed_factor": 0.908045253855229,
+      "requested_depth_mm": 0.23263736676568447,
+      "min_gap_mm": -0.23263736677103797
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_015",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.0002227532004850261,
+        0.00032343918074954106,
+        -0.00015851571292068535
+      ],
+      "tangent_shift_mm": [
+        0.15851571292068534,
+        -0.22275320049125577
+      ],
+      "replay_speed_factor": 0.9260550343393087,
+      "requested_depth_mm": 0.3292033804443605,
+      "min_gap_mm": -0.3292033804486172
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_016",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.0003397201757392323,
+        0.0006470362510508349,
+        0.0002917744571910481
+      ],
+      "tangent_shift_mm": [
+        -0.2917744571910481,
+        0.33972017572676994
+      ],
+      "replay_speed_factor": 1.0584759071790806,
+      "requested_depth_mm": 0.652800450756488,
+      "min_gap_mm": -0.6254819941655613
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_017",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        4.41313925611841e-05,
+        0.0006918991621636483,
+        7.762980658359542e-05
+      ],
+      "tangent_shift_mm": [
+        -0.07762980658359542,
+        -0.04413139257451054
+      ],
+      "replay_speed_factor": 1.150894548114934,
+      "requested_depth_mm": 0.6976633618619081,
+      "min_gap_mm": -0.6976633618627214
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_018",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.00017299352335051413,
+        0.0002460364287215691,
+        -0.00018056671659019463
+      ],
+      "tangent_shift_mm": [
+        0.18056671659019463,
+        -0.17299352335525298
+      ],
+      "replay_speed_factor": 0.7099160795533813,
+      "requested_depth_mm": 0.2518006284173469,
+      "min_gap_mm": -0.251800628420673
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_019",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -6.321288784215775e-05,
+        0.0005199979378337528,
+        5.1002783243025874e-05
+      ],
+      "tangent_shift_mm": [
+        -0.05100278324302587,
+        0.06321288783214224
+      ],
+      "replay_speed_factor": 1.0898794577345168,
+      "requested_depth_mm": 0.5257621375340802,
+      "min_gap_mm": -0.5257621375328592
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_020",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.0003556112107712272,
+        0.00048394284886233693,
+        -8.211252186062801e-05
+      ],
+      "tangent_shift_mm": [
+        0.08211252186062801,
+        -0.35561121078054825
+      ],
+      "replay_speed_factor": 0.7933259475568327,
+      "requested_depth_mm": 0.48970704855459746,
+      "min_gap_mm": -0.48970704856143854
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_021",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.00025285243800854374,
+        0.0008431921943220666,
+        0.00016436051696800603
+      ],
+      "tangent_shift_mm": [
+        -0.16436051696800602,
+        -0.2528524380247842
+      ],
+      "replay_speed_factor": 0.8895019141524002,
+      "requested_depth_mm": 0.8489563940163062,
+      "min_gap_mm": -0.8489563940211609
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_022",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.00026025279605702844,
+        0.0003353132251262893,
+        0.00031904044325858027
+      ],
+      "tangent_shift_mm": [
+        -0.3190404432585803,
+        -0.26025279606348684
+      ],
+      "replay_speed_factor": 1.4428341646063394,
+      "requested_depth_mm": 0.34107742482038644,
+      "min_gap_mm": -0.34107742482536446
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_023",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00023503918213170307,
+        0.0006174679554979175,
+        -1.8901735635747597e-05
+      ],
+      "tangent_shift_mm": [
+        0.018901735635747596,
+        0.23503918211981023
+      ],
+      "replay_speed_factor": 0.9052108923349063,
+      "requested_depth_mm": 0.6232321552015543,
+      "min_gap_mm": -0.606476570713741
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_024",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.00016895914653902445,
+        0.00043361130223263023,
+        0.00021904328003637696
+      ],
+      "tangent_shift_mm": [
+        -0.21904328003637696,
+        -0.1689591465473761
+      ],
+      "replay_speed_factor": 0.7659996398612857,
+      "requested_depth_mm": 0.43937550192848573,
+      "min_gap_mm": -0.43937550193173797
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_025",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.0002525703502095424,
+        0.00013215780962446335,
+        -7.806020874691188e-05
+      ],
+      "tangent_shift_mm": [
+        0.07806020874691189,
+        -0.25257035021208785
+      ],
+      "replay_speed_factor": 1.3695586582348662,
+      "requested_depth_mm": 0.13792200931870846,
+      "min_gap_mm": -0.13792200932360998
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_026",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.00019415618800331305,
+        0.0001866744365106733,
+        1.678523414886196e-05
+      ],
+      "tangent_shift_mm": [
+        -0.01678523414886196,
+        -0.19415618800690854
+      ],
+      "replay_speed_factor": 0.652970733942945,
+      "requested_depth_mm": 0.1924386362060435,
+      "min_gap_mm": -0.1924386362097685
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_027",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.0002701387029140405,
+        0.000823242014521011,
+        7.942399396186789e-05
+      ],
+      "tangent_shift_mm": [
+        -0.07942399396186789,
+        -0.2701387029298967
+      ],
+      "replay_speed_factor": 0.6975281056184333,
+      "requested_depth_mm": 0.8290062142149177,
+      "min_gap_mm": -0.8290062142201071
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_028",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        1.612441569444374e-05,
+        0.0001891313105121459,
+        0.00013750161286836066
+      ],
+      "tangent_shift_mm": [
+        -0.13750161286836066,
+        -0.016124415698086536
+      ],
+      "replay_speed_factor": 1.137713635004125,
+      "requested_depth_mm": 0.19489551021094514,
+      "min_gap_mm": -0.19489551021123486
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_029",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.00029428562464417913,
+        0.0005581404016790623,
+        9.39848777496044e-06
+      ],
+      "tangent_shift_mm": [
+        -0.00939848777496044,
+        -0.29428562465492925
+      ],
+      "replay_speed_factor": 1.4166291634243735,
+      "requested_depth_mm": 0.5639046013725041,
+      "min_gap_mm": -0.5639046013781179
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_030",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.000248948630709387,
+        0.0007688183848007796,
+        -0.0002569534465526088
+      ],
+      "tangent_shift_mm": [
+        0.25695344655260877,
+        0.24894863069457907
+      ],
+      "replay_speed_factor": 1.1737687020180338,
+      "requested_depth_mm": 0.7745825845046842,
+      "min_gap_mm": -0.7556918395915325
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_031",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.0003441084592057978,
+        0.0007452174889791208,
+        0.000184938224889207
+      ],
+      "tangent_shift_mm": [
+        -0.184938224889207,
+        -0.3441084592201512
+      ],
+      "replay_speed_factor": 1.1598876681034418,
+      "requested_depth_mm": 0.7509816886716029,
+      "min_gap_mm": -0.750981688678265
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_032",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00028717466371104637,
+        0.0008364147339668003,
+        0.00036431738614287854
+      ],
+      "tangent_shift_mm": [
+        -0.36431738614287856,
+        0.2871746636949365
+      ],
+      "replay_speed_factor": 0.7158346910909892,
+      "requested_depth_mm": 0.8421789336714413,
+      "min_gap_mm": -0.8191490959681886
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_033",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.00038147186036335167,
+        0.0005458316722606456,
+        0.0002873017626361771
+      ],
+      "tangent_shift_mm": [
+        -0.28730176263617707,
+        -0.38147186037386477
+      ],
+      "replay_speed_factor": 0.6931362852012384,
+      "requested_depth_mm": 0.551595871952408,
+      "min_gap_mm": -0.5515958719597425
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_034",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -2.9070909117304384e-05,
+        0.000385767001688779,
+        7.16023499032093e-05
+      ],
+      "tangent_shift_mm": [
+        -0.0716023499032093,
+        0.029070909109874254
+      ],
+      "replay_speed_factor": 0.6930052509642378,
+      "requested_depth_mm": 0.39153120138844877,
+      "min_gap_mm": -0.3915312013879068
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_035",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00023785699789211236,
+        0.0006917169627109049,
+        -7.318187285629536e-05
+      ],
+      "tangent_shift_mm": [
+        0.07318187285629535,
+        0.23785699787878944
+      ],
+      "replay_speed_factor": 1.4800441259633055,
+      "requested_depth_mm": 0.697481162414596,
+      "min_gap_mm": -0.6800767127825275
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_036",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.00014864523514586958,
+        0.0004895471386091836,
+        -0.00037609262862604577
+      ],
+      "tangent_shift_mm": [
+        0.37609262862604576,
+        -0.1486452351552986
+      ],
+      "replay_speed_factor": 1.0921661185884897,
+      "requested_depth_mm": 0.49531133830543034,
+      "min_gap_mm": -0.49531133830826857
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_037",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00022135525869696113,
+        0.00060295707685133,
+        0.00038180682924866165
+      ],
+      "tangent_shift_mm": [
+        -0.38180682924866166,
+        0.22135525868534778
+      ],
+      "replay_speed_factor": 1.080948995301498,
+      "requested_depth_mm": 0.6087212765547032,
+      "min_gap_mm": -0.5933993055533705
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_038",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -2.3444963292266203e-05,
+        0.0006259347325541579,
+        -3.2754896683510834e-05
+      ],
+      "tangent_shift_mm": [
+        0.03275489668351084,
+        0.023444963280210285
+      ],
+      "replay_speed_factor": 0.8159590103637425,
+      "requested_depth_mm": 0.6316989322537193,
+      "min_gap_mm": -0.6316989322532329
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_039",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.0001273067464967979,
+        0.00012884998730669985,
+        0.0003239572974794329
+      ],
+      "tangent_shift_mm": [
+        -0.3239572974794329,
+        0.12730674649431617
+      ],
+      "replay_speed_factor": 1.1707282569745163,
+      "requested_depth_mm": 0.13461418700826167,
+      "min_gap_mm": -0.13100327252166516
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_040",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.00010138606588932397,
+        0.0007327362932273586,
+        0.00011240764124613884
+      ],
+      "tangent_shift_mm": [
+        -0.11240764124613883,
+        -0.10138606590343696
+      ],
+      "replay_speed_factor": 0.9030402317345021,
+      "requested_depth_mm": 0.7385004929245157,
+      "min_gap_mm": -0.7385004929264527
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_041",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.0003383055332024404,
+        0.0001988583314033208,
+        -0.0001437126732952443
+      ],
+      "tangent_shift_mm": [
+        0.1437126732952443,
+        -0.33830553320627055
+      ],
+      "replay_speed_factor": 0.8361117690920065,
+      "requested_depth_mm": 0.2046225310959146,
+      "min_gap_mm": -0.2046225311024274
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_042",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00014190562054826471,
+        0.0003468371461214112,
+        0.0001583911936310588
+      ],
+      "tangent_shift_mm": [
+        -0.1583911936310588,
+        0.1419056205415844
+      ],
+      "replay_speed_factor": 1.465633715154147,
+      "requested_depth_mm": 0.3526013458232542,
+      "min_gap_mm": -0.34645596632184045
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_043",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        3.624929308757889e-05,
+        0.0006002442214110881,
+        -0.0003785166767936585
+      ],
+      "tangent_shift_mm": [
+        0.3785166767936585,
+        -0.03624929309913999
+      ],
+      "replay_speed_factor": 0.7750019567470241,
+      "requested_depth_mm": 0.6060084211094997,
+      "min_gap_mm": -0.6060084211102489
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_044",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.0003635736234893484,
+        0.0005853303027877788,
+        0.0003382482996484765
+      ],
+      "tangent_shift_mm": [
+        -0.33824829964847647,
+        0.36357362347807454
+      ],
+      "replay_speed_factor": 0.9179273868021944,
+      "requested_depth_mm": 0.5910945024938913,
+      "min_gap_mm": -0.5617087769647305
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_045",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00036806568639583236,
+        0.0003915049765634108,
+        0.0002969302172184379
+      ],
+      "tangent_shift_mm": [
+        -0.2969302172184379,
+        0.36806568638829174
+      ],
+      "replay_speed_factor": 0.7032879645161143,
+      "requested_depth_mm": 0.3972691762696098,
+      "min_gap_mm": -0.36839838952533727
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_046",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.0003827626990101873,
+        0.0002852030725514794,
+        0.0002326234658367847
+      ],
+      "tangent_shift_mm": [
+        -0.2326234658367847,
+        0.38276269900469406
+      ],
+      "replay_speed_factor": 0.9221254129503724,
+      "requested_depth_mm": 0.29096727225796143,
+      "min_gap_mm": -0.26116163490611577
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_047",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -7.33110836654115e-05,
+        8.308835135394102e-05,
+        -9.616727898070392e-05
+      ],
+      "tangent_shift_mm": [
+        0.09616727898070393,
+        0.07331108366381117
+      ],
+      "replay_speed_factor": 1.3564265195483087,
+      "requested_depth_mm": 0.08885255105446284,
+      "min_gap_mm": -0.08885255105306465
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_048",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -1.5770709560729065e-05,
+        0.0006848299958909662,
+        -0.0002961814139416371
+      ],
+      "tangent_shift_mm": [
+        0.2961814139416371,
+        0.015770709547538786
+      ],
+      "replay_speed_factor": 1.0582647752640721,
+      "requested_depth_mm": 0.6905941955903798,
+      "min_gap_mm": -0.6905941955900329
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_049",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00020066463998602473,
+        0.00019437645391580057,
+        -6.850630720160061e-05
+      ],
+      "tangent_shift_mm": [
+        0.06850630720160061,
+        0.2006646399822809
+      ],
+      "replay_speed_factor": 1.2901410559050266,
+      "requested_depth_mm": 0.2001406536187753,
+      "min_gap_mm": -0.18890517380836064
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_050",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00022960281702895998,
+        0.0005774729853600168,
+        0.0003923815746436115
+      ],
+      "tangent_shift_mm": [
+        -0.3923815746436115,
+        0.22960281701783747
+      ],
+      "replay_speed_factor": 1.0968051494829107,
+      "requested_depth_mm": 0.5832371850635489,
+      "min_gap_mm": -0.5672210249817282
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_051",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.00017785067609398477,
+        0.0006104275791507283,
+        -0.0002617313611285075
+      ],
+      "tangent_shift_mm": [
+        0.2617313611285075,
+        -0.177850676105742
+      ],
+      "replay_speed_factor": 0.7512328137445716,
+      "requested_depth_mm": 0.6161917788464126,
+      "min_gap_mm": -0.6161917788498616
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_052",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.0002790136696462944,
+        6.520662628007218e-05,
+        -0.0003711335026560197
+      ],
+      "tangent_shift_mm": [
+        0.37113350265601974,
+        -0.27901366964755037
+      ],
+      "replay_speed_factor": 1.0838966440398035,
+      "requested_depth_mm": 0.070970825973808,
+      "min_gap_mm": -0.07097082597917748
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_053",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        8.99306440646723e-06,
+        0.0005854963339169068,
+        0.000339939043583498
+      ],
+      "tangent_shift_mm": [
+        -0.339939043583498,
+        -0.008993064417744279
+      ],
+      "replay_speed_factor": 0.7981209300581894,
+      "requested_depth_mm": 0.5912605336158434,
+      "min_gap_mm": -0.5912605336160225
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_054",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -8.64610849034906e-05,
+        0.0008073917405842317,
+        1.352127635564787e-05
+      ],
+      "tangent_shift_mm": [
+        -0.013521276355647871,
+        0.08646108488793969
+      ],
+      "replay_speed_factor": 0.7529408724371558,
+      "requested_depth_mm": 0.8131559402850068,
+      "min_gap_mm": -0.8102418518690431
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_055",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00013967032850228654,
+        0.0004090618100927326,
+        0.00010797763340922473
+      ],
+      "tangent_shift_mm": [
+        -0.10797763340922473,
+        0.13967032849440775
+      ],
+      "replay_speed_factor": 0.6618300414502719,
+      "requested_depth_mm": 0.4148260097945325,
+      "min_gap_mm": -0.4085942416563741
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_056",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00020377403509576195,
+        0.0003378329623727987,
+        -4.207263866549765e-05
+      ],
+      "tangent_shift_mm": [
+        0.04207263866549765,
+        0.20377403508925507
+      ],
+      "replay_speed_factor": 1.1120324334957874,
+      "requested_depth_mm": 0.3435971620758333,
+      "min_gap_mm": -0.331340341426154
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_057",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00035364615922820207,
+        0.0004973555457221266,
+        7.566395258635533e-05
+      ],
+      "tangent_shift_mm": [
+        -0.07566395258635533,
+        0.35364615921862264
+      ],
+      "replay_speed_factor": 0.8327650822911242,
+      "requested_depth_mm": 0.5031197454280478,
+      "min_gap_mm": -0.47515843838525584
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_058",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        3.144126043877628e-05,
+        0.0002003830446218274,
+        -3.137596815762522e-05
+      ],
+      "tangent_shift_mm": [
+        0.03137596815762522,
+        -0.03144126044263579
+      ],
+      "replay_speed_factor": 1.4596442192796957,
+      "requested_depth_mm": 0.2061472443203316,
+      "min_gap_mm": -0.20614724432088666
+    },
+    {
+      "sequence": "Joint_01_fef55ae7_synthetic_059",
+      "parent": "Joint_01_fef55ae7",
+      "split": "train",
+      "fixture_shift_world_m": [
+        3.3860233132461786e-05,
+        0.000420189832135849,
+        -0.00024752550456010145
+      ],
+      "tangent_shift_mm": [
+        0.24752550456010147,
+        -0.03386023314055492
+      ],
+      "replay_speed_factor": 1.0025890738476146,
+      "requested_depth_mm": 0.42595403183430663,
+      "min_gap_mm": -0.42595403183498526
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_000",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00038229752692611784,
+        0.0008152010850909638,
+        -8.030849302604592e-05
+      ],
+      "tangent_shift_mm": [
+        0.08030849302673176,
+        0.38229752692611785
+      ],
+      "replay_speed_factor": 1.0441884309590974,
+      "requested_depth_mm": 0.6832374085985214,
+      "min_gap_mm": -0.6490911692804046
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_001",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.00026381529072064047,
+        0.0008975336617337389,
+        0.00020729981948352854
+      ],
+      "tangent_shift_mm": [
+        -0.20729981948277346,
+        -0.26381529072064047
+      ],
+      "replay_speed_factor": 0.9548298837776003,
+      "requested_depth_mm": 0.7655699852415385,
+      "min_gap_mm": -0.7655699852413544
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_002",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.0001929446255035008,
+        0.0005074494074465393,
+        0.00015856494953966305
+      ],
+      "tangent_shift_mm": [
+        -0.1585649495392361,
+        0.19294462550350078
+      ],
+      "replay_speed_factor": 0.6822916509409961,
+      "requested_depth_mm": 0.37548573095429777,
+      "min_gap_mm": -0.3617080859660532
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_003",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.00033313377438832793,
+        0.000663614082758711,
+        5.6915863043812434e-05
+      ],
+      "tangent_shift_mm": [
+        -0.056915863043254133,
+        -0.3331337743883279
+      ],
+      "replay_speed_factor": 1.4395169740091691,
+      "requested_depth_mm": 0.531650406266384,
+      "min_gap_mm": -0.5316504062663485
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_004",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.00010406676131274234,
+        0.0003352015477219134,
+        -7.631699642679671e-05
+      ],
+      "tangent_shift_mm": [
+        0.07631699642707873,
+        -0.10406676131274234
+      ],
+      "replay_speed_factor": 0.9453225767348001,
+      "requested_depth_mm": 0.20323787122947434,
+      "min_gap_mm": -0.20323787122955572
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_005",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00014691939067627602,
+        0.000301000011464747,
+        -0.0003491497911424711
+      ],
+      "tangent_shift_mm": [
+        0.34914979114272426,
+        0.14691939067627602
+      ],
+      "replay_speed_factor": 0.692891808323685,
+      "requested_depth_mm": 0.16903633497207843,
+      "min_gap_mm": -0.16086293001455074
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_006",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00017694728788065128,
+        0.0002695796554767296,
+        0.00019552194264329102
+      ],
+      "tangent_shift_mm": [
+        -0.19552194264306424,
+        0.17694728788065128
+      ],
+      "replay_speed_factor": 1.3245516516050355,
+      "requested_depth_mm": 0.13761597898451922,
+      "min_gap_mm": -0.12661062430177247
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_007",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.00027717830156581187,
+        0.0006185534749350255,
+        0.0003114639751682133
+      ],
+      "tangent_shift_mm": [
+        -0.3114639751676929,
+        -0.27717830156581186
+      ],
+      "replay_speed_factor": 1.1007075513917548,
+      "requested_depth_mm": 0.4865897984429127,
+      "min_gap_mm": -0.48658979844262706
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_008",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -2.427722273685795e-05,
+        0.0002638411548568946,
+        0.00012788466489508561
+      ],
+      "tangent_shift_mm": [
+        -0.12788466489486366,
+        0.02427722273685795
+      ],
+      "replay_speed_factor": 1.1714329281307094,
+      "requested_depth_mm": 0.13187747836462735,
+      "min_gap_mm": -0.13187747836451713
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_009",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00010306335326221328,
+        0.0008808628663981193,
+        0.00033511269676281117
+      ],
+      "tangent_shift_mm": [
+        -0.3351126967620701,
+        0.10306335326221328
+      ],
+      "replay_speed_factor": 0.962177349072201,
+      "requested_depth_mm": 0.7488991899060263,
+      "min_gap_mm": -0.7422118770686991
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_010",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00034064553544388453,
+        0.0005189403405937705,
+        -0.00018422168206704687
+      ],
+      "tangent_shift_mm": [
+        0.18422168206748346,
+        0.34064553544388454
+      ],
+      "replay_speed_factor": 1.3248340412950317,
+      "requested_depth_mm": 0.38697666410124065,
+      "min_gap_mm": -0.3584452267098793
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_011",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -3.5741702278627384e-05,
+        0.0002954030268999185,
+        1.995839929526161e-05
+      ],
+      "tangent_shift_mm": [
+        -0.019958399295013085,
+        0.035741702278627385
+      ],
+      "replay_speed_factor": 0.8515243437040683,
+      "requested_depth_mm": 0.16343935040756047,
+      "min_gap_mm": -0.16343935040752375
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_012",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -3.715654167082583e-05,
+        0.0005065652178704405,
+        -0.00027898564719809995
+      ],
+      "tangent_shift_mm": [
+        0.27898564719852614,
+        0.03715654167082583
+      ],
+      "replay_speed_factor": 1.41163738072609,
+      "requested_depth_mm": 0.3746015413778309,
+      "min_gap_mm": -0.37460154137802787
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_013",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.0003190868931907951,
+        0.0006342475092325997,
+        0.0001827750464227904
+      ],
+      "tangent_shift_mm": [
+        -0.1827750464222568,
+        0.3190868931907951
+      ],
+      "replay_speed_factor": 0.7527764515119791,
+      "requested_depth_mm": 0.5022838327403786,
+      "min_gap_mm": -0.47532531121689664
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_014",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -8.473637583279519e-05,
+        0.0007356220254795555,
+        -0.0002086488225763768
+      ],
+      "tangent_shift_mm": [
+        0.20864882257699569,
+        0.0847363758327952
+      ],
+      "replay_speed_factor": 1.0411549484208962,
+      "requested_depth_mm": 0.6036583489870052,
+      "min_gap_mm": -0.5995154357668904
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_015",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        3.994961985720796e-05,
+        0.0006915004383784598,
+        0.00010484017407775527
+      ],
+      "tangent_shift_mm": [
+        -0.1048401740771735,
+        -0.03994961985720796
+      ],
+      "replay_speed_factor": 1.2298377274910424,
+      "requested_depth_mm": 0.5595367618861732,
+      "min_gap_mm": -0.5595367618861368
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_016",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.0001772663211988295,
+        0.0005717159377414493,
+        -0.00024528295967518094
+      ],
+      "tangent_shift_mm": [
+        0.24528295967566194,
+        -0.1772663211988295
+      ],
+      "replay_speed_factor": 1.2216868303390127,
+      "requested_depth_mm": 0.4397522612488681,
+      "min_gap_mm": -0.4397522612490379
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_017",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00020847313033596916,
+        0.0009709597643730499,
+        -0.0002353737093594808
+      ],
+      "tangent_shift_mm": [
+        0.23537370936029767,
+        0.20847313033596915
+      ],
+      "replay_speed_factor": 0.7648474945244614,
+      "requested_depth_mm": 0.8389960878804771,
+      "min_gap_mm": -0.8213729954643936
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_018",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.0002724702581047914,
+        0.0007395521422986204,
+        7.103905756876297e-05
+      ],
+      "tangent_shift_mm": [
+        -0.07103905756814077,
+        0.2724702581047914
+      ],
+      "replay_speed_factor": 1.2853131163782128,
+      "requested_depth_mm": 0.6075884658063052,
+      "min_gap_mm": -0.5847458599771148
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_019",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00025049540074637233,
+        0.0008097970509835614,
+        0.0003567169967700029
+      ],
+      "tangent_shift_mm": [
+        -0.35671699676932156,
+        0.25049540074637233
+      ],
+      "replay_speed_factor": 1.339096846832791,
+      "requested_depth_mm": 0.6778333744914866,
+      "min_gap_mm": -0.6568287340874596
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_020",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.0003141621965645536,
+        0.0001874063065481148,
+        2.480086903363911e-05
+      ],
+      "tangent_shift_mm": [
+        -0.024800869033481443,
+        -0.3141621965645536
+      ],
+      "replay_speed_factor": 1.1528873929657744,
+      "requested_depth_mm": 0.05544263005576085,
+      "min_gap_mm": -0.05544263005574645
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_021",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.00012087525008161298,
+        0.00039268964794496027,
+        0.0003358406382776489
+      ],
+      "tangent_shift_mm": [
+        -0.3358406382773185,
+        -0.12087525008161298
+      ],
+      "replay_speed_factor": 0.9883590874335122,
+      "requested_depth_mm": 0.26072597145286797,
+      "min_gap_mm": -0.26072597145254667
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_022",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.0003966451725376675,
+        0.0002949717124055875,
+        -0.00019261820370310297
+      ],
+      "tangent_shift_mm": [
+        0.19261820370335114,
+        0.3966451725376675
+      ],
+      "replay_speed_factor": 0.684830712444095,
+      "requested_depth_mm": 0.16300803591305063,
+      "min_gap_mm": -0.13001594565585514
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_023",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00021953587522934292,
+        0.0009364969238919344,
+        0.0003683372282239351
+      ],
+      "tangent_shift_mm": [
+        -0.3683372282231472,
+        0.21953587522934292
+      ],
+      "replay_speed_factor": 0.9783944700541317,
+      "requested_depth_mm": 0.8045332473998694,
+      "min_gap_mm": -0.7859804045126513
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_024",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        4.067133542682855e-05,
+        0.0008862353270187318,
+        -0.00022908547718550998
+      ],
+      "tangent_shift_mm": [
+        0.2290854771862556,
+        -0.04067133542682855
+      ],
+      "replay_speed_factor": 1.1143044140691583,
+      "requested_depth_mm": 0.7542716505261642,
+      "min_gap_mm": -0.754271650526328
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_025",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00014163464623181642,
+        0.00044086786766378853,
+        0.0003243801569722563
+      ],
+      "tangent_shift_mm": [
+        -0.3243801569718854,
+        0.14163464623181643
+      ],
+      "replay_speed_factor": 0.9296636067183244,
+      "requested_depth_mm": 0.3089041911716866,
+      "min_gap_mm": -0.30056250182107785
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_026",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.0002274446018078109,
+        0.0009242990862631187,
+        -0.0001704490064205396
+      ],
+      "tangent_shift_mm": [
+        0.17044900642131722,
+        -0.2274446018078109
+      ],
+      "replay_speed_factor": 1.052813765692431,
+      "requested_depth_mm": 0.7923354097706004,
+      "min_gap_mm": -0.7923354097707501
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_027",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        3.469083918778831e-05,
+        0.00025521778271725675,
+        -0.00036193444209366865
+      ],
+      "tangent_shift_mm": [
+        0.36193444209388337,
+        -0.034690839187788314
+      ],
+      "replay_speed_factor": 1.4099536550273002,
+      "requested_depth_mm": 0.12325410622457741,
+      "min_gap_mm": -0.12325410622493482
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_028",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00017704009516137344,
+        0.00021347190078000795,
+        -0.00027989597475805276
+      ],
+      "tangent_shift_mm": [
+        0.27989597475823236,
+        0.17704009516137342
+      ],
+      "replay_speed_factor": 0.9341535349395886,
+      "requested_depth_mm": 0.08150822428739764,
+      "min_gap_mm": -0.07077208613217843
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_029",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.0001430982675586609,
+        0.0003815327689677208,
+        -0.00011340327302896977
+      ],
+      "tangent_shift_mm": [
+        0.11340327302929076,
+        -0.1430982675586609
+      ],
+      "replay_speed_factor": 1.039166754290296,
+      "requested_depth_mm": 0.24956909247525055,
+      "min_gap_mm": -0.24956909247531023
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_030",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        3.5206222997002933e-06,
+        0.0005983944546043708,
+        -0.0003585953510942979
+      ],
+      "tangent_shift_mm": [
+        0.35859535109480134,
+        -0.0035206222997002934
+      ],
+      "replay_speed_factor": 1.4085301102280503,
+      "requested_depth_mm": 0.4664307781116942,
+      "min_gap_mm": -0.46643077811203687
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_031",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00010285906027793035,
+        0.0006362398311461076,
+        0.00023772170151516566
+      ],
+      "tangent_shift_mm": [
+        -0.23772170151463037,
+        0.10285906027793035
+      ],
+      "replay_speed_factor": 0.8448313564853056,
+      "requested_depth_mm": 0.5042761546539328,
+      "min_gap_mm": -0.49882318322056274
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_032",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -5.368998966435179e-05,
+        0.0006502835980816792,
+        -0.00036595668965461783
+      ],
+      "tangent_shift_mm": [
+        0.3659566896551649,
+        0.05368998966435179
+      ],
+      "replay_speed_factor": 1.2727064307389664,
+      "requested_depth_mm": 0.5183199215889964,
+      "min_gap_mm": -0.5176897510556346
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_033",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00021713309194840348,
+        0.0005023031399825991,
+        -0.0002065330939679609
+      ],
+      "tangent_shift_mm": [
+        0.20653309396838349,
+        0.21713309194840347
+      ],
+      "replay_speed_factor": 1.2418815192205463,
+      "requested_depth_mm": 0.3703394634900505,
+      "min_gap_mm": -0.3541805200169644
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_034",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.00029036516869436756,
+        0.0006435703415251413,
+        0.00039577678323598944
+      ],
+      "tangent_shift_mm": [
+        -0.395776783235448,
+        -0.29036516869436757
+      ],
+      "replay_speed_factor": 0.660570732496495,
+      "requested_depth_mm": 0.5116066650330994,
+      "min_gap_mm": -0.5116066650328044
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_035",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00014951228304672525,
+        0.0008853430381362429,
+        -0.00013913760357142746
+      ],
+      "tangent_shift_mm": [
+        0.1391376035721723,
+        0.14951228304672526
+      ],
+      "replay_speed_factor": 1.2222883423702875,
+      "requested_depth_mm": 0.753379361643751,
+      "min_gap_mm": -0.7420479811076223
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_036",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00027370628112184593,
+        0.0005421985404197808,
+        0.0002978406914510392
+      ],
+      "tangent_shift_mm": [
+        -0.297840691450583,
+        0.2737062811218459
+      ],
+      "replay_speed_factor": 0.9819610686212763,
+      "requested_depth_mm": 0.41023486392765646,
+      "min_gap_mm": -0.3882486945223764
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_037",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -4.34999944831489e-05,
+        0.0008482206479965855,
+        0.00021136994138220452
+      ],
+      "tangent_shift_mm": [
+        -0.2113699413814909,
+        0.043499994483148896
+      ],
+      "replay_speed_factor": 1.003565353111801,
+      "requested_depth_mm": 0.7162569715043885,
+      "min_gap_mm": -0.7156584210558428
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_038",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.0001445880660825205,
+        0.00022972102420289452,
+        0.00020995759453606972
+      ],
+      "tangent_shift_mm": [
+        -0.20995759453587645,
+        -0.1445880660825205
+      ],
+      "replay_speed_factor": 1.0187322662280964,
+      "requested_depth_mm": 0.09775734771069633,
+      "min_gap_mm": -0.09775734771055865
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_039",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00031797302587524567,
+        0.00023713335296770158,
+        0.00026329755272622266
+      ],
+      "tangent_shift_mm": [
+        -0.2632975527260232,
+        0.3179730258752457
+      ],
+      "replay_speed_factor": 0.8893014198644825,
+      "requested_depth_mm": 0.10516967647554826,
+      "min_gap_mm": -0.08029278412559314
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_040",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00013964832275433658,
+        0.000604855991632667,
+        -0.00011054252651652524
+      ],
+      "tangent_shift_mm": [
+        0.11054252651703411,
+        0.13964832275433658
+      ],
+      "replay_speed_factor": 0.9897295589413593,
+      "requested_depth_mm": 0.4728923151401991,
+      "min_gap_mm": -0.463934432892787
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_041",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00013036068886930174,
+        0.0006191665714111157,
+        0.00020988230494328383
+      ],
+      "tangent_shift_mm": [
+        -0.20988230494276294,
+        0.13036068886930174
+      ],
+      "replay_speed_factor": 0.9408138840815565,
+      "requested_depth_mm": 0.48720289491891744,
+      "min_gap_mm": -0.47909814479179236
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_042",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.0002777399137778101,
+        0.0005437280494618765,
+        0.0003077226205056158
+      ],
+      "tangent_shift_mm": [
+        -0.3077226205051584,
+        -0.2777399137778101
+      ],
+      "replay_speed_factor": 1.2503445534837234,
+      "requested_depth_mm": 0.41176437296976054,
+      "min_gap_mm": -0.4117643729695252
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_043",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.00029355759125519705,
+        0.0008165245895525412,
+        -0.00011673692440041056
+      ],
+      "tangent_shift_mm": [
+        0.11673692440109751,
+        -0.29355759125519704
+      ],
+      "replay_speed_factor": 1.251862988140883,
+      "requested_depth_mm": 0.6845609130600682,
+      "min_gap_mm": -0.6845609130601282
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_044",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.0002417327554688282,
+        0.0003654423713400327,
+        -8.655703539545725e-05
+      ],
+      "tangent_shift_mm": [
+        0.0865570353957647,
+        -0.24173275546882822
+      ],
+      "replay_speed_factor": 0.7225273154051742,
+      "requested_depth_mm": 0.2334786948475851,
+      "min_gap_mm": -0.23347869484768854
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_045",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.0003410252257141976,
+        0.0008803848581197983,
+        0.0002564688411029688
+      ],
+      "tangent_shift_mm": [
+        -0.2564688411022281,
+        -0.34102522571419763
+      ],
+      "replay_speed_factor": 1.181764420960236,
+      "requested_depth_mm": 0.7484211816276393,
+      "min_gap_mm": -0.7484211816274343
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_046",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -4.539940832187195e-05,
+        0.000908415580889322,
+        6.80805704930435e-07
+      ],
+      "tangent_shift_mm": [
+        -0.0006808057041661764,
+        0.04539940832187195
+      ],
+      "replay_speed_factor": 1.1088923217003746,
+      "requested_depth_mm": 0.7764519043969477,
+      "min_gap_mm": -0.7753656205222582
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_047",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.0002711520542866751,
+        0.0006174646837650551,
+        -0.00011219000677086908
+      ],
+      "tangent_shift_mm": [
+        0.11219000677138857,
+        0.2711520542866751
+      ],
+      "replay_speed_factor": 0.9839439381194637,
+      "requested_depth_mm": 0.4855010072725859,
+      "min_gap_mm": -0.46339546221075995
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_048",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00022259720240063485,
+        0.000795180039632616,
+        0.0002851674203040013
+      ],
+      "tangent_shift_mm": [
+        -0.2851674203033323,
+        0.22259720240063485
+      ],
+      "replay_speed_factor": 1.2121956244087388,
+      "requested_depth_mm": 0.6632163631404812,
+      "min_gap_mm": -0.6450602337903218
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_049",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.0003648311726363456,
+        0.0008113548748745589,
+        4.652638460779649e-05
+      ],
+      "tangent_shift_mm": [
+        -0.04652638460711389,
+        -0.3648311726363456
+      ],
+      "replay_speed_factor": 1.3648730269587945,
+      "requested_depth_mm": 0.6793911983822232,
+      "min_gap_mm": -0.6793911983822286
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_050",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.00017842696003851348,
+        0.0006617178623997298,
+        -0.0002763552062088029
+      ],
+      "tangent_shift_mm": [
+        0.2763552062093596,
+        -0.17842696003851347
+      ],
+      "replay_speed_factor": 1.1687003794890782,
+      "requested_depth_mm": 0.5297541859071225,
+      "min_gap_mm": -0.529754185907394
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_051",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.00039394613653232136,
+        0.00026019335423561955,
+        0.00015200792949712143
+      ],
+      "tangent_shift_mm": [
+        -0.15200792949690253,
+        -0.39394613653232136
+      ],
+      "replay_speed_factor": 1.0430920979090146,
+      "requested_depth_mm": 0.12822967774337257,
+      "min_gap_mm": -0.1282296777432856
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_052",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.00015070354011592225,
+        0.0004195904638314646,
+        -0.00023483354672643669
+      ],
+      "tangent_shift_mm": [
+        0.2348335467267897,
+        -0.15070354011592224
+      ],
+      "replay_speed_factor": 0.9414949374187674,
+      "requested_depth_mm": 0.28762678733889224,
+      "min_gap_mm": -0.28762678733906805
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_053",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.00034665382316936523,
+        0.0005026200791467666,
+        -0.00023156095484390418
+      ],
+      "tangent_shift_mm": [
+        0.23156095484432704,
+        -0.3466538231693652
+      ],
+      "replay_speed_factor": 0.7646367231635738,
+      "requested_depth_mm": 0.37065640265419686,
+      "min_gap_mm": -0.37065640265443456
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_054",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        8.198608526680662e-05,
+        0.0007072050322063707,
+        8.433059006036282e-05
+      ],
+      "tangent_shift_mm": [
+        -0.08433059005976784,
+        -0.08198608526680662
+      ],
+      "replay_speed_factor": 0.8002627642534034,
+      "requested_depth_mm": 0.5752413557140668,
+      "min_gap_mm": -0.5752413557139624
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_055",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.00019058401327001182,
+        0.0007489300358139862,
+        -5.0898232305269096e-05
+      ],
+      "tangent_shift_mm": [
+        0.05089823230589918,
+        -0.19058401327001182
+      ],
+      "replay_speed_factor": 1.0391663230220352,
+      "requested_depth_mm": 0.6169663593215685,
+      "min_gap_mm": -0.6169663593216245
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_056",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.0002446334109821671,
+        0.0007349125796785052,
+        -0.00016847959484451978
+      ],
+      "tangent_shift_mm": [
+        0.16847959484513808,
+        -0.24463341098216712
+      ],
+      "replay_speed_factor": 1.113600130792324,
+      "requested_depth_mm": 0.6029489031859886,
+      "min_gap_mm": -0.602948903186129
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_057",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00016211446094944004,
+        0.0004874460882272501,
+        -3.6598814920652834e-05
+      ],
+      "tangent_shift_mm": [
+        0.03659881492106293,
+        0.16211446094944004
+      ],
+      "replay_speed_factor": 0.9133391086987643,
+      "requested_depth_mm": 0.35548241173484446,
+      "min_gap_mm": -0.3448717499866434
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_058",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00023917581120447184,
+        0.0004653108036611289,
+        0.0002971197873350596
+      ],
+      "tangent_shift_mm": [
+        -0.29711978733466815,
+        0.23917581120447184
+      ],
+      "replay_speed_factor": 1.3317127310393049,
+      "requested_depth_mm": 0.333347127169004,
+      "min_gap_mm": -0.3151784401315636
+    },
+    {
+      "sequence": "Joint_02_9cc79209_synthetic_059",
+      "parent": "Joint_02_9cc79209",
+      "split": "train",
+      "fixture_shift_world_m": [
+        3.4894126527188095e-05,
+        0.0007311900643194308,
+        0.0002745678034825188
+      ],
+      "tangent_shift_mm": [
+        -0.27456780348190357,
+        -0.034894126527188096
+      ],
+      "replay_speed_factor": 1.1277299187064067,
+      "requested_depth_mm": 0.599226387827287,
+      "min_gap_mm": -0.5992263878270565
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_000",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00029370835172389063,
+        0.0005270079677675273,
+        -0.00014608432387576854
+      ],
+      "tangent_shift_mm": [
+        0.14608432387522508,
+        0.29370835172389065
+      ],
+      "replay_speed_factor": 1.4663235890438218,
+      "requested_depth_mm": 0.41934835206442955,
+      "min_gap_mm": -0.3960857781706844
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_001",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00021133625138018252,
+        0.0003988312788036595,
+        -0.00013510692012502396
+      ],
+      "tangent_shift_mm": [
+        0.13510692012461267,
+        0.21133625138018253
+      ],
+      "replay_speed_factor": 0.7082358586170812,
+      "requested_depth_mm": 0.2911716631005505,
+      "min_gap_mm": -0.2767415202312954
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_002",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        2.4464710064249106e-05,
+        0.0005115474291083956,
+        0.0003011640111783926
+      ],
+      "tangent_shift_mm": [
+        -0.3011640111789201,
+        -0.024464710064249107
+      ],
+      "replay_speed_factor": 1.4671288129103672,
+      "requested_depth_mm": 0.4038878134048367,
+      "min_gap_mm": -0.4038878134051682
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_003",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00024334458282399107,
+        0.00024305952141198656,
+        9.901566233461355e-05
+      ],
+      "tangent_shift_mm": [
+        -0.0990156623348642,
+        0.24334458282399107
+      ],
+      "replay_speed_factor": 1.3164046905947067,
+      "requested_depth_mm": 0.13539990570863614,
+      "min_gap_mm": -0.11855788315641262
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_004",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.0002421840883060832,
+        0.0008787502355114802,
+        0.00017725253997395891
+      ],
+      "tangent_shift_mm": [
+        -0.17725253997486512,
+        -0.2421840883060832
+      ],
+      "replay_speed_factor": 1.0848868642483205,
+      "requested_depth_mm": 0.771090619808049,
+      "min_gap_mm": -0.771090619808179
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_005",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00012744472372317817,
+        0.0002840745987058053,
+        0.00036482254688141174
+      ],
+      "tangent_shift_mm": [
+        -0.3648225468817047,
+        0.12744472372317817
+      ],
+      "replay_speed_factor": 1.4434799116181252,
+      "requested_depth_mm": 0.17641498300218073,
+      "min_gap_mm": -0.1709018588454121
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_006",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.0003205078301616975,
+        0.00016351149514054025,
+        -0.00022846027033055624
+      ],
+      "tangent_shift_mm": [
+        0.22846027033038763,
+        -0.3205078301616975
+      ],
+      "replay_speed_factor": 1.0413977452926158,
+      "requested_depth_mm": 0.05585187943752752,
+      "min_gap_mm": -0.055851879437240896
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_007",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.00019991157150371777,
+        0.0004127598853915263,
+        0.00038063019860539506
+      ],
+      "tangent_shift_mm": [
+        -0.3806301986058207,
+        -0.19991157150371777
+      ],
+      "replay_speed_factor": 0.7946464259597054,
+      "requested_depth_mm": 0.30510026968788545,
+      "min_gap_mm": -0.3051002696883298
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_008",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.0002648840996573141,
+        0.0008535291113161832,
+        -0.00013452627065967758
+      ],
+      "tangent_shift_mm": [
+        0.1345262706587974,
+        -0.2648840996573141
+      ],
+      "replay_speed_factor": 0.8962760200729768,
+      "requested_depth_mm": 0.7458694956130736,
+      "min_gap_mm": -0.7458694956129497
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_009",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.00011002381128154353,
+        0.0006031516806180656,
+        -2.5878456534789416e-05
+      ],
+      "tangent_shift_mm": [
+        0.025878456534167427,
+        -0.11002381128154354
+      ],
+      "replay_speed_factor": 0.6678721511411039,
+      "requested_depth_mm": 0.495492064914844,
+      "min_gap_mm": -0.49549206491483755
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_010",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.0002827181849910371,
+        0.0007368678863120459,
+        -0.00029387386602944103
+      ],
+      "tangent_shift_mm": [
+        0.29387386602868115,
+        0.28271818499103707
+      ],
+      "replay_speed_factor": 0.8216995413637039,
+      "requested_depth_mm": 0.6292082706091006,
+      "min_gap_mm": -0.6059977659817996
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_011",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        3.465117011311303e-06,
+        0.00031856748296695475,
+        1.5106509654076978e-06
+      ],
+      "tangent_shift_mm": [
+        -0.0015106509657362155,
+        -0.003465117011311303
+      ],
+      "replay_speed_factor": 1.0461328435311852,
+      "requested_depth_mm": 0.21090786726370486,
+      "min_gap_mm": -0.2109078672637432
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_012",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -3.4002996395443575e-06,
+        0.0005610690392448754,
+        0.00016904073679170623
+      ],
+      "tangent_shift_mm": [
+        -0.16904073679228482,
+        0.0034002996395443574
+      ],
+      "replay_speed_factor": 0.8331767106737973,
+      "requested_depth_mm": 0.4534094235414528,
+      "min_gap_mm": -0.45340942354166186
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_013",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -2.9781301807967786e-05,
+        0.0005127243650070216,
+        6.854519250618246e-05
+      ],
+      "tangent_shift_mm": [
+        -0.0685451925067112,
+        0.029781301807967786
+      ],
+      "replay_speed_factor": 1.3298236261380123,
+      "requested_depth_mm": 0.40506474930370245,
+      "min_gap_mm": -0.40506474930379616
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_014",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00034727379774873924,
+        0.0007595035420443497,
+        0.00025974947761670577
+      ],
+      "tangent_shift_mm": [
+        -0.259749477617489,
+        0.34727379774873923
+      ],
+      "replay_speed_factor": 1.0365336666093237,
+      "requested_depth_mm": 0.6518439263408335,
+      "min_gap_mm": -0.6220975728193293
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_015",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        1.7288961884133424e-05,
+        0.0005896485719923983,
+        0.0002025907009037331
+      ],
+      "tangent_shift_mm": [
+        -0.20259070090434117,
+        -0.017288961884133425
+      ],
+      "replay_speed_factor": 1.3435958601189255,
+      "requested_depth_mm": 0.4819889562889411,
+      "min_gap_mm": -0.4819889562891477
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_016",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00010904835772875754,
+        0.0007322985315565355,
+        -0.00011348666578639366
+      ],
+      "tangent_shift_mm": [
+        0.11348666578563849,
+        0.10904835772875754
+      ],
+      "replay_speed_factor": 1.0913695149990248,
+      "requested_depth_mm": 0.6246389158534041,
+      "min_gap_mm": -0.618731852801653
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_017",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.000207912596598588,
+        0.000397054310776183,
+        5.325579331938817e-05
+      ],
+      "tangent_shift_mm": [
+        -0.05325579331979763,
+        -0.20791259659858802
+      ],
+      "replay_speed_factor": 0.882715966086092,
+      "requested_depth_mm": 0.28939469507287974,
+      "min_gap_mm": -0.289394695072942
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_018",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.00022648478343460196,
+        0.0003071237944579264,
+        -0.00013697520662224002
+      ],
+      "tangent_shift_mm": [
+        0.1369752066219233,
+        -0.22648478343460196
+      ],
+      "replay_speed_factor": 0.8046490037417633,
+      "requested_depth_mm": 0.1994641787548193,
+      "min_gap_mm": -0.19946417875471575
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_019",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.00011918493748495412,
+        0.0005811340353988657,
+        0.00025046815686774384
+      ],
+      "tangent_shift_mm": [
+        -0.2504681568683431,
+        -0.11918493748495412
+      ],
+      "replay_speed_factor": 0.8379913717214135,
+      "requested_depth_mm": 0.4734744196953591,
+      "min_gap_mm": -0.47347441969558535
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_020",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -7.096902048157361e-05,
+        0.0007113748813932402,
+        1.4240015762753229e-05
+      ],
+      "tangent_shift_mm": [
+        -0.014240015763486824,
+        0.07096902048157361
+      ],
+      "replay_speed_factor": 1.3118893388758845,
+      "requested_depth_mm": 0.6037152656899771,
+      "min_gap_mm": -0.6017010717276013
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_021",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        6.034700263172543e-06,
+        0.0008489456358166291,
+        2.5966550030723236e-05
+      ],
+      "tangent_shift_mm": [
+        -0.0259665500315987,
+        -0.006034700263172543
+      ],
+      "replay_speed_factor": 1.0326039473460644,
+      "requested_depth_mm": 0.741286020113354,
+      "min_gap_mm": -0.741286020113363
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_022",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00010475626070051324,
+        0.0003447138462715685,
+        -7.813110960013596e-05
+      ],
+      "tangent_shift_mm": [
+        0.07813110959978048,
+        0.10475626070051325
+      ],
+      "replay_speed_factor": 1.3339471145400685,
+      "requested_depth_mm": 0.23705423056840075,
+      "min_gap_mm": -0.23349774904459306
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_023",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00023302402288377777,
+        0.0006359752793249135,
+        -0.00013808163237400618
+      ],
+      "tangent_shift_mm": [
+        0.13808163237335036,
+        0.23302402288377777
+      ],
+      "replay_speed_factor": 0.8197650445905478,
+      "requested_depth_mm": 0.5283156636218075,
+      "min_gap_mm": -0.5105506138136333
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_024",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        3.741309756183919e-06,
+        0.0009031148174188407,
+        0.0003472245171087382
+      ],
+      "tangent_shift_mm": [
+        -0.3472245171096695,
+        -0.0037413097561839193
+      ],
+      "replay_speed_factor": 1.4347480334353948,
+      "requested_depth_mm": 0.7954552017152343,
+      "min_gap_mm": -0.7954552017156445
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_025",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.0003575265258178958,
+        0.0009017870820781004,
+        0.00033056525456656624
+      ],
+      "tangent_shift_mm": [
+        -0.3305652545674962,
+        0.3575265258178958
+      ],
+      "replay_speed_factor": 0.7704503536759241,
+      "requested_depth_mm": 0.7941274663745113,
+      "min_gap_mm": -0.7626548062059055
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_026",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.00014160962483283552,
+        0.0005488932796741524,
+        0.0002537513691185724
+      ],
+      "tangent_shift_mm": [
+        -0.2537513691191384,
+        -0.1416096248328355
+      ],
+      "replay_speed_factor": 0.7692634585772148,
+      "requested_depth_mm": 0.44123366397064234,
+      "min_gap_mm": -0.44123366397086355
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_027",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.00033682700946930153,
+        0.00040659098797054773,
+        -0.00017279914965297977
+      ],
+      "tangent_shift_mm": [
+        0.1727991496525605,
+        -0.33682700946930155
+      ],
+      "replay_speed_factor": 1.171707510357935,
+      "requested_depth_mm": 0.29893137226747757,
+      "min_gap_mm": -0.29893137226733035
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_028",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00031644155548457076,
+        0.00038821934229793943,
+        -0.00023876272372284855
+      ],
+      "tangent_shift_mm": [
+        0.23876272372244822,
+        0.31644155548457076
+      ],
+      "replay_speed_factor": 0.9475475649085594,
+      "requested_depth_mm": 0.28055972659493733,
+      "min_gap_mm": -0.2557238974033841
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_029",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -3.274784485276461e-05,
+        0.0007285008400169345,
+        -0.0001107439834657484
+      ],
+      "tangent_shift_mm": [
+        0.11074398346499714,
+        0.03274784485276461
+      ],
+      "replay_speed_factor": 0.7788768490967253,
+      "requested_depth_mm": 0.6208412243138003,
+      "min_gap_mm": -0.6208412243137172
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_030",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.00017938459875702016,
+        0.0002258723251115489,
+        0.000342617471117757
+      ],
+      "tangent_shift_mm": [
+        -0.3426174711179899,
+        -0.17938459875702017
+      ],
+      "replay_speed_factor": 0.7363621745261414,
+      "requested_depth_mm": 0.11821270940794726,
+      "min_gap_mm": -0.11821270940826079
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_031",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.0002648532468482698,
+        0.00019296038829209595,
+        7.3802124560595e-05
+      ],
+      "tangent_shift_mm": [
+        -0.07380212456079399,
+        0.26485324684826983
+      ],
+      "replay_speed_factor": 1.4789026376057652,
+      "requested_depth_mm": 0.08530077258877151,
+      "min_gap_mm": -0.06656719318699059
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_032",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -9.189645395366447e-05,
+        0.000432419096913054,
+        -0.00023965075104543572
+      ],
+      "tangent_shift_mm": [
+        0.23965075104498978,
+        0.09189645395366447
+      ],
+      "replay_speed_factor": 0.766176902818065,
+      "requested_depth_mm": 0.3247594812100528,
+      "min_gap_mm": -0.3220473331267194
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_033",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -2.8607056368782745e-05,
+        0.0003529698593188569,
+        -8.291706506660307e-05
+      ],
+      "tangent_shift_mm": [
+        0.08291706506623908,
+        0.028607056368782746
+      ],
+      "replay_speed_factor": 0.7933358806511158,
+      "requested_depth_mm": 0.2453102436156941,
+      "min_gap_mm": -0.24531024361562626
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_034",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00016456694532819083,
+        0.0008106017896172666,
+        -0.0003439867755857994
+      ],
+      "tangent_shift_mm": [
+        0.3439867755849635,
+        0.16456694532819083
+      ],
+      "replay_speed_factor": 1.0061085649842227,
+      "requested_depth_mm": 0.7029421739143731,
+      "min_gap_mm": -0.691122211280724
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_035",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.00024528505965676323,
+        0.0004523231349918719,
+        -3.9277939103944494e-05
+      ],
+      "tangent_shift_mm": [
+        0.03927793910347804,
+        -0.24528505965676325
+      ],
+      "replay_speed_factor": 1.3692499850001507,
+      "requested_depth_mm": 0.344663519288664,
+      "min_gap_mm": -0.3446635192886349
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_036",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00019938536939907904,
+        0.00033740882143139874,
+        0.00010844072628256435
+      ],
+      "tangent_shift_mm": [
+        -0.10844072628291229,
+        0.19938536939907903
+      ],
+      "replay_speed_factor": 0.9588783973366067,
+      "requested_depth_mm": 0.22974920572803859,
+      "min_gap_mm": -0.21681304502556495
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_037",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -9.537634916441978e-05,
+        0.0005234667173993857,
+        0.0002230619871753878
+      ],
+      "tangent_shift_mm": [
+        -0.22306198717592762,
+        0.09537634916441978
+      ],
+      "replay_speed_factor": 0.9694483274516177,
+      "requested_depth_mm": 0.41580710169590734,
+      "min_gap_mm": -0.4122968411682682
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_038",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        6.94044766967279e-05,
+        0.0009514058199710258,
+        -3.163711686354422e-05
+      ],
+      "tangent_shift_mm": [
+        0.0316371168625631,
+        -0.06940447669672789
+      ],
+      "replay_speed_factor": 1.3779428761656094,
+      "requested_depth_mm": 0.8437462042678101,
+      "min_gap_mm": -0.8437462042677478
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_039",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        1.77566738880241e-05,
+        0.0009479764826358102,
+        7.213708351517641e-05
+      ],
+      "tangent_shift_mm": [
+        -0.072137083516154,
+        -0.0177566738880241
+      ],
+      "replay_speed_factor": 1.140747521872917,
+      "requested_depth_mm": 0.8403168669324875,
+      "min_gap_mm": -0.8403168669325334
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_040",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00012541606271202876,
+        0.0008025922377605925,
+        0.0002547160354535972
+      ],
+      "tangent_shift_mm": [
+        -0.2547160354544249,
+        0.12541606271202876
+      ],
+      "replay_speed_factor": 0.8486046271133525,
+      "requested_depth_mm": 0.6949326220570815,
+      "min_gap_mm": -0.6870480610856607
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_041",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -5.1668283943913094e-05,
+        0.00022344352628449795,
+        5.558223700926468e-05
+      ],
+      "tangent_shift_mm": [
+        -0.055582237009495106,
+        0.051668283943913096
+      ],
+      "replay_speed_factor": 0.9469514688106755,
+      "requested_depth_mm": 0.11578391058119228,
+      "min_gap_mm": -0.11578391058120195
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_042",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.0001762278978403483,
+        0.00020729167566931655,
+        8.771502018508949e-05
+      ],
+      "tangent_shift_mm": [
+        -0.08771502018530325,
+        -0.1762278978403483
+      ],
+      "replay_speed_factor": 1.413090841575001,
+      "requested_depth_mm": 0.09963205996597777,
+      "min_gap_mm": -0.09963205996610379
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_043",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.0003840165217445203,
+        0.0009343056900712131,
+        -0.00023845765277902744
+      ],
+      "tangent_shift_mm": [
+        0.23845765277806397,
+        0.3840165217445203
+      ],
+      "replay_speed_factor": 0.7381090392690158,
+      "requested_depth_mm": 0.8266460743682107,
+      "min_gap_mm": -0.7923761823675051
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_044",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00026479330939632983,
+        0.0007249398271684357,
+        -0.0002748325119542012
+      ],
+      "tangent_shift_mm": [
+        0.2748325119534536,
+        0.26479330939632983
+      ],
+      "replay_speed_factor": 0.8464244403882436,
+      "requested_depth_mm": 0.6172802114654707,
+      "min_gap_mm": -0.5959124921323389
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_045",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00020320062594407184,
+        0.0008745130663154635,
+        -6.72683134202559e-05
+      ],
+      "tangent_shift_mm": [
+        0.06726831341935408,
+        0.20320062594407184
+      ],
+      "replay_speed_factor": 0.9004677724118804,
+      "requested_depth_mm": 0.7668534506122845,
+      "min_gap_mm": -0.7508721210562256
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_046",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.00034865088868239443,
+        0.0005811253713558859,
+        -0.0002791884170877473
+      ],
+      "tangent_shift_mm": [
+        0.27918841708714803,
+        -0.3486508886823944
+      ],
+      "replay_speed_factor": 0.96669845260029,
+      "requested_depth_mm": 0.47346575565292537,
+      "min_gap_mm": -0.4734657556526578
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_047",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.000121046322804926,
+        0.0008678350303928727,
+        0.00023402600632358028
+      ],
+      "tangent_shift_mm": [
+        -0.23402600632447523,
+        0.121046322804926
+      ],
+      "replay_speed_factor": 0.9100637056977363,
+      "requested_depth_mm": 0.7601754146893831,
+      "min_gap_mm": -0.7524018718781774
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_048",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.0002196986237336158,
+        0.000561576058021634,
+        0.00033152046860005006
+      ],
+      "tangent_shift_mm": [
+        -0.33152046860062917,
+        0.21969862373361582
+      ],
+      "replay_speed_factor": 0.7289176933638204,
+      "requested_depth_mm": 0.45391644231804384,
+      "min_gap_mm": -0.43784654501381376
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_049",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.0002807891491212453,
+        0.0007550264923244487,
+        -0.00036935054587738437
+      ],
+      "tangent_shift_mm": [
+        0.36935054587660576,
+        0.2807891491212453
+      ],
+      "replay_speed_factor": 1.4100449758786433,
+      "requested_depth_mm": 0.6473668766215812,
+      "min_gap_mm": -0.6242582005108557
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_050",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00029839965502760456,
+        0.0009338740932014802,
+        7.570331601656168e-05
+      ],
+      "tangent_shift_mm": [
+        -0.07570331601752472,
+        0.29839965502760457
+      ],
+      "replay_speed_factor": 1.000284555634495,
+      "requested_depth_mm": 0.8262144774981538,
+      "min_gap_mm": -0.8004659098347372
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_051",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        8.711201195156642e-05,
+        0.0008174175835808397,
+        0.00024037561338010528
+      ],
+      "tangent_shift_mm": [
+        -0.24037561338094823,
+        -0.08711201195156643
+      ],
+      "replay_speed_factor": 0.9853294252599646,
+      "requested_depth_mm": 0.7097579678773435,
+      "min_gap_mm": -0.7097579678776443
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_052",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        7.001016661777504e-05,
+        0.0003538400609558755,
+        0.0003406890677663997
+      ],
+      "tangent_shift_mm": [
+        -0.34068906776676455,
+        -0.07001016661777504
+      ],
+      "replay_speed_factor": 0.6995674022717157,
+      "requested_depth_mm": 0.24618044525227584,
+      "min_gap_mm": -0.2461804452525973
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_053",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.00028001881504128196,
+        0.00026652989728989933,
+        -0.0003132720045158066
+      ],
+      "tangent_shift_mm": [
+        0.3132720045155317,
+        -0.28001881504128195
+      ],
+      "replay_speed_factor": 1.0302850203606473,
+      "requested_depth_mm": 0.15887028158697403,
+      "min_gap_mm": -0.15887028158667604
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_054",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -0.00023563703696121696,
+        0.00034142519154685213,
+        0.00025347432320094605
+      ],
+      "tangent_shift_mm": [
+        -0.25347432320129815,
+        0.23563703696121696
+      ],
+      "replay_speed_factor": 1.4005385735190412,
+      "requested_depth_mm": 0.2337655758433424,
+      "min_gap_mm": -0.21720231301248671
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_055",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        -9.908222519902566e-05,
+        0.0005934782559901526,
+        0.0001832837299123115
+      ],
+      "tangent_shift_mm": [
+        -0.1832837299129235,
+        0.09908222519902565
+      ],
+      "replay_speed_factor": 1.3588774070336267,
+      "requested_depth_mm": 0.48581864028671523,
+      "min_gap_mm": -0.4815921791428208
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_056",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.0001343463393279497,
+        0.00030604289057980806,
+        7.85507564012353e-05
+      ],
+      "tangent_shift_mm": [
+        -0.0785507564015509,
+        -0.1343463393279497
+      ],
+      "replay_speed_factor": 1.402611762919054,
+      "requested_depth_mm": 0.19838327487647872,
+      "min_gap_mm": -0.19838327487653462
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_057",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.0003185214444800244,
+        0.0008732220591824547,
+        0.0003969147952355049
+      ],
+      "tangent_shift_mm": [
+        -0.3969147952364054,
+        -0.3185214444800244
+      ],
+      "replay_speed_factor": 1.3187363956950962,
+      "requested_depth_mm": 0.7655624434787971,
+      "min_gap_mm": -0.7655624434792506
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_058",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        0.00014031222764094203,
+        0.0008718800705612709,
+        0.00010637854268128748
+      ],
+      "tangent_shift_mm": [
+        -0.1063785426821866,
+        -0.14031222764094203
+      ],
+      "replay_speed_factor": 1.244981594858869,
+      "requested_depth_mm": 0.7642204548579129,
+      "min_gap_mm": -0.7642204548580221
+    },
+    {
+      "sequence": "Joint_03_c28e9178_synthetic_059",
+      "parent": "Joint_03_c28e9178",
+      "split": "train",
+      "fixture_shift_world_m": [
+        4.624106954643137e-05,
+        0.00019398498903421186,
+        -0.0003030239643960318
+      ],
+      "tangent_shift_mm": [
+        0.3030239643958318,
+        -0.04624106954643137
+      ],
+      "replay_speed_factor": 1.3983132140907917,
+      "requested_depth_mm": 0.08632537333127602,
+      "min_gap_mm": -0.08632537333097545
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_000",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        0.0003555880322153236,
+        0.0009119375633165848,
+        6.12128406740114e-05
+      ],
+      "tangent_shift_mm": [
+        -0.06121284067278132,
+        -0.3555880322153236
+      ],
+      "replay_speed_factor": 1.4156179001475222,
+      "requested_depth_mm": 0.8296300107975222,
+      "min_gap_mm": -0.8296300107973886
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_001",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        0.0003204951732195485,
+        0.0002954202223313871,
+        -0.00035918277567282224
+      ],
+      "tangent_shift_mm": [
+        0.35918277567322077,
+        -0.32049517321954846
+      ],
+      "replay_speed_factor": 0.8510585218582954,
+      "requested_depth_mm": 0.21311266981175736,
+      "min_gap_mm": -0.2131126698122765
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_002",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        -0.00027692707481377665,
+        0.00042982329218373616,
+        -0.0003170735768517323
+      ],
+      "tangent_shift_mm": [
+        0.3170735768523121,
+        0.27692707481377665
+      ],
+      "replay_speed_factor": 1.2958658575064668,
+      "requested_depth_mm": 0.3475157396641632,
+      "min_gap_mm": -0.3267558582251864
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_003",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        8.065021653471511e-05,
+        0.0008435068280660258,
+        -0.0002065534476134667
+      ],
+      "tangent_shift_mm": [
+        0.20655344761460448,
+        -0.0806502165347151
+      ],
+      "replay_speed_factor": 0.8584067838593313,
+      "requested_depth_mm": 0.7611992755466019,
+      "min_gap_mm": -0.7611992755468532
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_004",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        0.00022746272104847966,
+        0.0005727096769056272,
+        0.0001546401753194928
+      ],
+      "tangent_shift_mm": [
+        -0.1546401753187203,
+        -0.22746272104847964
+      ],
+      "replay_speed_factor": 1.382492009817108,
+      "requested_depth_mm": 0.4904021243866905,
+      "min_gap_mm": -0.4904021243864465
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_005",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        0.00012397428031554563,
+        0.00019622052511815554,
+        0.0003546474334523767
+      ],
+      "tangent_shift_mm": [
+        -0.354647433452112,
+        -0.12397428031554564
+      ],
+      "replay_speed_factor": 0.8527656201638741,
+      "requested_depth_mm": 0.1139129725994887,
+      "min_gap_mm": -0.11391297259899513
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_006",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        0.00013287796700411087,
+        0.00034381243844525496,
+        -0.0001566967518175678
+      ],
+      "tangent_shift_mm": [
+        0.15669675181803155,
+        -0.13287796700411086
+      ],
+      "replay_speed_factor": 0.9440671061219156,
+      "requested_depth_mm": 0.2615048859258984,
+      "min_gap_mm": -0.26150488592613375
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_007",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        0.00037276959955463365,
+        0.0008044056896273901,
+        0.00025277148989898764
+      ],
+      "tangent_shift_mm": [
+        -0.2527714898979026,
+        -0.3727695995546336
+      ],
+      "replay_speed_factor": 1.1802652085096603,
+      "requested_depth_mm": 0.7220981371085858,
+      "min_gap_mm": -0.7220981371082179
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_008",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        -0.00020686559181493924,
+        0.00013332204887300117,
+        -0.0003659064612012753
+      ],
+      "tangent_shift_mm": [
+        0.3659064612014551,
+        0.20686559181493924
+      ],
+      "replay_speed_factor": 0.8769678848345371,
+      "requested_depth_mm": 0.051014496353362394,
+      "min_gap_mm": -0.038697455723744854
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_009",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        0.00014310332647550112,
+        0.00016985824024577355,
+        0.000310677006935603
+      ],
+      "tangent_shift_mm": [
+        -0.3106770069353739,
+        -0.1431033264755011
+      ],
+      "replay_speed_factor": 1.4333015226410084,
+      "requested_depth_mm": 0.08755068772704737,
+      "min_gap_mm": -0.0875506877265897
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_010",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        2.195272369900192e-06,
+        0.0008813435370910401,
+        0.0003691629270642328
+      ],
+      "tangent_shift_mm": [
+        -0.369162927063044,
+        -0.002195272369900192
+      ],
+      "replay_speed_factor": 0.815110549875234,
+      "requested_depth_mm": 0.7990359845723928,
+      "min_gap_mm": -0.7990359845718719
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_011",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        2.6607218717158708e-05,
+        0.0007423154228625666,
+        0.000323007927860532
+      ],
+      "tangent_shift_mm": [
+        -0.3230079278595307,
+        -0.02660721871715871
+      ],
+      "replay_speed_factor": 1.1356415670064304,
+      "requested_depth_mm": 0.6600078703438571,
+      "min_gap_mm": -0.6600078703433709
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_012",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        4.4094727368584e-05,
+        0.00015985108660194236,
+        0.00027594448516731444
+      ],
+      "tangent_shift_mm": [
+        -0.27594448516709885,
+        -0.044094727368584
+      ],
+      "replay_speed_factor": 0.7290668911919008,
+      "requested_depth_mm": 0.07754353408316934,
+      "min_gap_mm": -0.07754353408284675
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_013",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        -0.00031643804413610465,
+        0.0007243138664756196,
+        3.885524433067565e-06
+      ],
+      "tangent_shift_mm": [
+        -0.003885524432090559,
+        0.31643804413610466
+      ],
+      "replay_speed_factor": 0.9801454002763799,
+      "requested_depth_mm": 0.6420063139564796,
+      "min_gap_mm": -0.6158534548903528
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_014",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        -0.00019608340980999505,
+        0.00021301030636160042,
+        0.00010363063712015402
+      ],
+      "tangent_shift_mm": [
+        -0.1036306371198667,
+        0.19608340980999506
+      ],
+      "replay_speed_factor": 1.4026855753007546,
+      "requested_depth_mm": 0.13070275384259497,
+      "min_gap_mm": -0.11906310228872193
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_015",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        -0.00021918537097118972,
+        0.0008462254942551026,
+        -0.00021418135114254096
+      ],
+      "tangent_shift_mm": [
+        0.21418135114368242,
+        0.21918537097118973
+      ],
+      "replay_speed_factor": 1.1514001121828594,
+      "requested_depth_mm": 0.7639179417356684,
+      "min_gap_mm": -0.7468370469686867
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_016",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        0.0001933831637056395,
+        0.00019732656638380005,
+        -0.0002468964619334263
+      ],
+      "tangent_shift_mm": [
+        0.24689646193369252,
+        -0.1933831637056395
+      ],
+      "replay_speed_factor": 1.166679593129758,
+      "requested_depth_mm": 0.1150190138643218,
+      "min_gap_mm": -0.11501901386468115
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_017",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        -0.00019722000958054443,
+        0.0003354267504061427,
+        -9.503454556104386e-05
+      ],
+      "tangent_shift_mm": [
+        0.09503454556149632,
+        0.19722000958054442
+      ],
+      "replay_speed_factor": 0.8803860320239756,
+      "requested_depth_mm": 0.25311919788686926,
+      "min_gap_mm": -0.2407589231269113
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_018",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        -0.00016782146312935699,
+        0.00025370756349179895,
+        0.0002823795226062569
+      ],
+      "tangent_shift_mm": [
+        -0.2823795226059147,
+        0.16782146312935697
+      ],
+      "replay_speed_factor": 0.693469765510724,
+      "requested_depth_mm": 0.1714000109730346,
+      "min_gap_mm": -0.16237055145109508
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_019",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        -0.00029154965873797475,
+        0.0002793736622494387,
+        0.0003310916496315708
+      ],
+      "tangent_shift_mm": [
+        -0.331091649631194,
+        0.2915496587379748
+      ],
+      "replay_speed_factor": 1.1349606322208996,
+      "requested_depth_mm": 0.19706610973074,
+      "min_gap_mm": -0.1755978796347479
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_020",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        0.00012759567342409295,
+        0.0005961086982711975,
+        7.915264470699113e-05
+      ],
+      "tangent_shift_mm": [
+        -0.07915264470618705,
+        -0.12759567342409295
+      ],
+      "replay_speed_factor": 1.28402189837773,
+      "requested_depth_mm": 0.5138011457521591,
+      "min_gap_mm": -0.5138011457520575
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_021",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        -2.366066573878367e-05,
+        0.0007517081665995659,
+        0.00014097045286938557
+      ],
+      "tangent_shift_mm": [
+        -0.14097045286837162,
+        0.02366066573878367
+      ],
+      "replay_speed_factor": 0.831486003275723,
+      "requested_depth_mm": 0.6694006140806108,
+      "min_gap_mm": -0.6694006140803843
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_022",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        -3.8879523600665157e-05,
+        0.00027929136306378767,
+        0.00033322168099090264
+      ],
+      "tangent_shift_mm": [
+        -0.33322168099052596,
+        0.038879523600665156
+      ],
+      "replay_speed_factor": 0.659776749273976,
+      "requested_depth_mm": 0.1969838105450919,
+      "min_gap_mm": -0.19698381054467082
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_023",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        -0.000364137824877298,
+        0.0008716663601384859,
+        -0.00014469082881867908
+      ],
+      "tangent_shift_mm": [
+        0.14469082881985484,
+        0.36413782487729796
+      ],
+      "replay_speed_factor": 1.1422877786598846,
+      "requested_depth_mm": 0.7893588076191455,
+      "min_gap_mm": -0.7577283709578365
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_024",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        -0.00017492625616366753,
+        0.0007806999787382795,
+        0.00032451095412522015
+      ],
+      "tangent_shift_mm": [
+        -0.3245109541241671,
+        0.17492625616366753
+      ],
+      "replay_speed_factor": 1.4181289630433873,
+      "requested_depth_mm": 0.698392426219572,
+      "min_gap_mm": -0.6860406601957116
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_025",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        -1.840013149175257e-06,
+        0.000542473840538484,
+        -0.00026317891474198266
+      ],
+      "tangent_shift_mm": [
+        0.2631789147427144,
+        0.001840013149175257
+      ],
+      "replay_speed_factor": 0.8849959002377659,
+      "requested_depth_mm": 0.4601662880189839,
+      "min_gap_mm": -0.46016628801937015
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_026",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        3.8782509210053886e-05,
+        0.00015659837571885762,
+        -0.00029738191331505097
+      ],
+      "tangent_shift_mm": [
+        0.2973819133152622,
+        -0.038782509210053884
+      ],
+      "replay_speed_factor": 1.1903236458226938,
+      "requested_depth_mm": 0.07429082319931127,
+      "min_gap_mm": -0.07429082319976299
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_027",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        0.00019246842845948973,
+        0.0009254897230091861,
+        -7.378428523339877e-05
+      ],
+      "tangent_shift_mm": [
+        0.07378428523464714,
+        -0.19246842845948972
+      ],
+      "replay_speed_factor": 1.3596087480561556,
+      "requested_depth_mm": 0.8431821704899414,
+      "min_gap_mm": -0.8431821704900644
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_028",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        0.00028370061781853045,
+        0.0008262201936794643,
+        -0.00017140148094451846
+      ],
+      "tangent_shift_mm": [
+        0.1714014809456329,
+        -0.28370061781853045
+      ],
+      "replay_speed_factor": 1.1633352510694381,
+      "requested_depth_mm": 0.7439126411600879,
+      "min_gap_mm": -0.7439126411603602
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_029",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        0.00020839149344049652,
+        0.0007364020630815795,
+        -0.00011506135152456854
+      ],
+      "tangent_shift_mm": [
+        0.11506135152556185,
+        -0.2083914934404965
+      ],
+      "replay_speed_factor": 1.4587787279373985,
+      "requested_depth_mm": 0.6540945105622791,
+      "min_gap_mm": -0.6540945105624196
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_030",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        0.00014210212496866632,
+        0.0002627227409022656,
+        0.0003681787199969328
+      ],
+      "tangent_shift_mm": [
+        -0.3681787199965785,
+        -0.1421021249686663
+      ],
+      "replay_speed_factor": 0.9406820006975765,
+      "requested_depth_mm": 0.18041518838361698,
+      "min_gap_mm": -0.1804151883830762
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_031",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        -0.0002830448218655449,
+        0.0005574030009726832,
+        -0.00012061941458386713
+      ],
+      "tangent_shift_mm": [
+        0.120619414584619,
+        0.2830448218655449
+      ],
+      "replay_speed_factor": 0.8476226877678419,
+      "requested_depth_mm": 0.47509544845337526,
+      "min_gap_mm": -0.4530936777417329
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_032",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        0.00026744353276758197,
+        0.000526490487391005,
+        -0.00012916866215594117
+      ],
+      "tangent_shift_mm": [
+        0.12916866215665135,
+        -0.267443532767582
+      ],
+      "replay_speed_factor": 1.1635919559247179,
+      "requested_depth_mm": 0.4441829348716854,
+      "min_gap_mm": -0.44418293487180627
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_033",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        -0.00011900615955117555,
+        0.00023742771858942133,
+        -0.00012578565709187888
+      ],
+      "tangent_shift_mm": [
+        0.12578565709219913,
+        0.11900615955117555
+      ],
+      "replay_speed_factor": 1.0319295823520038,
+      "requested_depth_mm": 0.15512016607010642,
+      "min_gap_mm": -0.15102879618474957
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_034",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        -0.00019584496807872708,
+        0.00047140737600344775,
+        -0.00019592366860963635
+      ],
+      "tangent_shift_mm": [
+        0.19592366861027222,
+        0.1958449680787271
+      ],
+      "replay_speed_factor": 1.026879494764906,
+      "requested_depth_mm": 0.38909982348403827,
+      "min_gap_mm": -0.37620152652028205
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_035",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        -6.925992549866117e-05,
+        0.0005783905633500887,
+        2.7473049004502834e-05
+      ],
+      "tangent_shift_mm": [
+        -0.02747304900372266,
+        0.06925992549866117
+      ],
+      "replay_speed_factor": 1.2547055591976772,
+      "requested_depth_mm": 0.49608301083098055,
+      "min_gap_mm": -0.4952494398943471
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_036",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        -8.116036861594528e-05,
+        0.0005537976438499703,
+        -0.00018790946630666843
+      ],
+      "tangent_shift_mm": [
+        0.18790946630741545,
+        0.08116036861594528
+      ],
+      "replay_speed_factor": 1.087143843129018,
+      "requested_depth_mm": 0.4714900913305715,
+      "min_gap_mm": -0.46959443359784103
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_037",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        0.0003380772597153043,
+        0.0008109755308562269,
+        0.0003285844043336591
+      ],
+      "tangent_shift_mm": [
+        -0.3285844043325652,
+        -0.33807725971530433
+      ],
+      "replay_speed_factor": 1.2833523057707061,
+      "requested_depth_mm": 0.728667978337525,
+      "min_gap_mm": -0.7286679783370386
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_038",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        -0.00033148355495600166,
+        0.00041388010927338704,
+        0.00017082098451052
+      ],
+      "tangent_shift_mm": [
+        -0.17082098450996172,
+        0.3314835549560017
+      ],
+      "replay_speed_factor": 0.9233664821059944,
+      "requested_depth_mm": 0.3315725567544722,
+      "min_gap_mm": -0.30546323443582274
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_039",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        0.00039176544312354483,
+        0.00016042882557680956,
+        -0.00013665557074898446
+      ],
+      "tangent_shift_mm": [
+        0.13665557074920087,
+        -0.39176544312354483
+      ],
+      "replay_speed_factor": 0.7330895234757249,
+      "requested_depth_mm": 0.07812127305747998,
+      "min_gap_mm": -0.07812127305761862
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_040",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        0.00035973776892632924,
+        0.0002643401223061611,
+        0.00020337875241202707
+      ],
+      "tangent_shift_mm": [
+        -0.2033787524116705,
+        -0.35973776892632925
+      ],
+      "replay_speed_factor": 0.7433183944330886,
+      "requested_depth_mm": 0.1820325697872902,
+      "min_gap_mm": -0.182032569786994
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_041",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        -0.00014707093272808247,
+        0.0005794653905122893,
+        -0.0003154915406841089
+      ],
+      "tangent_shift_mm": [
+        0.3154915406848905,
+        0.14707093272808247
+      ],
+      "replay_speed_factor": 1.331668722216241,
+      "requested_depth_mm": 0.4971578379927185,
+      "min_gap_mm": -0.4885764612516141
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_042",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        -0.0003333685664122733,
+        0.0007806360998660159,
+        -0.0001245918328394005
+      ],
+      "tangent_shift_mm": [
+        0.1245918328404535,
+        0.3333685664122733
+      ],
+      "replay_speed_factor": 0.942783742171824,
+      "requested_depth_mm": 0.6983285473467026,
+      "min_gap_mm": -0.6702115255702104
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_043",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        -9.755212316244132e-05,
+        0.00034115064129100204,
+        -0.0001842486713669881
+      ],
+      "tangent_shift_mm": [
+        0.18424867136744827,
+        0.09755212316244133
+      ],
+      "replay_speed_factor": 1.3369589243101245,
+      "requested_depth_mm": 0.2588430887716083,
+      "min_gap_mm": -0.25637171631596417
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_044",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        -0.00034029789211937857,
+        0.0006761964367058641,
+        -8.341445068323822e-05
+      ],
+      "tangent_shift_mm": [
+        0.08341445068415032,
+        0.34029789211937855
+      ],
+      "replay_speed_factor": 0.8279269810506654,
+      "requested_depth_mm": 0.5938888841866063,
+      "min_gap_mm": -0.5656006823302582
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_045",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        0.00011342901585858317,
+        0.00032295715362145883,
+        -5.531246331293424e-05
+      ],
+      "tangent_shift_mm": [
+        0.055312463313369864,
+        -0.11342901585858317
+      ],
+      "replay_speed_factor": 1.0492666973896427,
+      "requested_depth_mm": 0.24064960110223899,
+      "min_gap_mm": -0.24064960110226072
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_046",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        0.00029318734220095435,
+        0.0007167877233277972,
+        0.0002788092809390069
+      ],
+      "tangent_shift_mm": [
+        -0.2788092809380401,
+        -0.2931873422009543
+      ],
+      "replay_speed_factor": 1.0731883549172174,
+      "requested_depth_mm": 0.6344801708090281,
+      "min_gap_mm": -0.6344801708086933
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_047",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        -0.00018595517334382794,
+        0.00040475808302061677,
+        -0.0002476192709790299
+      ],
+      "tangent_shift_mm": [
+        0.2476192709795758,
+        0.18595517334382794
+      ],
+      "replay_speed_factor": 0.9499894457352085,
+      "requested_depth_mm": 0.32245053050113753,
+      "min_gap_mm": -0.31086706990455487
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_048",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        -8.753455289300554e-05,
+        0.0008549699577293881,
+        6.345307105858872e-05
+      ],
+      "tangent_shift_mm": [
+        -0.06345307105743547,
+        0.08753455289300555
+      ],
+      "replay_speed_factor": 1.1195586734132545,
+      "requested_depth_mm": 0.7726624052103285,
+      "min_gap_mm": -0.7686378375967017
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_049",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        0.0003138047394016509,
+        0.0004837080218189154,
+        -0.00017988794737144854
+      ],
+      "tangent_shift_mm": [
+        0.179887947372101,
+        -0.3138047394016509
+      ],
+      "replay_speed_factor": 1.0120588459871054,
+      "requested_depth_mm": 0.4014004692995275,
+      "min_gap_mm": -0.4014004692998174
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_050",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        0.00028160313055949584,
+        0.00026577083334157416,
+        -0.00022730853869547618
+      ],
+      "tangent_shift_mm": [
+        0.22730853869583467,
+        -0.2816031305594958
+      ],
+      "replay_speed_factor": 0.7773019296281356,
+      "requested_depth_mm": 0.18346328082212232,
+      "min_gap_mm": -0.18346328082241567
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_051",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        0.00026119884189425345,
+        0.0001929893923189971,
+        0.00031340259838430934
+      ],
+      "tangent_shift_mm": [
+        -0.31340259838404905,
+        -0.26119884189425346
+      ],
+      "replay_speed_factor": 0.7506358362709286,
+      "requested_depth_mm": 0.1106818398002746,
+      "min_gap_mm": -0.11068183979989762
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_052",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        0.00038462099945567465,
+        0.00019533815174487467,
+        -0.00010328501844892743
+      ],
+      "tangent_shift_mm": [
+        0.10328501844919091,
+        -0.38462099945567463
+      ],
+      "replay_speed_factor": 0.8480728181304505,
+      "requested_depth_mm": 0.11303059922559013,
+      "min_gap_mm": -0.11303059922573855
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_053",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        0.00022003162777781943,
+        0.00039683352396576615,
+        7.358678570273189e-05
+      ],
+      "tangent_shift_mm": [
+        -0.07358678570219662,
+        -0.22003162777781943
+      ],
+      "replay_speed_factor": 1.4903497689552778,
+      "requested_depth_mm": 0.3145259714467202,
+      "min_gap_mm": -0.31452597144665523
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_054",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        -0.00030529698219320745,
+        0.0009305233910080901,
+        -0.0001544946265473412
+      ],
+      "tangent_shift_mm": [
+        0.15449462654859636,
+        0.30529698219320744
+      ],
+      "replay_speed_factor": 1.409583730359975,
+      "requested_depth_mm": 0.8482158384887365,
+      "min_gap_mm": -0.8221481794493175
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_055",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        -0.00036029887743239573,
+        0.0003260660929574344,
+        -0.0002555487570184349
+      ],
+      "tangent_shift_mm": [
+        0.2555487570188747,
+        0.36029887743239575
+      ],
+      "replay_speed_factor": 1.4460202525123218,
+      "requested_depth_mm": 0.24375854043794448,
+      "min_gap_mm": -0.215217793960325
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_056",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        -0.000381757253977717,
+        0.0003376542709531241,
+        0.0003299760315588559
+      ],
+      "tangent_shift_mm": [
+        -0.32997603155840044,
+        0.381757253977717
+      ],
+      "replay_speed_factor": 0.8981542639705324,
+      "requested_depth_mm": 0.25534671843442397,
+      "min_gap_mm": -0.22461327752360483
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_057",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        -0.00019352783939428398,
+        0.00048264462228536783,
+        0.0001605152637513502
+      ],
+      "tangent_shift_mm": [
+        -0.16051526375069916,
+        0.19352783939428397
+      ],
+      "replay_speed_factor": 1.1339818879576011,
+      "requested_depth_mm": 0.4003370697664391,
+      "min_gap_mm": -0.38761356720943796
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_058",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        -0.00010392599754191656,
+        0.0004709333557115651,
+        -0.00020207006910315454
+      ],
+      "tangent_shift_mm": [
+        0.20207006910378977,
+        0.10392599754191656
+      ],
+      "replay_speed_factor": 1.211655580765508,
+      "requested_depth_mm": 0.3886258031921473,
+      "min_gap_mm": -0.38487612282376304
+    },
+    {
+      "sequence": "Joint_04_342b0fc9_synthetic_059",
+      "parent": "Joint_04_342b0fc9",
+      "split": "validation",
+      "fixture_shift_world_m": [
+        0.00020285905114277204,
+        0.0005930217962193122,
+        8.434019420847482e-05
+      ],
+      "tangent_shift_mm": [
+        -0.08434019420767491,
+        -0.20285905114277203
+      ],
+      "replay_speed_factor": 0.6874693028539055,
+      "requested_depth_mm": 0.5107142437002806,
+      "min_gap_mm": -0.5107142437001944
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_000",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        0.00026137098251986833,
+        0.0003604927703232979,
+        -0.00011630734328116055
+      ],
+      "tangent_shift_mm": [
+        0.11630734328116055,
+        -0.26137098251986834
+      ],
+      "replay_speed_factor": 1.3911316399378515,
+      "requested_depth_mm": 0.27649292863024805,
+      "min_gap_mm": -0.2764929286303008
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_001",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        -0.00016758511812951703,
+        0.0002905670756925568,
+        -0.0003900450002484513
+      ],
+      "tangent_shift_mm": [
+        0.39004500024845135,
+        0.16758511812951704
+      ],
+      "replay_speed_factor": 0.907097984901374,
+      "requested_depth_mm": 0.20656723399950694,
+      "min_gap_mm": -0.19756615946507455
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_002",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        9.23579507932587e-05,
+        0.0004401656683703804,
+        -0.0002573402626307456
+      ],
+      "tangent_shift_mm": [
+        0.2573402626307456,
+        -0.0923579507932587
+      ],
+      "replay_speed_factor": 0.947204332111955,
+      "requested_depth_mm": 0.3561658266773305,
+      "min_gap_mm": -0.3561658266773015
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_003",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        -0.00012387725400282267,
+        0.0004060675357454407,
+        0.00012152761549686625
+      ],
+      "tangent_shift_mm": [
+        -0.12152761549686625,
+        0.12387725400282268
+      ],
+      "replay_speed_factor": 0.8913947243984911,
+      "requested_depth_mm": 0.32206769405239083,
+      "min_gap_mm": -0.3168425023872772
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_004",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        -0.00033163245208328265,
+        0.0002619223532450092,
+        -0.00018403711971540172
+      ],
+      "tangent_shift_mm": [
+        0.1840371197154017,
+        0.3316324520832826
+      ],
+      "replay_speed_factor": 0.9081007339741347,
+      "requested_depth_mm": 0.17792251155195932,
+      "min_gap_mm": -0.15274030230757638
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_005",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        -0.00034553568565117375,
+        0.0005229443028867219,
+        -1.4297810162361979e-05
+      ],
+      "tangent_shift_mm": [
+        0.014297810162361979,
+        0.34553568565117376
+      ],
+      "replay_speed_factor": 0.6923995478538648,
+      "requested_depth_mm": 0.43894446119367203,
+      "min_gap_mm": -0.41108343286873966
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_006",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        0.0003257601242019319,
+        0.0001537954205643902,
+        -0.0001762505344652585
+      ],
+      "tangent_shift_mm": [
+        0.1762505344652585,
+        -0.3257601242019319
+      ],
+      "replay_speed_factor": 0.8372129314226826,
+      "requested_depth_mm": 0.06979557887134033,
+      "min_gap_mm": -0.06979557887132336
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_007",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        0.00033963862945716317,
+        0.00019211829574227872,
+        0.0001587928058912178
+      ],
+      "tangent_shift_mm": [
+        -0.1587928058912178,
+        -0.33963862945716317
+      ],
+      "replay_speed_factor": 1.1848703835941392,
+      "requested_depth_mm": 0.10811845404922886,
+      "min_gap_mm": -0.10811845404923302
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_008",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        -0.00024414381259328855,
+        0.0004953697462094814,
+        0.0002743460038828128
+      ],
+      "tangent_shift_mm": [
+        -0.27434600388281283,
+        0.24414381259328855
+      ],
+      "replay_speed_factor": 0.7965857748462527,
+      "requested_depth_mm": 0.4113699045164315,
+      "min_gap_mm": -0.3937345745989187
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_009",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        -0.00023874267675607995,
+        0.00021646128522955052,
+        3.677626431034148e-05
+      ],
+      "tangent_shift_mm": [
+        -0.03677626431034148,
+        0.23874267675607996
+      ],
+      "replay_speed_factor": 0.8429698105527925,
+      "requested_depth_mm": 0.13246144353650066,
+      "min_gap_mm": -0.11674771082594083
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_010",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        -0.00013863524404388982,
+        0.0006111105339443677,
+        0.000351861748149379
+      ],
+      "tangent_shift_mm": [
+        -0.351861748149379,
+        0.13863524404388983
+      ],
+      "replay_speed_factor": 1.0687329346177985,
+      "requested_depth_mm": 0.5271106922513178,
+      "min_gap_mm": -0.5193994421571547
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_011",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        0.00011728057806205839,
+        0.0009044908978035936,
+        -0.00039056797350444327
+      ],
+      "tangent_shift_mm": [
+        0.3905679735044433,
+        -0.11728057806205838
+      ],
+      "replay_speed_factor": 1.0664195931817002,
+      "requested_depth_mm": 0.8204910561105437,
+      "min_gap_mm": -0.8204910561105949
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_012",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        0.00036743830621626056,
+        0.00020039331196901805,
+        -0.0003957744914651893
+      ],
+      "tangent_shift_mm": [
+        0.3957744914651893,
+        -0.36743830621626056
+      ],
+      "replay_speed_factor": 0.6514633839383468,
+      "requested_depth_mm": 0.11639347027596818,
+      "min_gap_mm": -0.11639347027592173
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_013",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        -0.0003634155659256194,
+        0.0006726248708421971,
+        -1.2025907361625787e-05
+      ],
+      "tangent_shift_mm": [
+        0.012025907361625787,
+        0.3634155659256194
+      ],
+      "replay_speed_factor": 1.1203900347832008,
+      "requested_depth_mm": 0.5886250291491473,
+      "min_gap_mm": -0.5582420555159161
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_014",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        -0.00037127888983990375,
+        0.00018558763131289088,
+        -0.000167144967748315
+      ],
+      "tangent_shift_mm": [
+        0.167144967748315,
+        0.37127888983990376
+      ],
+      "replay_speed_factor": 1.1519464270217155,
+      "requested_depth_mm": 0.10158778961984102,
+      "min_gap_mm": -0.07283945240195439
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_015",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        -0.0002453986760449919,
+        0.0007071304664174194,
+        0.00016642361570619438
+      ],
+      "tangent_shift_mm": [
+        -0.16642361570619438,
+        0.24539867604499188
+      ],
+      "replay_speed_factor": 1.021686103635072,
+      "requested_depth_mm": 0.6231306247243695,
+      "min_gap_mm": -0.6043195067815268
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_016",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        -0.00010048543183909653,
+        0.0007467119101810706,
+        0.0002508096406434553
+      ],
+      "tangent_shift_mm": [
+        -0.2508096406434553,
+        0.10048543183909653
+      ],
+      "replay_speed_factor": 1.0716966022516567,
+      "requested_depth_mm": 0.6627120684880208,
+      "min_gap_mm": -0.6581238986613557
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_017",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        -0.00037584947290248484,
+        0.00019869985254722568,
+        -0.00038963069778060166
+      ],
+      "tangent_shift_mm": [
+        0.38963069778060166,
+        0.3758494729024848
+      ],
+      "replay_speed_factor": 1.3999841319968214,
+      "requested_depth_mm": 0.1147000108541758,
+      "min_gap_mm": -0.08543181114172137
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_018",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        -0.00010216205627687746,
+        0.00034695000500005365,
+        -0.00021779667807875913
+      ],
+      "tangent_shift_mm": [
+        0.21779667807875913,
+        0.10216205627687747
+      ],
+      "replay_speed_factor": 0.9723813566764954,
+      "requested_depth_mm": 0.26295016330700377,
+      "min_gap_mm": -0.26017909904084174
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_019",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        -0.00021770540969915042,
+        0.0003553343657042628,
+        -3.2181000588516915e-05
+      ],
+      "tangent_shift_mm": [
+        0.03218100058851692,
+        0.21770540969915042
+      ],
+      "replay_speed_factor": 1.3299302386506955,
+      "requested_depth_mm": 0.27133452401121294,
+      "min_gap_mm": -0.25702487573841065
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_020",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        7.823419023523453e-05,
+        0.00032536598917740073,
+        4.7143080453939056e-05
+      ],
+      "tangent_shift_mm": [
+        -0.04714308045393906,
+        -0.07823419023523454
+      ],
+      "replay_speed_factor": 1.2427135420546933,
+      "requested_depth_mm": 0.24136614748435087,
+      "min_gap_mm": -0.24136614748437868
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_021",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        -4.855473548574718e-05,
+        0.000803955123919028,
+        7.999095734588701e-05
+      ],
+      "tangent_shift_mm": [
+        -0.07999095734588701,
+        0.04855473548574718
+      ],
+      "replay_speed_factor": 1.2337385946309896,
+      "requested_depth_mm": 0.7199552822259782,
+      "min_gap_mm": -0.7199552822260146
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_022",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        5.38485089001135e-05,
+        0.0007445071728997366,
+        0.00031715137552018407
+      ],
+      "tangent_shift_mm": [
+        -0.3171513755201841,
+        -0.0538485089001135
+      ],
+      "replay_speed_factor": 0.7687852454493066,
+      "requested_depth_mm": 0.6605073312066867,
+      "min_gap_mm": -0.6605073312067056
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_023",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        0.00029918496669318197,
+        0.0005711223789162502,
+        -0.0003097068023171825
+      ],
+      "tangent_shift_mm": [
+        0.3097068023171825,
+        -0.29918496669318195
+      ],
+      "replay_speed_factor": 0.9160029318486156,
+      "requested_depth_mm": 0.4871225372232005,
+      "min_gap_mm": -0.4871225372231613
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_024",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        1.843367092755388e-05,
+        0.0001645507499595607,
+        -0.0002859617636722166
+      ],
+      "tangent_shift_mm": [
+        0.2859617636722166,
+        -0.01843367092755388
+      ],
+      "replay_speed_factor": 1.1678050020240376,
+      "requested_depth_mm": 0.08055090826651083,
+      "min_gap_mm": -0.08055090826653011
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_025",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        0.00019077869967294554,
+        0.0008301508741915814,
+        1.7318714549149406e-05
+      ],
+      "tangent_shift_mm": [
+        -0.017318714549149405,
+        -0.19077869967294553
+      ],
+      "replay_speed_factor": 0.7097149152520092,
+      "requested_depth_mm": 0.7461510324985315,
+      "min_gap_mm": -0.746151032498532
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_026",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        0.00022729751951457847,
+        0.0005096846344653597,
+        0.00011495479943037612
+      ],
+      "tangent_shift_mm": [
+        -0.11495479943037612,
+        -0.22729751951457847
+      ],
+      "replay_speed_factor": 1.2407666970927393,
+      "requested_depth_mm": 0.42568479277230986,
+      "min_gap_mm": -0.42568479277227395
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_027",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        0.0002042513698075065,
+        0.0009310920722348251,
+        -0.0002992498184031681
+      ],
+      "tangent_shift_mm": [
+        0.2992498184031681,
+        -0.2042513698075065
+      ],
+      "replay_speed_factor": 0.9298701862412467,
+      "requested_depth_mm": 0.8470922305417753,
+      "min_gap_mm": -0.8470922305418014
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_028",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        -0.0003987484537556011,
+        0.0003918785028569098,
+        -0.00012453442511821178
+      ],
+      "tangent_shift_mm": [
+        0.12453442511821178,
+        0.3987484537556011
+      ],
+      "replay_speed_factor": 1.015800507834373,
+      "requested_depth_mm": 0.3078786611638599,
+      "min_gap_mm": -0.275373225818439
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_029",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        0.00018246540507462896,
+        0.0007717285685468003,
+        -0.0002428595790429162
+      ],
+      "tangent_shift_mm": [
+        0.24285957904291622,
+        -0.18246540507462897
+      ],
+      "replay_speed_factor": 0.8756123307813232,
+      "requested_depth_mm": 0.6877287268537504,
+      "min_gap_mm": -0.6877287268537424
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_030",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        0.00039805712705811723,
+        0.0002072356893154878,
+        0.0003642456392651949
+      ],
+      "tangent_shift_mm": [
+        -0.3642456392651949,
+        -0.39805712705811724
+      ],
+      "replay_speed_factor": 1.0994525117490388,
+      "requested_depth_mm": 0.12323584762243796,
+      "min_gap_mm": -0.12323584762241599
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_031",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        0.00025581329124284866,
+        0.00070601985265289,
+        -0.00026323232382935105
+      ],
+      "tangent_shift_mm": [
+        0.263232323829351,
+        -0.2558132912428487
+      ],
+      "replay_speed_factor": 1.0046981727446538,
+      "requested_depth_mm": 0.6220200109598402,
+      "min_gap_mm": -0.6220200109597895
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_032",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        0.00039519032644129805,
+        0.0007660281530193558,
+        -6.376808300626785e-05
+      ],
+      "tangent_shift_mm": [
+        0.06376808300626785,
+        -0.39519032644129803
+      ],
+      "replay_speed_factor": 0.6698584411611123,
+      "requested_depth_mm": 0.682028311326306,
+      "min_gap_mm": -0.6820283113263548
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_033",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        2.7221776900413108e-05,
+        0.0001966180875702867,
+        -6.819602906405715e-05
+      ],
+      "tangent_shift_mm": [
+        0.06819602906405714,
+        -0.02722177690041311
+      ],
+      "replay_speed_factor": 1.0789872587999787,
+      "requested_depth_mm": 0.11261824587723686,
+      "min_gap_mm": -0.11261824587727175
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_034",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        0.0002461616038496902,
+        0.0005631400859612867,
+        -0.00023710697161414307
+      ],
+      "tangent_shift_mm": [
+        0.23710697161414307,
+        -0.2461616038496902
+      ],
+      "replay_speed_factor": 0.7272720109325186,
+      "requested_depth_mm": 0.47914024426823676,
+      "min_gap_mm": -0.47914024426820573
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_035",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        -7.434173892673357e-05,
+        0.0007687310284682393,
+        -4.475786733075471e-06
+      ],
+      "tangent_shift_mm": [
+        0.004475786733075471,
+        0.07434173892673357
+      ],
+      "replay_speed_factor": 0.8890860316487932,
+      "requested_depth_mm": 0.6847311867751894,
+      "min_gap_mm": -0.6826351309448595
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_036",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        0.00037391523154572145,
+        0.0007809648842921958,
+        0.00016558474460981012
+      ],
+      "tangent_shift_mm": [
+        -0.16558474460981012,
+        -0.3739152315457214
+      ],
+      "replay_speed_factor": 1.2628183590052047,
+      "requested_depth_mm": 0.6969650425991459,
+      "min_gap_mm": -0.6969650425991957
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_037",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        5.975767110105057e-05,
+        0.00022526983066335405,
+        -0.0001820428150879545
+      ],
+      "tangent_shift_mm": [
+        0.1820428150879545,
+        -0.05975767110105057
+      ],
+      "replay_speed_factor": 1.4818297339720852,
+      "requested_depth_mm": 0.14126998897030418,
+      "min_gap_mm": -0.14126998897034945
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_038",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        -0.00033336708314307695,
+        0.0003218631200881364,
+        -0.00014760472504214329
+      ],
+      "tangent_shift_mm": [
+        0.14760472504214328,
+        0.33336708314307695
+      ],
+      "replay_speed_factor": 0.8334285478144289,
+      "requested_depth_mm": 0.23786327839508653,
+      "min_gap_mm": -0.21221099356989673
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_039",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        5.664519409674273e-06,
+        0.0006452485304976204,
+        -9.653654076758284e-05
+      ],
+      "tangent_shift_mm": [
+        0.09653654076758283,
+        -0.0056645194096742735
+      ],
+      "replay_speed_factor": 1.0864900691163948,
+      "requested_depth_mm": 0.5612486888045706,
+      "min_gap_mm": -0.561248688804583
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_040",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        -0.00026933296753582436,
+        0.000769021618546251,
+        -0.0003891718455001909
+      ],
+      "tangent_shift_mm": [
+        0.3891718455001909,
+        0.26933296753582436
+      ],
+      "replay_speed_factor": 0.994786158439768,
+      "requested_depth_mm": 0.6850217768532012,
+      "min_gap_mm": -0.6635219588887676
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_041",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        0.0002739822550442045,
+        0.0006295993515237727,
+        -0.0003737960757378431
+      ],
+      "tangent_shift_mm": [
+        0.3737960757378431,
+        -0.2739822550442045
+      ],
+      "replay_speed_factor": 1.4897734964998102,
+      "requested_depth_mm": 0.5455995098307228,
+      "min_gap_mm": -0.5455995098306854
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_042",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        0.0003609480193025193,
+        0.000830652818145297,
+        -8.730866184698127e-05
+      ],
+      "tangent_shift_mm": [
+        0.08730866184698127,
+        -0.3609480193025193
+      ],
+      "replay_speed_factor": 1.0291700382399107,
+      "requested_depth_mm": 0.7466529764522472,
+      "min_gap_mm": -0.7466529764522667
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_043",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        -0.0001616643782088273,
+        0.0008053554989173975,
+        5.4822153099579055e-06
+      ],
+      "tangent_shift_mm": [
+        -0.005482215309957905,
+        0.1616643782088273
+      ],
+      "replay_speed_factor": 0.8859033905734459,
+      "requested_depth_mm": 0.7213556572243477,
+      "min_gap_mm": -0.7103889288811778
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_044",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        0.0003254832666708417,
+        0.0008358185557297909,
+        6.396818347084132e-05
+      ],
+      "tangent_shift_mm": [
+        -0.06396818347084132,
+        -0.3254832666708417
+      ],
+      "replay_speed_factor": 1.3569884673203263,
+      "requested_depth_mm": 0.7518187140367409,
+      "min_gap_mm": -0.7518187140367337
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_045",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        -0.0003895719795465803,
+        0.0002659214389144061,
+        8.214965026967847e-05
+      ],
+      "tangent_shift_mm": [
+        -0.08214965026967846,
+        0.3895719795465803
+      ],
+      "replay_speed_factor": 0.8714713844229623,
+      "requested_depth_mm": 0.1819215972213562,
+      "min_gap_mm": -0.15095435251646877
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_046",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        -0.00026047285574576704,
+        0.0006007818667179622,
+        0.00022523761506154828
+      ],
+      "tangent_shift_mm": [
+        -0.22523761506154827,
+        0.26047285574576706
+      ],
+      "replay_speed_factor": 1.0594600739706705,
+      "requested_depth_mm": 0.5167820250249123,
+      "min_gap_mm": -0.49699875875062377
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_047",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        0.00015362929952691202,
+        0.0008700093404267933,
+        -0.0002065722468738106
+      ],
+      "tangent_shift_mm": [
+        0.2065722468738106,
+        -0.153629299526912
+      ],
+      "replay_speed_factor": 0.7465682996065821,
+      "requested_depth_mm": 0.7860094987337435,
+      "min_gap_mm": -0.7860094987337528
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_048",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        1.2382959061725817e-06,
+        0.00041990974908254447,
+        0.0003049039067792458
+      ],
+      "tangent_shift_mm": [
+        -0.3049039067792458,
+        -0.0012382959061725818
+      ],
+      "replay_speed_factor": 1.1028084735630712,
+      "requested_depth_mm": 0.3359099073894946,
+      "min_gap_mm": -0.33590990738952
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_049",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        -0.0001735611467175876,
+        0.000619597515776588,
+        -7.040150612305774e-05
+      ],
+      "tangent_shift_mm": [
+        0.07040150612305773,
+        0.1735611467175876
+      ],
+      "replay_speed_factor": 0.9267416803114088,
+      "requested_depth_mm": 0.5355976740835382,
+      "min_gap_mm": -0.5243690534559979
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_050",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        0.0001078353821348787,
+        0.0008931042933082046,
+        0.0002652990783880621
+      ],
+      "tangent_shift_mm": [
+        -0.2652990783880621,
+        -0.1078353821348787
+      ],
+      "replay_speed_factor": 1.2124657526008968,
+      "requested_depth_mm": 0.8091044516151548,
+      "min_gap_mm": -0.8091044516151946
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_051",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        -0.0003216306901296777,
+        0.0008158343957571246,
+        0.0003349843111309618
+      ],
+      "tangent_shift_mm": [
+        -0.3349843111309618,
+        0.3216306901296777
+      ],
+      "replay_speed_factor": 0.7854348077147109,
+      "requested_depth_mm": 0.7318345540640748,
+      "min_gap_mm": -0.7048986047718605
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_052",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        -9.370500538012278e-05,
+        0.0007621672880785954,
+        -6.257096312793326e-05
+      ],
+      "tangent_shift_mm": [
+        0.06257096312793325,
+        0.09370500538012277
+      ],
+      "replay_speed_factor": 1.4517105043887604,
+      "requested_depth_mm": 0.6781674463855455,
+      "min_gap_mm": -0.6741772512367517
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_053",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        0.00014367024445861016,
+        0.0008263643993748191,
+        -0.00039371553853094054
+      ],
+      "tangent_shift_mm": [
+        0.39371553853094055,
+        -0.14367024445861015
+      ],
+      "replay_speed_factor": 0.7626659112889352,
+      "requested_depth_mm": 0.7423645576817692,
+      "min_gap_mm": -0.7423645576817295
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_054",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        7.539210048944745e-05,
+        0.0009081366095689342,
+        0.0002800067939478075
+      ],
+      "tangent_shift_mm": [
+        -0.28000679394780753,
+        -0.07539210048944744
+      ],
+      "replay_speed_factor": 0.9325636162120471,
+      "requested_depth_mm": 0.8241367678758843,
+      "min_gap_mm": -0.8241367678758492
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_055",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        0.0003248192271895059,
+        0.0009031072107225791,
+        0.00039251667986795667
+      ],
+      "tangent_shift_mm": [
+        -0.3925166798679567,
+        -0.3248192271895059
+      ],
+      "replay_speed_factor": 0.713622653197389,
+      "requested_depth_mm": 0.8191073690295293,
+      "min_gap_mm": -0.8191073690295702
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_056",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        -0.000205599750903547,
+        0.0007004272865786576,
+        -0.00011119400453041294
+      ],
+      "tangent_shift_mm": [
+        0.11119400453041295,
+        0.20559975090354699
+      ],
+      "replay_speed_factor": 0.8599905896896902,
+      "requested_depth_mm": 0.6164274448856077,
+      "min_gap_mm": -0.6016097278838256
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_057",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        0.00013653197473380423,
+        0.00028659087493596616,
+        -0.00018474439154195598
+      ],
+      "tangent_shift_mm": [
+        0.184744391541956,
+        -0.13653197473380424
+      ],
+      "replay_speed_factor": 1.064435497408288,
+      "requested_depth_mm": 0.20259103324291627,
+      "min_gap_mm": -0.20259103324293815
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_058",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        0.00020206629300090553,
+        0.00015489480403589422,
+        -7.771061805905466e-05
+      ],
+      "tangent_shift_mm": [
+        0.07771061805905466,
+        -0.20206629300090553
+      ],
+      "replay_speed_factor": 0.9900702787030529,
+      "requested_depth_mm": 0.07089496234284436,
+      "min_gap_mm": -0.07089496234280455
+    },
+    {
+      "sequence": "Joint_05_232a274f_synthetic_059",
+      "parent": "Joint_05_232a274f",
+      "split": "test",
+      "fixture_shift_world_m": [
+        3.6453137596435424e-05,
+        0.0004769260803550358,
+        -0.00035645296741816456
+      ],
+      "tangent_shift_mm": [
+        0.35645296741816457,
+        -0.036453137596435425
+      ],
+      "replay_speed_factor": 1.3070386854709395,
+      "requested_depth_mm": 0.39292623866198595,
+      "min_gap_mm": -0.39292623866193915
+    }
+  ],
+  "measured_packets": 365,
+  "synthetic_packets": 21900,
+  "independent_measured_episodes": 5,
+  "synthetic_sequence_count": 300,
+  "mujoco_version": "3.17.0"
+}

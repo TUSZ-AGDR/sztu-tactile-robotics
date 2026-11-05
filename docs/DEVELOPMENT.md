@@ -23,6 +23,14 @@ lab2/
   examples/
   student_policy.py
   ...
+lab3/tactile_analysis/              Tactile recording analysis
+lab4/                              Replay and cross-modal learning
+  README.md / README.zh-CN.md       Detailed English / Chinese walkthroughs
+  practice.en.ipynb / practice.ipynb
+  datasets/                        Curated measured and synthetic inputs
+  replay_assets/                   Compact source states and deduplicated meshes
+  figures/                         Curated teaching reference illustrations
+  outputs/                         Ignored student runs and checkpoints
 dexh13-tactile-sim-dex13simv1/       Shared hand model and simulation code
 docs/
   DEVELOPMENT.md
@@ -55,3 +63,19 @@ python -m pytest lab2/tests -q
 The local folder remains `Pacini_Course`; the GitHub repository can be named `sztu-tactile-robotics`. Do not embed a developer's absolute folder path in course scripts.
 
 The current course materials and model assets are prepared locally. Creating a GitHub remote and uploading the repository are separate steps.
+
+## Lab 4 dependency isolation
+
+Lab 4's full replay environment pins MuJoCo 3.17.0 in `lab4/requirements.txt`.
+The earlier labs retain their 3.8.0 pin: that version returned inconsistent
+signed-distance results for some Lab 4 mesh queries. Use `.venv-lab4` for replay.
+The root requirements include `lab4/requirements-ml.txt` so prepared-feature
+training works without changing the previous labs' simulator version. This is
+an intentional exception to including the full per-lab requirements at the root.
+
+Lab 4's distributed NPZ files, compact source states and reference figures are
+curated teaching inputs. Do not add new training runs or checkpoints from
+`lab4/outputs/` to Git. Keep measured/generated provenance and parent-level
+splits when refreshing the data. Run `python -m lab4.verify` and
+`python -m unittest lab4.test_pipeline -v`, and verify both notebook languages
+have identical code cells.

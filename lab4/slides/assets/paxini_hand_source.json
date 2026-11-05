@@ -1,0 +1,131 @@
+{
+  "model": "PAXINI DEXH13 left hand",
+  "source_urdf": "assets/lerobot/source.urdf",
+  "urdf_sha256": "327f24a434bd12389bbdddd8c493dd81922d14d19016b6303b75c7d1f1a93155",
+  "source_mjcf": "assets/lerobot/mink_scene.xml",
+  "mjcf_sha256": "f3da48bf9a5ee122a2658baff0feff4e59bcb352b816fa92f05a9ba4d8e3589f",
+  "sensor_id": 3,
+  "sensor_link": "left_index_tactile_link3",
+  "sensor_visual": "left_index_tactile_link3_visual_0",
+  "sensor_urdf_mesh": "package://dexman_description/meshes/dh13/left/left_index_tactile_link_2.STL",
+  "pose": "URDF zero pose for sensor localization; not a recorded hand-pose image",
+  "render_styling": "Grey structure, dark tactile modules, cyan ID3; display colors only",
+  "meshes": [
+    {
+      "mesh": "sdk_0504b8c2e18feb6e",
+      "sha256": "cc2d042bd2dd6c43ef5579c4950cf3ce48b4a2735f50f42f43d72c3ab32a7117"
+    },
+    {
+      "mesh": "sdk_13d16a7cc9a6ee60",
+      "sha256": "bdf31a9adb9bb54256c3d72b0cf1f48580850b3e8bb2f8f997e33202031fa800"
+    },
+    {
+      "mesh": "sdk_25a277315c5678eb",
+      "sha256": "293e8ed3f358ad912c55207c7527c0160a6c84ee50d5fabcab8f8e4a43f107a6"
+    },
+    {
+      "mesh": "sdk_26eca3e86fdd5101",
+      "sha256": "4f0189348bb538485faf2d1f67daa3361157ac2641a2a487ab3c9efd370808ca"
+    },
+    {
+      "mesh": "sdk_2a78be5975578147",
+      "sha256": "66e81e408567819cb98fb8b6be86b8031ff7692b7f0a9dcaf7d054825e54b229"
+    },
+    {
+      "mesh": "sdk_314b64de6b26c03c",
+      "sha256": "4b63275cc6779741318b9e367b7db62864640a5c21787c9b842de500420a2cf6"
+    },
+    {
+      "mesh": "sdk_3871cfd1bc661990",
+      "sha256": "e7dc57c3644238895e609bbfc73cb4c9dbae5051ecb89174803d08f1590c0ba7"
+    },
+    {
+      "mesh": "sdk_3af85977fe3158cc",
+      "sha256": "a7577447ed925a76d73d41df6f23822cf264d2b954920603171ea8b314f45ada"
+    },
+    {
+      "mesh": "sdk_3e6911909a761074",
+      "sha256": "e99f7250842f51ac27afef14b72bbd889ac2289f70d1f4be178e944dd1051f5a"
+    },
+    {
+      "mesh": "sdk_51dfc868b4616506",
+      "sha256": "0e04bffa501d812243c18ebdf418549b12d7e190c6d103fa5531b439cca3b6b4"
+    },
+    {
+      "mesh": "sdk_5a24313013b69ed6",
+      "sha256": "587aceafdec3aa311e2a3459a9ac273e637f18e7c05ce70757662d9fc2e7f5ae"
+    },
+    {
+      "mesh": "sdk_71aef4ee9cf0e498",
+      "sha256": "8a2d251d646a3c22b3c96feb31987a0db1e71b289090c36faa1f34a51c821bc3"
+    },
+    {
+      "mesh": "sdk_750eec70a91c942d",
+      "sha256": "266871a08f449eedd3052f4476d8b4b58897321dd43dbd2355801430873290c6"
+    },
+    {
+      "mesh": "sdk_949a231ea3d319bc",
+      "sha256": "058c3c8017bfab4a8d55cd4850adcdd65841927b4bccad2b6db28fe16a17a455"
+    },
+    {
+      "mesh": "sdk_95355b325f74669d",
+      "sha256": "4582d3de15630885ceede40d761dc996e555a9fb99eb169f3b89c206f54435d4"
+    },
+    {
+      "mesh": "sdk_9963884bc490f51b",
+      "sha256": "8b884d95cfdbf9a3897264db50972a0f997732645114a383b7e4aba7d1f4cfa8"
+    },
+    {
+      "mesh": "sdk_9a59a88abf2c7794",
+      "sha256": "0a17bc3a96512564fbdcb22007d96fac1bbdd249b3a5926559f0544b4b1815ca"
+    },
+    {
+      "mesh": "sdk_9d12e73343160b4f",
+      "sha256": "260c8374a4fa108f6e3d822ace13a53b26516f2bb65ef75f4e8952eff986673d"
+    },
+    {
+      "mesh": "sdk_a61915795425ca0f",
+      "sha256": "37c7759174b676ae11c90291eb28d583ebb75973726ce8c492da858a97330890"
+    },
+    {
+      "mesh": "sdk_a863794a6683deda",
+      "sha256": "41e9451a2629967a97d0162ce7940635320c8775a20b21460aff56ae57eb7ab7"
+    },
+    {
+      "mesh": "sdk_b18c085e14007bf9",
+      "sha256": "ab6d5be2cce8da00a3ab555d2abb32660b195656316db27d71d850da556589d3"
+    },
+    {
+      "mesh": "sdk_b6559e2bbf1860c7",
+      "sha256": "eaf2c018bfa73009877ff18379a486da942717fb91eabda7e2e838a2a9c7c3d2"
+    },
+    {
+      "mesh": "sdk_b838065bf6708eea",
+      "sha256": "8135e3a4a282cc43ab8a5d2183f73b3acf7b47423aab9e030ab58a9129dd5904"
+    },
+    {
+      "mesh": "sdk_bb1d2eb1c17b1ac3",
+      "sha256": "73b99a219df30d16b1e9647bf8583866d79fd80f068d7c82ebf4a86798a29019"
+    },
+    {
+      "mesh": "sdk_c70f39f2ec527de4",
+      "sha256": "1a49d4473d1e78b70870ac3f0b97b7e86f2633ca70e1d8fd587255923877a526"
+    },
+    {
+      "mesh": "sdk_c9fee2c91d4179a4",
+      "sha256": "d4d70962eb7f43a25f5e06dace05d8e4f18a64bfeb1c5eb7e45d8fca2a92f222"
+    },
+    {
+      "mesh": "sdk_e6f80113331d8001",
+      "sha256": "b95716195153e500d2f0bb04e6ef64b084a8a816aa8d0117c9c640c6ba6c6ea9"
+    },
+    {
+      "mesh": "sdk_f972b0789fde6cea",
+      "sha256": "81ad4d4f69b3a52cf4e5fde5e10cb77220340f1d930305cfc48244890412092f"
+    },
+    {
+      "mesh": "sdk_ffeb2c7275e7d73a",
+      "sha256": "8d5ecec18254adb8cd04c11eed1f231d3be30a9615442948c8448fbffc69d958"
+    }
+  ]
+}
