@@ -1,0 +1,24 @@
+{
+  "camera": {
+    "azimuth": 20,
+    "elevation": -7,
+    "distance": 0.42,
+    "lookat": [
+      0.003221006520212337,
+      0.06404401766564163,
+      0.11753991490033557
+    ]
+  },
+  "image_size": [
+    688,
+    792
+  ],
+  "sensor_bbox": [
+    378,
+    33,
+    458,
+    116
+  ],
+  "sensor_link": "left_index_tactile_link3",
+  "pose": "Zero joint positions; palm rotated upright for display. Highlight colors are editorial."
+}

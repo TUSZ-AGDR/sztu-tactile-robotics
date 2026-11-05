@@ -1,0 +1,354 @@
+{
+  "schema_version": 1,
+  "format": "packet-sampled saved simulation states",
+  "sources": [
+    {
+      "parent": "Joint_01_fef55ae7",
+      "packets": 81,
+      "source_sha256": {
+        "paired.h5": "4aaed24efa30dc72b886747030680687b1d95d3d77912cef4fb20f90716dfc4c",
+        "simulation/simulation.h5": "0cd114d28c503954bade8b5aa5dea62d23023c014a1fd316074ca014432b89f5",
+        "model/model.xml": "9a18efecee4666eac976c87e7f7f72230a4c8c36076e76a40152e71f70c162b2",
+        "model/model_manifest.json": "f1f762dc0759cd8073fe6bcdd32f6d260905c2c5798d521d4892017488c2b04d"
+      }
+    },
+    {
+      "parent": "Joint_02_9cc79209",
+      "packets": 70,
+      "source_sha256": {
+        "paired.h5": "0ec051e02b95da8b028e475d8d97d5fba67bda1ffa840f43a50758287124dd07",
+        "simulation/simulation.h5": "3f2ef452e025399367de3fc1f6a37aaa304c2f866b52507496489410bfa85a22",
+        "model/model.xml": "5817515d9eabba0167edacf709430b296c73e187a6e540076aa768e72719851b",
+        "model/model_manifest.json": "4b6c1e1b3efccc9f5d0f4f61a266e7f43f1a4360d65e4bc6f9d47c46a14fb69d"
+      }
+    },
+    {
+      "parent": "Joint_03_c28e9178",
+      "packets": 72,
+      "source_sha256": {
+        "paired.h5": "35eab8e9225d3c942809560ff772f1557c8b1c8a58e5f9435ee352f5ecdefd41",
+        "simulation/simulation.h5": "f0659d432f34c7e8c574932f29197832f648696d5a84fa60e613e962d54587b1",
+        "model/model.xml": "856b0eae066409825b5fdc6f1e2900cb0407f03b9be35f677ff907e59756abea",
+        "model/model_manifest.json": "1d1b83b38f56035b1450952082f88ca2bf3d5b5d710a65bd37095d32a160a212"
+      }
+    },
+    {
+      "parent": "Joint_04_342b0fc9",
+      "packets": 71,
+      "source_sha256": {
+        "paired.h5": "e545ef44ef1c23b547d9815d2366d970cb60498253b64269c18ed146e63e05af",
+        "simulation/simulation.h5": "fdf5165f768e5fddd888507077d7f04d0640a43f064a538caba35ec708a0969c",
+        "model/model.xml": "b2029d2a7a3f83f0c6f7bfbe9fe8047836197f1b4c0394ab600910ae9f37b96c",
+        "model/model_manifest.json": "533c83af8e86b516da07a33057bb71e15017a0871cb801926eaf6b371def7b39"
+      }
+    },
+    {
+      "parent": "Joint_05_232a274f",
+      "packets": 71,
+      "source_sha256": {
+        "paired.h5": "ba3cc27d7b83faa5a8d1f0a3b4fe293deea45960e1883189889673ed445a7772",
+        "simulation/simulation.h5": "0f68196417723e8fc6d0dd7ada5fdd7d05335b39ef605d41e37fb608033b18d9",
+        "model/model.xml": "b2029d2a7a3f83f0c6f7bfbe9fe8047836197f1b4c0394ab600910ae9f37b96c",
+        "model/model_manifest.json": "bae087c96d7ed49dfda9e42c6fe7c83510db8c8b3f2a3973003e3342951244bc"
+      }
+    }
+  ],
+  "meshes": {
+    "8a212de539f098f01018a70df886dc94411e423a197cf99ad1af7847cc28c190.stl": {
+      "sha256": "8a212de539f098f01018a70df886dc94411e423a197cf99ad1af7847cc28c190",
+      "original_asset_name": "scene/meshes/base_link.STL"
+    },
+    "fa6a4d25992bf74ea36d0b9d88c6f04799730a758fdfd7bb036abcf20af5b827.stl": {
+      "sha256": "fa6a4d25992bf74ea36d0b9d88c6f04799730a758fdfd7bb036abcf20af5b827",
+      "original_asset_name": "scene/meshes/Ex_Link.STL"
+    },
+    "71ca4a868d39c0643a64836a3b2c19222b9c2e66ef4c93ae801a91ae0926a2f4.obj": {
+      "sha256": "71ca4a868d39c0643a64836a3b2c19222b9c2e66ef4c93ae801a91ae0926a2f4",
+      "original_asset_name": "lerobot/assets/sdk_f61d41ff7c698c8a.obj"
+    },
+    "62b1407f2d60ad356202a471357dfaf43ff2f0e7efe5dfba8f9e1e958f6a7c60.stl": {
+      "sha256": "62b1407f2d60ad356202a471357dfaf43ff2f0e7efe5dfba8f9e1e958f6a7c60",
+      "original_asset_name": "lerobot/assets/sdk_327f67b507da4542.stl"
+    },
+    "a28dd654809ec7c449ef7340731975b709703fc89ef2a6ac314252dc56b20784.stl": {
+      "sha256": "a28dd654809ec7c449ef7340731975b709703fc89ef2a6ac314252dc56b20784",
+      "original_asset_name": "lerobot/assets/sdk_24054d58421b7e6f.stl"
+    },
+    "811375ea5a7a1106885416ee93fbec1dd15ff58f96648d99a8f87d9d1301cb00.stl": {
+      "sha256": "811375ea5a7a1106885416ee93fbec1dd15ff58f96648d99a8f87d9d1301cb00",
+      "original_asset_name": "lerobot/assets/sdk_b6f4550b2a59700d.stl"
+    },
+    "746a5cb6ed1873be5641c51f9eab917bef15232b5aa178c07ea3c410c78aad29.stl": {
+      "sha256": "746a5cb6ed1873be5641c51f9eab917bef15232b5aa178c07ea3c410c78aad29",
+      "original_asset_name": "lerobot/assets/sdk_c639d082fa0e7058.stl"
+    },
+    "21c8b89f2c8dc17ae872c647fc07529f1b4eb239f93cbf0a0ae08f7b9a5a3eed.stl": {
+      "sha256": "21c8b89f2c8dc17ae872c647fc07529f1b4eb239f93cbf0a0ae08f7b9a5a3eed",
+      "original_asset_name": "lerobot/assets/sdk_ace37673dbdc4c8d.stl"
+    },
+    "28e8687580540ffb9f9b7b6200ad52711b01d92b64ad8553b18c160988c3d12a.stl": {
+      "sha256": "28e8687580540ffb9f9b7b6200ad52711b01d92b64ad8553b18c160988c3d12a",
+      "original_asset_name": "lerobot/assets/sdk_615526a37334c603.stl"
+    },
+    "a9a77032873a82edc084ef14b5a4c0807e973c52a393a224cc771e3d598cd451.stl": {
+      "sha256": "a9a77032873a82edc084ef14b5a4c0807e973c52a393a224cc771e3d598cd451",
+      "original_asset_name": "lerobot/assets/sdk_329af693f667a221.stl"
+    },
+    "56544444f5d2fbb62582e751371c8540819c9abf53ac8c465e735de1ca019132.stl": {
+      "sha256": "56544444f5d2fbb62582e751371c8540819c9abf53ac8c465e735de1ca019132",
+      "original_asset_name": "lerobot/assets/sdk_b0bf3a8d8fc0c250.stl"
+    },
+    "21002e85c41e913f9def1be1b6b42bb4299d268111fc26c177193f8307db0832.stl": {
+      "sha256": "21002e85c41e913f9def1be1b6b42bb4299d268111fc26c177193f8307db0832",
+      "original_asset_name": "lerobot/assets/sdk_7c453c71e9c93606.stl"
+    },
+    "d10c6634c20794d1fe8e4f1177c39023f847baa75e09bf902770b6d5efbe0c0e.stl": {
+      "sha256": "d10c6634c20794d1fe8e4f1177c39023f847baa75e09bf902770b6d5efbe0c0e",
+      "original_asset_name": "lerobot/assets/sdk_0f0866c470060dae.stl"
+    },
+    "6bde68d5158c98640f7028170b9ac12712c26d6b614908d8c5defd0b91f40254.stl": {
+      "sha256": "6bde68d5158c98640f7028170b9ac12712c26d6b614908d8c5defd0b91f40254",
+      "original_asset_name": "lerobot/assets/sdk_a78a7adcbd674fdc.stl"
+    },
+    "ab6d5be2cce8da00a3ab555d2abb32660b195656316db27d71d850da556589d3.stl": {
+      "sha256": "ab6d5be2cce8da00a3ab555d2abb32660b195656316db27d71d850da556589d3",
+      "original_asset_name": "lerobot/assets/sdk_b18c085e14007bf9.stl"
+    },
+    "e7dc57c3644238895e609bbfc73cb4c9dbae5051ecb89174803d08f1590c0ba7.stl": {
+      "sha256": "e7dc57c3644238895e609bbfc73cb4c9dbae5051ecb89174803d08f1590c0ba7",
+      "original_asset_name": "lerobot/assets/sdk_3871cfd1bc661990.stl"
+    },
+    "587aceafdec3aa311e2a3459a9ac273e637f18e7c05ce70757662d9fc2e7f5ae.stl": {
+      "sha256": "587aceafdec3aa311e2a3459a9ac273e637f18e7c05ce70757662d9fc2e7f5ae",
+      "original_asset_name": "lerobot/assets/sdk_5a24313013b69ed6.stl"
+    },
+    "8b884d95cfdbf9a3897264db50972a0f997732645114a383b7e4aba7d1f4cfa8.stl": {
+      "sha256": "8b884d95cfdbf9a3897264db50972a0f997732645114a383b7e4aba7d1f4cfa8",
+      "original_asset_name": "lerobot/assets/sdk_9963884bc490f51b.stl"
+    },
+    "4582d3de15630885ceede40d761dc996e555a9fb99eb169f3b89c206f54435d4.stl": {
+      "sha256": "4582d3de15630885ceede40d761dc996e555a9fb99eb169f3b89c206f54435d4",
+      "original_asset_name": "lerobot/assets/sdk_95355b325f74669d.stl"
+    },
+    "0e04bffa501d812243c18ebdf418549b12d7e190c6d103fa5531b439cca3b6b4.stl": {
+      "sha256": "0e04bffa501d812243c18ebdf418549b12d7e190c6d103fa5531b439cca3b6b4",
+      "original_asset_name": "lerobot/assets/sdk_51dfc868b4616506.stl"
+    },
+    "1a49d4473d1e78b70870ac3f0b97b7e86f2633ca70e1d8fd587255923877a526.stl": {
+      "sha256": "1a49d4473d1e78b70870ac3f0b97b7e86f2633ca70e1d8fd587255923877a526",
+      "original_asset_name": "lerobot/assets/sdk_c70f39f2ec527de4.stl"
+    },
+    "8d5ecec18254adb8cd04c11eed1f231d3be30a9615442948c8448fbffc69d958.stl": {
+      "sha256": "8d5ecec18254adb8cd04c11eed1f231d3be30a9615442948c8448fbffc69d958",
+      "original_asset_name": "lerobot/assets/sdk_ffeb2c7275e7d73a.stl"
+    },
+    "eaf2c018bfa73009877ff18379a486da942717fb91eabda7e2e838a2a9c7c3d2.stl": {
+      "sha256": "eaf2c018bfa73009877ff18379a486da942717fb91eabda7e2e838a2a9c7c3d2",
+      "original_asset_name": "lerobot/assets/sdk_b6559e2bbf1860c7.stl"
+    },
+    "058c3c8017bfab4a8d55cd4850adcdd65841927b4bccad2b6db28fe16a17a455.stl": {
+      "sha256": "058c3c8017bfab4a8d55cd4850adcdd65841927b4bccad2b6db28fe16a17a455",
+      "original_asset_name": "lerobot/assets/sdk_949a231ea3d319bc.stl"
+    },
+    "b95716195153e500d2f0bb04e6ef64b084a8a816aa8d0117c9c640c6ba6c6ea9.stl": {
+      "sha256": "b95716195153e500d2f0bb04e6ef64b084a8a816aa8d0117c9c640c6ba6c6ea9",
+      "original_asset_name": "lerobot/assets/sdk_e6f80113331d8001.stl"
+    },
+    "bdf31a9adb9bb54256c3d72b0cf1f48580850b3e8bb2f8f997e33202031fa800.stl": {
+      "sha256": "bdf31a9adb9bb54256c3d72b0cf1f48580850b3e8bb2f8f997e33202031fa800",
+      "original_asset_name": "lerobot/assets/sdk_13d16a7cc9a6ee60.stl"
+    },
+    "41e9451a2629967a97d0162ce7940635320c8775a20b21460aff56ae57eb7ab7.stl": {
+      "sha256": "41e9451a2629967a97d0162ce7940635320c8775a20b21460aff56ae57eb7ab7",
+      "original_asset_name": "lerobot/assets/sdk_a863794a6683deda.stl"
+    },
+    "8135e3a4a282cc43ab8a5d2183f73b3acf7b47423aab9e030ab58a9129dd5904.stl": {
+      "sha256": "8135e3a4a282cc43ab8a5d2183f73b3acf7b47423aab9e030ab58a9129dd5904",
+      "original_asset_name": "lerobot/assets/sdk_b838065bf6708eea.stl"
+    },
+    "cc2d042bd2dd6c43ef5579c4950cf3ce48b4a2735f50f42f43d72c3ab32a7117.stl": {
+      "sha256": "cc2d042bd2dd6c43ef5579c4950cf3ce48b4a2735f50f42f43d72c3ab32a7117",
+      "original_asset_name": "lerobot/assets/sdk_0504b8c2e18feb6e.stl"
+    },
+    "4b63275cc6779741318b9e367b7db62864640a5c21787c9b842de500420a2cf6.stl": {
+      "sha256": "4b63275cc6779741318b9e367b7db62864640a5c21787c9b842de500420a2cf6",
+      "original_asset_name": "lerobot/assets/sdk_314b64de6b26c03c.stl"
+    },
+    "4f0189348bb538485faf2d1f67daa3361157ac2641a2a487ab3c9efd370808ca.stl": {
+      "sha256": "4f0189348bb538485faf2d1f67daa3361157ac2641a2a487ab3c9efd370808ca",
+      "original_asset_name": "lerobot/assets/sdk_26eca3e86fdd5101.stl"
+    },
+    "8a2d251d646a3c22b3c96feb31987a0db1e71b289090c36faa1f34a51c821bc3.stl": {
+      "sha256": "8a2d251d646a3c22b3c96feb31987a0db1e71b289090c36faa1f34a51c821bc3",
+      "original_asset_name": "lerobot/assets/sdk_71aef4ee9cf0e498.stl"
+    },
+    "293e8ed3f358ad912c55207c7527c0160a6c84ee50d5fabcab8f8e4a43f107a6.stl": {
+      "sha256": "293e8ed3f358ad912c55207c7527c0160a6c84ee50d5fabcab8f8e4a43f107a6",
+      "original_asset_name": "lerobot/assets/sdk_25a277315c5678eb.stl"
+    },
+    "73b99a219df30d16b1e9647bf8583866d79fd80f068d7c82ebf4a86798a29019.stl": {
+      "sha256": "73b99a219df30d16b1e9647bf8583866d79fd80f068d7c82ebf4a86798a29019",
+      "original_asset_name": "lerobot/assets/sdk_bb1d2eb1c17b1ac3.stl"
+    },
+    "81ad4d4f69b3a52cf4e5fde5e10cb77220340f1d930305cfc48244890412092f.stl": {
+      "sha256": "81ad4d4f69b3a52cf4e5fde5e10cb77220340f1d930305cfc48244890412092f",
+      "original_asset_name": "lerobot/assets/sdk_f972b0789fde6cea.stl"
+    },
+    "37c7759174b676ae11c90291eb28d583ebb75973726ce8c492da858a97330890.stl": {
+      "sha256": "37c7759174b676ae11c90291eb28d583ebb75973726ce8c492da858a97330890",
+      "original_asset_name": "lerobot/assets/sdk_a61915795425ca0f.stl"
+    },
+    "66e81e408567819cb98fb8b6be86b8031ff7692b7f0a9dcaf7d054825e54b229.stl": {
+      "sha256": "66e81e408567819cb98fb8b6be86b8031ff7692b7f0a9dcaf7d054825e54b229",
+      "original_asset_name": "lerobot/assets/sdk_2a78be5975578147.stl"
+    },
+    "d4d70962eb7f43a25f5e06dace05d8e4f18a64bfeb1c5eb7e45d8fca2a92f222.stl": {
+      "sha256": "d4d70962eb7f43a25f5e06dace05d8e4f18a64bfeb1c5eb7e45d8fca2a92f222",
+      "original_asset_name": "lerobot/assets/sdk_c9fee2c91d4179a4.stl"
+    },
+    "a7577447ed925a76d73d41df6f23822cf264d2b954920603171ea8b314f45ada.stl": {
+      "sha256": "a7577447ed925a76d73d41df6f23822cf264d2b954920603171ea8b314f45ada",
+      "original_asset_name": "lerobot/assets/sdk_3af85977fe3158cc.stl"
+    },
+    "0a17bc3a96512564fbdcb22007d96fac1bbdd249b3a5926559f0544b4b1815ca.stl": {
+      "sha256": "0a17bc3a96512564fbdcb22007d96fac1bbdd249b3a5926559f0544b4b1815ca",
+      "original_asset_name": "lerobot/assets/sdk_9a59a88abf2c7794.stl"
+    },
+    "e99f7250842f51ac27afef14b72bbd889ac2289f70d1f4be178e944dd1051f5a.stl": {
+      "sha256": "e99f7250842f51ac27afef14b72bbd889ac2289f70d1f4be178e944dd1051f5a",
+      "original_asset_name": "lerobot/assets/sdk_3e6911909a761074.stl"
+    },
+    "266871a08f449eedd3052f4476d8b4b58897321dd43dbd2355801430873290c6.stl": {
+      "sha256": "266871a08f449eedd3052f4476d8b4b58897321dd43dbd2355801430873290c6",
+      "original_asset_name": "lerobot/assets/sdk_750eec70a91c942d.stl"
+    },
+    "260c8374a4fa108f6e3d822ace13a53b26516f2bb65ef75f4e8952eff986673d.stl": {
+      "sha256": "260c8374a4fa108f6e3d822ace13a53b26516f2bb65ef75f4e8952eff986673d",
+      "original_asset_name": "lerobot/assets/sdk_9d12e73343160b4f.stl"
+    },
+    "d5029e33dc31f6b0be7bd53308ced19497596a30bb2a7d7593308236c69f06ba.stl": {
+      "sha256": "d5029e33dc31f6b0be7bd53308ced19497596a30bb2a7d7593308236c69f06ba",
+      "original_asset_name": "lerobot/assets/sdk_6c9c144b8c30f36c.stl"
+    },
+    "76c6d88334fd507c24a88c3a291b4f23cc027b92fb827e5932a9445471c914a0.stl": {
+      "sha256": "76c6d88334fd507c24a88c3a291b4f23cc027b92fb827e5932a9445471c914a0",
+      "original_asset_name": "lerobot/assets/sdk_708f480d6640ad99.stl"
+    },
+    "2fda7ea4c13e582be9c966231426d76586a543b5f4796a25e3274825142617b3.stl": {
+      "sha256": "2fda7ea4c13e582be9c966231426d76586a543b5f4796a25e3274825142617b3",
+      "original_asset_name": "lerobot/assets/sdk_fcb61003dd5c344b.stl"
+    },
+    "66f796bfa5176a2d85a9f67efca3ccc4c8c6aa9c4054a915e8523535c94fdb19.stl": {
+      "sha256": "66f796bfa5176a2d85a9f67efca3ccc4c8c6aa9c4054a915e8523535c94fdb19",
+      "original_asset_name": "lerobot/assets/sdk_c82e2d7403be4778.stl"
+    },
+    "8e0669e5fa882a20b09d9df483cd658a9d2732ff1ae6d4f81b58c803aed6a2cb.stl": {
+      "sha256": "8e0669e5fa882a20b09d9df483cd658a9d2732ff1ae6d4f81b58c803aed6a2cb",
+      "original_asset_name": "lerobot/assets/sdk_fcbf9ff06134cf21.stl"
+    },
+    "74e5b4dcc50e7dc4e0541526548203ff2abcbde3bd926eb130c1e0e1c606e049.stl": {
+      "sha256": "74e5b4dcc50e7dc4e0541526548203ff2abcbde3bd926eb130c1e0e1c606e049",
+      "original_asset_name": "lerobot/assets/sdk_6edfbddac4ace0c8.stl"
+    },
+    "571024b9f00a377d3112449d23b1b88cf83231ca8a483e5f9f39eb5f314d91a4.stl": {
+      "sha256": "571024b9f00a377d3112449d23b1b88cf83231ca8a483e5f9f39eb5f314d91a4",
+      "original_asset_name": "lerobot/assets/sdk_ef057de9aee33b1b.stl"
+    },
+    "ebf13109cd851ca8637e1f7f1c8a7f552847cb7bf495e82a6554a6d34441caba.stl": {
+      "sha256": "ebf13109cd851ca8637e1f7f1c8a7f552847cb7bf495e82a6554a6d34441caba",
+      "original_asset_name": "lerobot/assets/sdk_d9588a11e1ca0e84.stl"
+    },
+    "fb9bfb5b1c872257ba8dd134d74d7eced70a176254f8ec8d4293e4ef7ed14397.stl": {
+      "sha256": "fb9bfb5b1c872257ba8dd134d74d7eced70a176254f8ec8d4293e4ef7ed14397",
+      "original_asset_name": "lerobot/assets/sdk_326107d52356b4d8.stl"
+    },
+    "6711ad1a1527fd8435185571dc53e8f9d9d0e085af66c9927ad6f45dca40ca07.stl": {
+      "sha256": "6711ad1a1527fd8435185571dc53e8f9d9d0e085af66c9927ad6f45dca40ca07",
+      "original_asset_name": "lerobot/assets/sdk_302116472a887e23.stl"
+    },
+    "3ef9dff3ddbdfb6cf1257b0b3f9dac4bd9c7786e19eb96a184cb3eb06ba33761.stl": {
+      "sha256": "3ef9dff3ddbdfb6cf1257b0b3f9dac4bd9c7786e19eb96a184cb3eb06ba33761",
+      "original_asset_name": "lerobot/assets/sdk_1f543e370e7f17c6.stl"
+    },
+    "1483c2a9ce4b19a5409c9209da80d572e99623f70c0ac6ac62648fa01bb07ea5.stl": {
+      "sha256": "1483c2a9ce4b19a5409c9209da80d572e99623f70c0ac6ac62648fa01bb07ea5",
+      "original_asset_name": "lerobot/assets/sdk_74f4404755fe3609.stl"
+    },
+    "84d808939107e10d12144eb47ff5719959d6ac2a4c1a027a9f0dff624bada2f7.stl": {
+      "sha256": "84d808939107e10d12144eb47ff5719959d6ac2a4c1a027a9f0dff624bada2f7",
+      "original_asset_name": "lerobot/assets/sdk_0d08590c16ddf32c.stl"
+    },
+    "1e476ebbb85b188b24f58f21d2a86f70361d2db762a34f99210e75b9897f2d91.stl": {
+      "sha256": "1e476ebbb85b188b24f58f21d2a86f70361d2db762a34f99210e75b9897f2d91",
+      "original_asset_name": "lerobot/assets/sdk_0563fe5f31955688.stl"
+    },
+    "5bdee9c21eb443f0c74ad4cec86af90c3ee773848cab7a6755355313cee836a5.stl": {
+      "sha256": "5bdee9c21eb443f0c74ad4cec86af90c3ee773848cab7a6755355313cee836a5",
+      "original_asset_name": "lerobot/assets/sdk_7840a5b3a960cf38.stl"
+    },
+    "ef5f91fb863d93d820b8ee1fec5fb5d38fe3ad7b86ac60803108eccdc0c52498.stl": {
+      "sha256": "ef5f91fb863d93d820b8ee1fec5fb5d38fe3ad7b86ac60803108eccdc0c52498",
+      "original_asset_name": "lerobot/assets/sdk_3e9e080a2c189a3c.stl"
+    },
+    "fde839cb0bea9e21b4f80515debb117547b9ff75c59abebf85350534f706e36d.stl": {
+      "sha256": "fde839cb0bea9e21b4f80515debb117547b9ff75c59abebf85350534f706e36d",
+      "original_asset_name": "lerobot/assets/sdk_cbd78717f2282a37.stl"
+    },
+    "510c9676429da4cdb0f90ae17fef3db1321355f236b8b2dfdcb961c72793ae59.stl": {
+      "sha256": "510c9676429da4cdb0f90ae17fef3db1321355f236b8b2dfdcb961c72793ae59",
+      "original_asset_name": "lerobot/assets/sdk_cfb2a677e39fc4d1.stl"
+    },
+    "c1ad75a667cd34b740ac0f9a3e2385c6297987f0f73f95e6fce00b460c731e95.stl": {
+      "sha256": "c1ad75a667cd34b740ac0f9a3e2385c6297987f0f73f95e6fce00b460c731e95",
+      "original_asset_name": "lerobot/assets/sdk_89c226c7827bee4c.stl"
+    },
+    "8e049efc83b16cd14d1c4b3b93f57789bb7d187f1a180ef3e8a5761069d78e63.stl": {
+      "sha256": "8e049efc83b16cd14d1c4b3b93f57789bb7d187f1a180ef3e8a5761069d78e63",
+      "original_asset_name": "lerobot/assets/sdk_e7def315155c61ef.stl"
+    },
+    "a3d35c485324fcf0e8e684f2c870ac016fbb73fb7dab467ca641bc0c75a555a1.stl": {
+      "sha256": "a3d35c485324fcf0e8e684f2c870ac016fbb73fb7dab467ca641bc0c75a555a1",
+      "original_asset_name": "lerobot/assets/sdk_24d240c9451da897.stl"
+    },
+    "47193e2421d0cfede230fedd08ba0f313515170cc87d53428e2a1efef8fa3efe.stl": {
+      "sha256": "47193e2421d0cfede230fedd08ba0f313515170cc87d53428e2a1efef8fa3efe",
+      "original_asset_name": "lerobot/assets/sdk_64d1f0aba54a9a73.stl"
+    },
+    "ad63121bd10b6970901b9b4e76307b3d53d63bca9e44258d2f7b93ea6403a88b.stl": {
+      "sha256": "ad63121bd10b6970901b9b4e76307b3d53d63bca9e44258d2f7b93ea6403a88b",
+      "original_asset_name": "lerobot/assets/sdk_6dd8e703fc1b2427.stl"
+    },
+    "500c84843b611d531ca3a2ee580511229a9df7205c9a8d28b9ee37ede66477c2.stl": {
+      "sha256": "500c84843b611d531ca3a2ee580511229a9df7205c9a8d28b9ee37ede66477c2",
+      "original_asset_name": "lerobot/assets/sdk_c99165185682a944.stl"
+    },
+    "25d17f988bafa3e2488c6e436d0ca234663265ebca255a75729c4301891bd099.stl": {
+      "sha256": "25d17f988bafa3e2488c6e436d0ca234663265ebca255a75729c4301891bd099",
+      "original_asset_name": "lerobot/assets/sdk_78cb6ee06c445173.stl"
+    },
+    "705e2feffa24b9a35b47380c6496187abbebfd47b504c38298bbf87368bc01a4.stl": {
+      "sha256": "705e2feffa24b9a35b47380c6496187abbebfd47b504c38298bbf87368bc01a4",
+      "original_asset_name": "lerobot/assets/sdk_c782851db5fbe793.stl"
+    },
+    "4d53ee8c0eb88fc838cf573e9e165187d355c14b19c5a6ac49bd44be5f91f779.stl": {
+      "sha256": "4d53ee8c0eb88fc838cf573e9e165187d355c14b19c5a6ac49bd44be5f91f779",
+      "original_asset_name": "lerobot/assets/sdk_8f9ef0eb55fc6249.stl"
+    },
+    "978f923ba76460c86374470bef0325449f50442a89156b2bdb1b980f1a267ca3.stl": {
+      "sha256": "978f923ba76460c86374470bef0325449f50442a89156b2bdb1b980f1a267ca3",
+      "original_asset_name": "lerobot/assets/sdk_30e04200a0e02c70.stl"
+    },
+    "ad2d0f32143f7acc83337ccb68d0eee59126847ec3fea15e0f9a2f73f80e2687.stl": {
+      "sha256": "ad2d0f32143f7acc83337ccb68d0eee59126847ec3fea15e0f9a2f73f80e2687",
+      "original_asset_name": "lerobot/assets/sdk_de5da324df50f566.stl"
+    },
+    "56cfec53ae297b225baf26b7b5941cd1accac324860f78ea3bd60dc318edced9.stl": {
+      "sha256": "56cfec53ae297b225baf26b7b5941cd1accac324860f78ea3bd60dc318edced9",
+      "original_asset_name": "lerobot/assets/sdk_459de302265fdd40.stl"
+    },
+    "3ce9b9026eb89e0cca411ca58ad2985ccb3235647aa857360a4da883eccff8b8.stl": {
+      "sha256": "3ce9b9026eb89e0cca411ca58ad2985ccb3235647aa857360a4da883eccff8b8",
+      "original_asset_name": "lerobot/assets/sdk_6435e5df1d3cef77.stl"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "data_comparison.png": "e545e276466411b6b862c59ca6da4bc07d393cdea6f18b26be4d72b3cf2d705c",
+  "manifest.json": "074757e4f85ddd49da9c88f7738be1ba5da275a50a1f177c17ae6de07200d786",
+  "measured.npz": "8f0c94097eee752224d9c606bcefafe24839d7f27f14304fec0707535e110717",
+  "measured_sim_inputs.npz": "f5a8545f493cc2778f5bcdc2ee88b44696ef5a03b372ddb78fc16a163ed1fc1f",
+  "synthetic.npz": "c11d9eb14afe26eecab92a9440746e6b2ead6aa881772b1902779ad7137c2add",
+  "synthetic_sim_inputs.npz": "749f496a21de52a7837389730a002bec358728a6f60e3bcc7c8658a4c1fface8"
+}

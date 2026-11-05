@@ -1,0 +1,122 @@
+{
+  "modules": [
+    {
+      "module_id": 1,
+      "name": "index_proximal",
+      "body": "left_index_tactile_link1",
+      "geom": "left_index_tactile_link1_collision_0",
+      "template": "IP_M3025",
+      "start": 0,
+      "end": 120
+    },
+    {
+      "module_id": 2,
+      "name": "index_middle",
+      "body": "left_index_tactile_link2",
+      "geom": "left_index_tactile_link2_collision_0",
+      "template": "MP_M2324",
+      "start": 120,
+      "end": 180
+    },
+    {
+      "module_id": 3,
+      "name": "index_tip",
+      "body": "left_index_tactile_link3",
+      "geom": "left_index_tactile_link3_collision_0",
+      "template": "DP_M2826",
+      "start": 180,
+      "end": 300
+    },
+    {
+      "module_id": 4,
+      "name": "middle_proximal",
+      "body": "left_middle_tactile_link1",
+      "geom": "left_middle_tactile_link1_collision_0",
+      "template": "IP_M3025",
+      "start": 300,
+      "end": 420
+    },
+    {
+      "module_id": 5,
+      "name": "middle_middle",
+      "body": "left_middle_tactile_link2",
+      "geom": "left_middle_tactile_link2_collision_0",
+      "template": "MP_M2324",
+      "start": 420,
+      "end": 480
+    },
+    {
+      "module_id": 6,
+      "name": "middle_tip",
+      "body": "left_middle_tactile_link3",
+      "geom": "left_middle_tactile_link3_collision_0",
+      "template": "DP_M2826",
+      "start": 480,
+      "end": 600
+    },
+    {
+      "module_id": 7,
+      "name": "ring_proximal",
+      "body": "left_ring_tactile_link1",
+      "geom": "left_ring_tactile_link1_collision_0",
+      "template": "IP_M3025",
+      "start": 600,
+      "end": 720
+    },
+    {
+      "module_id": 8,
+      "name": "ring_middle",
+      "body": "left_ring_tactile_link2",
+      "geom": "left_ring_tactile_link2_collision_0",
+      "template": "MP_M2324",
+      "start": 720,
+      "end": 780
+    },
+    {
+      "module_id": 9,
+      "name": "ring_tip",
+      "body": "left_ring_tactile_link3",
+      "geom": "left_ring_tactile_link3_collision_0",
+      "template": "DP_M2826",
+      "start": 780,
+      "end": 900
+    },
+    {
+      "module_id": 10,
+      "name": "thumb_proximal",
+      "body": "left_thumb_tactile_link1",
+      "geom": "left_thumb_tactile_link1_collision_0",
+      "template": "IP_L5325",
+      "start": 900,
+      "end": 1020
+    },
+    {
+      "module_id": 11,
+      "name": "thumb_tip",
+      "body": "left_thumb_tactile_link2",
+      "geom": "left_thumb_tactile_link2_collision_0",
+      "template": "DP_L3530",
+      "start": 1020,
+      "end": 1140
+    }
+  ],
+  "object_alignment": {
+    "body": "Ex_Link",
+    "frame": "base_link",
+    "translation_m": [
+      0.0,
+      0.0005,
+      0.0
+    ],
+    "original_position_m": [
+      0.717,
+      0.624919167475409,
+      0.214999999999998
+    ],
+    "position_m": [
+      0.717,
+      0.6254191674754089,
+      0.214999999999998
+    ]
+  }
+}
