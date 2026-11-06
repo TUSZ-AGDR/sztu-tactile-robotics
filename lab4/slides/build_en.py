@@ -4,10 +4,12 @@ Run from the repository root: python lab4/slides/build_en.py
 No third-party packages are required. Edit English content here, then rebuild.
 """
 from pathlib import Path
+import base64
 import json
 import re
 
 HERE = Path(__file__).resolve().parent
+replay_uri = 'data:image/gif;base64,' + base64.b64encode((HERE.parent / 'figures/replay_comparison.gif').read_bytes()).decode('ascii')
 original = (HERE / 'index.html').read_text()
 css = re.search(r'<style>(.*?)</style>', original, re.S).group(1)
 css += '''
@@ -26,7 +28,10 @@ pages = []
 def page(title, lead, visual, foot, note, steps=0, controls='', style=''):
     pages.append(dict(title=title, lead=lead, visual=visual, foot=foot, note=note, steps=steps, controls=controls, style=style))
 page('One sensor, two worlds','', 'cover', '',
-     'About 40 seconds. Ask: if we can see a fingertip move near a surface in simulation, can we predict what the real tactile sensor reads? Today we focus on ID3 at the index fingertip. This is a practical lesson in using data, with a simple neural network and then an explicit latent representation.',1)
+     'About 40 seconds. Let the contact replay run, then ask: if we can see a fingertip move near a surface in simulation, can we predict what the real tactile sensor reads? The left panel replays saved MuJoCo poses with measured SDK readings. The right panel shows a synthetic fixture-offset variant with generated sensor readings. Both panels are simulation renderings, not camera footage. Today we focus on ID3 at the index fingertip.',0)
+page('Before we begin', 'This session is a starting point for exploring the lab. Some explanations may need clarification, so please interrupt me with questions at any time. You can also ask the professor or Tengyuan (腾远), or explore the courses below.', 'references',
+     'Lab 4 uses MLPs and autoencoders. Flow matching and diffusion are optional extensions.',
+     'About 30 seconds. Say: This session is intended as a starting point for exploring the lab. I may not explain everything clearly, so please interrupt me with questions at any time. You can also ask the professor or Tengyuan (腾远), or use the courses below to continue learning. For neural-network foundations, start with the first three 3Blue1Brown lessons. The MIT course is optional further study in generative models. Official sources: https://diffusion.csail.mit.edu/2025/index.html ; https://arxiv.org/abs/2506.02070 ; https://www.3blue1brown.com/lessons/neural-networks/ ; https://www.3blue1brown.com/lessons/gradient-descent/ ; https://www.3blue1brown.com/lessons/backpropagation/')
 page('Why focus on ID3?', 'A smaller experiment makes the learning problem easier to understand.', 'focus',
      'Fixed hand pose, recorded motion, one sensor target. Motion remains part of the input.',
      'About 60 seconds. Whole-hand learning mixes many changing factors: pose, multiple contacts, control, and sensing. We hold the hand pose fixed and replay an existing trajectory. Motion still matters, but students do not need to learn a motion controller. This lets us examine what the tactile signal contains and how a model learns to predict it. The picture uses the supplied PAXINI left-hand URDF meshes, with ID3 on left_index_tactile_link3. It shows a neutral display pose for sensor localization, not a recorded replay posture; colors emphasize the selected sensor.',2)
@@ -109,14 +114,20 @@ page('Can simulation predict what ID3 feels?', '', 'ending', '',
 sections=[]
 for i,p in enumerate(pages):
     if p['visual']=='cover':
-        inner='''<div class="cover-copy"><p class="cover-label">ID3 · SIM2REAL</p><h1 class="title-large">One sensor,<br>two worlds</h1><p class="cover-sub">Learning tactile signals<br>from simulation</p></div><div class="cover-art" id="cover-visual"></div><p class="cover-end fragment" data-step="1">Our focus: <strong>the ID3 index fingertip sensor</strong></p>'''
+        inner=f'''<div class="cover-copy"><p class="cover-label">ID3 · SIM2REAL</p><h1 class="title-large">One sensor,<br>two worlds</h1></div><p class="cover-sub">Can simulation predict<br>what the fingertip feels?</p><div class="cover-art" id="cover-visual"><img src="{replay_uri}" width="1200" height="400" alt="Contact motion replay: saved poses with measured SDK readings on the left, synthetic variant on the right"></div><p class="cover-end">Simulation replay · Left: measured SDK readings · Right: synthetic sensor readings</p>'''
+    elif p['visual']=='references':
+        inner=f'''<h2>{p['title']}</h2><p class="lead">{p['lead']}</p>
+<div class="reading-list">
+ <article class="reading-item"><p class="reading-meta">FURTHER STUDY · MIT 6.S184</p><h3>An Introduction to Flow Matching and Diffusion Models</h3><p class="reading-description">Peter Holderrieth &amp; Ezra Erives · Notes, lecture videos and labs</p><p class="reading-links"><a href="https://diffusion.csail.mit.edu/2025/index.html" target="_blank" rel="noopener noreferrer">Course website ↗</a><a href="https://arxiv.org/abs/2506.02070" target="_blank" rel="noopener noreferrer">Lecture notes ↗</a></p></article>
+ <article class="reading-item"><p class="reading-meta">NEURAL-NETWORK FOUNDATIONS · GRANT SANDERSON</p><h3>3Blue1Brown · Neural Networks</h3><p class="reading-description">Start with the first three lessons</p><p class="reading-links"><a href="https://www.3blue1brown.com/lessons/neural-networks/" target="_blank" rel="noopener noreferrer">1. Neural networks ↗</a><a href="https://www.3blue1brown.com/lessons/gradient-descent/" target="_blank" rel="noopener noreferrer">2. Gradient descent ↗</a><a href="https://www.3blue1brown.com/lessons/backpropagation/" target="_blank" rel="noopener noreferrer">3. Backpropagation ↗</a></p></article>
+</div><p class="foot">{p['foot']}</p>'''
     elif p['visual']=='ending':
         inner='''<div style="position:absolute;left:100px;top:175px"><p class="cover-label">YOUR TURN</p><h2 style="font-size:67px;line-height:1.4">Can simulation<br>predict what<br><span class="real">ID3 feels?</span></h2></div><div id="ending-visual" style="position:absolute;left:900px;top:245px;width:530px;height:350px"></div><div class="fragment" data-step="1" style="position:absolute;left:100px;bottom:125px;font-size:27px;line-height:1.7">One prediction plot. One latent plot.<br><span class="muted">One controlled comparison, with an explanation.</span></div>'''
     else:
         inner=f'<h2>{p["title"]}</h2><p class="lead">{p["lead"]}</p><div class="visual" id="{p["visual"]}-visual" style="{p["style"]}"></div>'
         if p['controls']: inner+=f'<div class="bottom-controls controls">{p["controls"]}</div>'
         inner+=f'<p class="foot">{p["foot"]}</p>'
-    sections.append(f'<section class="slide{" active" if i==0 else ""}" data-title="{p["title"]}" data-steps="{p["steps"]}">{inner}</section>')
+    sections.append(f'<section class="slide{" active cover-replay-slide" if i==0 else ""}" data-title="{p["title"]}" data-steps="{p["steps"]}">{inner}</section>')
 
 chrome='''<footer class="toolbar" aria-label="Slide controls"><div id="progress"></div><span id="counter"></span><span id="step-label"></span><span id="topic"></span><span class="tool-hint">← → / Space</span><button id="prev" aria-label="Previous step">Back</button><button id="next" class="next" aria-label="Next step">Next →</button><button id="overview-button">Overview</button><button id="notes-button" aria-pressed="false">Notes N</button><button id="fullscreen">Full screen F</button><button id="help-button" aria-label="Keyboard help">?</button><a class="language-link" href="index.html" lang="zh-CN">中文</a></footer>
 <aside id="notes" class="notes" hidden><button id="notes-close" aria-label="Close notes">×</button><h3 id="notes-title"></h3><p id="notes-text"></p></aside>
@@ -127,7 +138,6 @@ js=r'''
 function draw(id,content,w=1440,h=520,label='Teaching diagram'){ $(id+'-visual').innerHTML=svg(content,w,h,label) }
 const mid=(x,y,s,size=27,c=C.ink)=>txt(x,y,s,size,c,'middle');
 // Shared measured examples use the same embedded data as the Chinese deck.
-draw('cover',fingertip(60,135,.9)+rect(295,95,65,250,C.gold,C.gold+'0b',4)+path(wave(385,265,255,115),C.gold,4)+mid(150,365,'Geometry',25,C.blue)+mid(515,365,'Signal',25,C.gold)+line(300,410,570,410,C.purple,2,true)+mid(435,461,'Learn a relationship',26),730,520);
 let hand=paxiniHand('en');
 draw('focus',hand+fragment(1,txt(850,150,'Fewer changing factors',35)+line(850,180,1340,180,C.dim,1)+txt(850,240,'Fixed hand pose',29,C.blue)+txt(850,300,'Recorded trajectory',29,C.blue))+fragment(2,txt(850,405,'Focus on learning',29,C.muted)+txt(850,460,'from tactile data',40,C.gold)));
 function drawTouch(){const v=+$('touch-slider').value/100,depth=Math.max(0,v-.38)/.62,x=201.9+Math.min(v,.38)*120+Math.max(0,v-.38)*12;let s=fingertip(x,145,1.2)+rect(495,105,125,310,C.gold,C.gold+'0a',5);if(v>.38)s+=circle(495,230,9+depth*9,C.gold,C.gold+'45')+line(490,230,490+depth*95,230,C.gold,4,true);s+=mid(355,455,'Local interaction',28,C.blue)+mid(1060,80,'Sensor response',28,C.gold)+line(790,340,1330,340,C.dim,1.5)+path(wave(790,340,520,180*depth),C.gold,4)+txt(1320,375,'Time',22,C.muted,'end')+fragment(1,mid(1030,445,'Can geometry help predict this?',28));draw('touch',s);$('touch-state').textContent=v>.38?'In contact':'Separated';applyFragments()}
@@ -169,7 +179,7 @@ metrics=json.loads((HERE.parent/'reference_metrics.json').read_text())
 assert 'train_mean' in metrics['measured']['test']
 html='<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lab 4 · One sensor, two worlds</title><style>'+css+'</style></head><body>'+defs+'<main id="viewport"><div id="stage"><div class="topmark">TACTILE ROBOTICS / LAB 04</div>'+''.join(sections)+'</div></main>'+chrome+data+'<script>\n\'use strict\';\n'+helpers+'\nconst METRICS='+json.dumps(metrics)+';\n'+js+'\nconst notes='+json.dumps([p['note'] for p in pages])+';\n'+nav+'\ndrawTouch();drawSignal();drawHistory();drawNeuron();drawFit();drawRecipe();drawLatent();drawBridge();update();fit();\n</script></body></html>\n'
 (HERE/'index.en.html').write_text(html)
-notes='# Lab 4 speaker notes: One sensor, two worlds\n\n[Open English slides](index.en.html) · [Lab notebook](../practice.en.ipynb)\n\n25 slides, approximately 30 minutes with discussion. For a shorter introduction, omit slides 3, 9, 14, 18 and 21. Press N for notes on the same display, or read this file on a separate device.\n\n'
+notes='# Lab 4 speaker notes: One sensor, two worlds\n\n[Open English slides](index.en.html) · [Lab notebook](../practice.en.ipynb)\n\n26 slides, approximately 30 minutes with discussion. Slide 2 provides references. For a shorter introduction, omit slides 4, 10, 15, 19 and 22. Press N for notes on the same display, or read this file on a separate device.\n\n'
 for i,p in enumerate(pages,1): notes+=f'## {i:02d}. {p["title"]}\n\n{p["note"]}\n\n'
 notes+='## Evidence and implementation\n\n- [Models](../models.py): MLP layers, tanh activations, autoencoders, frozen endpoints and translation objective.\n- [Training](../train.py) and [data preparation](../data.py): standardization, optimization and grouped evaluation.\n- [Reference metrics](../reference_metrics.json) and [reference results](../REFERENCE_RESULTS.md): measured episode 5 comparisons.\n- Raw curves and latent examples are embedded in the HTML. Toy neuron weights, compact-curve parameters and coordinate diagrams are conceptual illustrations.\n- Self-reconstruction can use each modality on its own; supervised cross-modal translation needs paired observations. A latent representation is not a guarantee of denoising, interpretability or better prediction.\n'
 (HERE/'SPEAKER_NOTES.en.md').write_text(notes)
